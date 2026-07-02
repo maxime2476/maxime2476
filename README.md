@@ -1,136 +1,97 @@
-<div align="center">
+<img src="assets/banner.svg" width="100%" alt="Maxime Gourguechon. Econometrics, machine learning, computer vision. I ship the estimate the data supports, even when it is zero. On the right, an impulse response drawn inside a widening confidence band: beta-hat is approximately zero, shipped anyway."/>
 
-# Maxime Gourguechon
+<p align="center">
+  <a href="https://www.linkedin.com/in/maxime-gourguechon76/"><img src="https://img.shields.io/badge/LinkedIn-maxime--gourguechon76-D4AF37?style=flat-square&labelColor=101214&logo=linkedin&logoColor=D4AF37" alt="LinkedIn"/></a>
+  <a href="mailto:maxime.gourguechon76@gmail.com"><img src="https://img.shields.io/badge/Email-contact-D4AF37?style=flat-square&labelColor=101214&logo=gmail&logoColor=D4AF37" alt="Email"/></a>
+  <a href="https://huggingface.co/maxime2476"><img src="https://img.shields.io/badge/%F0%9F%A4%97_Spaces-2_live_apps-D4AF37?style=flat-square&labelColor=101214" alt="Hugging Face Spaces"/></a>
+  <a href="https://www.linkedin.com/in/maxime-gourguechon76/"><img src="https://img.shields.io/badge/Open_to_full--time-September_2026-2ea44f?style=flat-square&labelColor=101214" alt="Open to full-time roles from September 2026"/></a>
+</p>
 
-### Data Scientist · Finance & Luxury Analytics
+I came to machine learning from econometrics (MSc in Econometrics & Statistics, Université de Lille), and it shows. Modern ML produces excellent point predictions and, if you are not careful, invalid inference. So I spend most of my time on the unglamorous parts that decide whether a result is real: point-in-time data, temporal leakage, robustness checks that are allowed to fail.
 
-*Turning financial complexity and luxury market signals into predictive intelligence*
+Currently an AI research engineer intern at **Aubay**, building a coral instance segmentation pipeline (YOLO + SAM) with the **CNRS Fondation Science4Reefs**.
 
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://linkedin.com/in/maxime-gourguechon)
-[![Email](https://img.shields.io/badge/Email-D14836?style=for-the-badge&logo=gmail&logoColor=white)](mailto:maxime.gourguechon76@gmail.com)
-[![Portfolio](https://img.shields.io/badge/Portfolio-000000?style=for-the-badge&logo=github&logoColor=white)](https://maxime2476.github.io)
+## The regression behind the banner
 
-</div>
+$$
+\Delta_h \ln E_{s,t+h} \;=\; \beta_h\,\big(\mathrm{Exposure}_s \times \varepsilon^{\,MP}_{t}\big) \;+\; \alpha_s \;+\; \lambda_t \;+\; \Gamma' X_{s,t} \;+\; u_{s,t+h}
+$$
 
----
+State-level rate exposure interacted with an identified monetary shock, time fixed effects absorbing the aggregate. Across local projections, LP-DiD, double ML and a Bayesian variant, the $\beta_h$ came back null on 2014-2020. [causal-impact-lab](https://github.com/maxime2476/causal-impact-lab) is the paper trail.
 
-## About Me
+## Selected work
 
-Data Scientist with a dual specialization in **quantitative finance** and **luxury market analytics**. I build end-to-end pipelines — from raw market data ingestion to interpretable ML models — with a strong emphasis on statistical rigor, reproducible research, and production-ready deployment.
+### [causal-impact-lab](https://github.com/maxime2476/causal-impact-lab) · do monetary shocks destroy jobs?
 
-- **Finance track:** NLP on Fed communications, econometric panel models, portfolio optimization
-- **Luxury track:** demand forecasting, pricing analytics, consumer sentiment modeling
-- **Stack:** Python · R · SQL · PyTorch / TensorFlow · Qiskit · Streamlit · Docker
+[![CI](https://github.com/maxime2476/causal-impact-lab/actions/workflows/ci.yml/badge.svg)](https://github.com/maxime2476/causal-impact-lab/actions/workflows/ci.yml)
+[![codecov](https://codecov.io/gh/maxime2476/causal-impact-lab/branch/main/graph/badge.svg)](https://codecov.io/gh/maxime2476/causal-impact-lab)
+[![Release](https://img.shields.io/github/v/release/maxime2476/causal-impact-lab?style=flat-square&labelColor=101214&color=D4AF37)](https://github.com/maxime2476/causal-impact-lab/releases)
+[![Live app](https://img.shields.io/badge/%F0%9F%A4%97_Live_app-online-3a7d44?style=flat-square&labelColor=101214)](https://huggingface.co/spaces/maxime2476/causal-impact-lab)
 
-Currently exploring **quantum machine learning** for financial optimization and **LLM-augmented research workflows**.
+End-to-end causal study on real point-in-time data (ALFRED vintages, BLS QCEW, Bu-Rogers-Wu shocks). The analysis plan was frozen before estimation, every identifying assumption is registered and linked to the probe that stress-tests it, and **the headline effect shipped as a null.** Typed end to end (`mypy --strict` in CI), pandera contracts at every dataset boundary, 80 tests, nine architecture decision records.
 
----
+### [bmw-sales-analytics](https://github.com/maxime2476/bmw-sales-analytics) · what to do when the data has no signal
 
-## Tech Stack
+[![CI](https://github.com/maxime2476/bmw-sales-analytics/actions/workflows/main.yml/badge.svg)](https://github.com/maxime2476/bmw-sales-analytics/actions/workflows/main.yml)
+[![codecov](https://codecov.io/gh/maxime2476/bmw-sales-analytics/branch/main/graph/badge.svg)](https://codecov.io/gh/maxime2476/bmw-sales-analytics)
+[![Live dashboard](https://img.shields.io/badge/Live_dashboard-online-3a7d44?style=flat-square&labelColor=101214)](https://maxime2476-bmw-sales-analytics.hf.space)
 
-**Languages**
+Decision-support platform on 15 years of car sales data. Two results, both on purpose. On signal-bearing data the pipeline reaches a cross-validated R² around 0.85, with SHAP recovering the true drivers. On the actual dataset, which turns out to be structurally clean but statistically empty (plus one leaked target), the same pipeline scores an honest R² near zero, established with permutation tests and a positive control. Value is then delivered where it legitimately can be: a scenario simulator with explicit uncertainty.
 
-![Python](https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white)
-![R](https://img.shields.io/badge/R-276DC3?style=flat-square&logo=r&logoColor=white)
-![SQL](https://img.shields.io/badge/SQL-4479A1?style=flat-square&logo=postgresql&logoColor=white)
-![LaTeX](https://img.shields.io/badge/LaTeX-008080?style=flat-square&logo=latex&logoColor=white)
+<img src="https://raw.githubusercontent.com/maxime2476/bmw-sales-analytics/main/docs/assets/demo.gif" width="100%" alt="Dashboard tour: executive overview, data integrity, econometrics, ML benchmark, scenario simulator"/>
 
-**Machine Learning & Deep Learning**
+### [linux-sys-monitor](https://github.com/maxime2476/linux-sys-monitor) · small tool, kept honest
 
-![PyTorch](https://img.shields.io/badge/PyTorch-EE4C2C?style=flat-square&logo=pytorch&logoColor=white)
-![TensorFlow](https://img.shields.io/badge/TensorFlow-FF6F00?style=flat-square&logo=tensorflow&logoColor=white)
-![Scikit-Learn](https://img.shields.io/badge/Scikit--Learn-F7931E?style=flat-square&logo=scikitlearn&logoColor=white)
-![HuggingFace](https://img.shields.io/badge/HuggingFace-FFD21E?style=flat-square&logo=huggingface&logoColor=black)
+[![ShellCheck](https://github.com/maxime2476/linux-sys-monitor/actions/workflows/shellcheck.yml/badge.svg)](https://github.com/maxime2476/linux-sys-monitor/actions/workflows/shellcheck.yml)
 
-**Data & Visualization**
+Lightweight Bash monitoring daemon for Linux servers. Alerts to Slack or Discord, systemd unit, Docker image, Grafana dashboard included. Written because I wanted to know exactly what runs on my own machines.
 
-![Pandas](https://img.shields.io/badge/Pandas-150458?style=flat-square&logo=pandas&logoColor=white)
-![NumPy](https://img.shields.io/badge/NumPy-013243?style=flat-square&logo=numpy&logoColor=white)
-![Plotly](https://img.shields.io/badge/Plotly-3F4F75?style=flat-square&logo=plotly&logoColor=white)
-![Streamlit](https://img.shields.io/badge/Streamlit-FF4B4B?style=flat-square&logo=streamlit&logoColor=white)
+## Three registers, one method
 
-**Infrastructure & MLOps**
+<p align="center">
+  <a href="https://github.com/maxime2476/causal-impact-lab"><img src="assets/card-causal.svg" width="32%" alt="Causal inference: LP, LP-DiD, DML, Bayesian LP on ALFRED point-in-time vintages. Pre-registered null, shipped v0.1.0."/></a>
+  <img src="assets/card-engineering.svg" width="32%" alt="ML engineering: mypy strict and pandera contracts, 80 tests across unit, property and golden suites, 9 ADRs, CI on every push."/>
+  <img src="assets/card-cv.svg" width="32%" alt="Computer vision: coral instance segmentation with YOLO plus SAM, domain-stratified evaluation, Aubay with CNRS Fondation Science4Reefs."/>
+</p>
 
-![Docker](https://img.shields.io/badge/Docker-2496ED?style=flat-square&logo=docker&logoColor=white)
-![GitHub Actions](https://img.shields.io/badge/GitHub_Actions-2088FF?style=flat-square&logo=githubactions&logoColor=white)
-![Linux](https://img.shields.io/badge/Linux-FCC624?style=flat-square&logo=linux&logoColor=black)
+The method itself, compressed:
 
-**Quantum Computing**
-
-![Qiskit](https://img.shields.io/badge/Qiskit-6929C4?style=flat-square&logo=qiskit&logoColor=white)
-
----
-
-## Featured Projects
-
-| Project | Domain | Stack | Status |
-|---|---|---|---|
-| [**sentiment-powell-nlp**](https://github.com/maxime2476/sentiment-powell-nlp) | Fed communication analysis · NLP | Python · BERT · HuggingFace · TensorFlow | ![Active](https://img.shields.io/badge/status-active-brightgreen?style=flat-square) |
-| [**panel-project**](https://github.com/maxime2476/panel-project) | EU GDP determinants · Econometrics | Stata · Python · Streamlit | ![Active](https://img.shields.io/badge/status-active-brightgreen?style=flat-square) |
-| [**Quantum_Computing**](https://github.com/maxime2476/Quantum_Computing) | Quantum ML · Portfolio optimization | Python · Qiskit · PyTorch | ![WIP](https://img.shields.io/badge/status-WIP-yellow?style=flat-square) |
-| [**academic-stress**](https://github.com/maxime2476/academic-stress) | Behavioral data analysis | Python · R · Statistics | ![Complete](https://img.shields.io/badge/status-complete-blue?style=flat-square) |
-| [**linux-sys-monitor**](https://github.com/maxime2476/linux-sys-monitor) | System observability | Python · Linux · Shell | ![Complete](https://img.shields.io/badge/status-complete-blue?style=flat-square) |
-
----
-
-## Spotlight: NLP on Fed Communications
-
-> **Problem:** Quantify the hawkish/dovish stance of FOMC press conferences over time to anticipate monetary policy shifts.
-
-**Approach:**
-1. Transcript collection and preprocessing (tokenization, TF-IDF, stopword removal)
-2. Fine-tuning a BERT model on financial sentiment corpora (Stanford Sentiment Treebank + custom labels)
-3. Embedding layers (dim=100) → BiLSTM / Deep CNN → sentiment score per conference
-4. Statistical validation: Wilcoxon signed-rank tests with Bonferroni correction
-5. Time-series overlay with rate decision outcomes
-
-**Key finding:** Dovish language clusters (identified via Bag-of-Words) show a statistically significant lead of 2–3 sessions before rate cuts (p < 0.01).
-
-→ [View repository](https://github.com/maxime2476/sentiment-powell-nlp)
-
----
-
-## GitHub Stats
-
-<div align="center">
-
-![Maxime's GitHub Stats](https://github-readme-stats.vercel.app/api?username=maxime2476&show_icons=true&theme=default&hide_border=true&count_private=true)
-
-![Top Languages](https://github-readme-stats.vercel.app/api/top-langs/?username=maxime2476&layout=compact&theme=default&hide_border=true)
-
-</div>
-
----
-
-## Currently
-
-- **Building:** Interactive Streamlit dashboard on top of `panel-project` econometric models
-- **Learning:** Quantum kernel methods with Qiskit for near-term quantum devices (NISQ)
-- **Reading:** *Advances in Financial Machine Learning* — Marcos López de Prado
-- **Open to:** Research collaborations at the intersection of NLP, quantitative finance, and luxury market analytics
-
----
-
-## Repository Standards
-
-All my projects follow a reproducible research structure:
-
-```
-project/
-├── README.md          # Executive summary, results, install guide
-├── notebooks/         # Numbered EDA & modelling iterations
-├── src/               # Production-grade, modular Python code
-├── data/              # Anonymised samples only (.gitignore for raw data)
-├── report/            # Final PDFs, high-res figures
-├── dashboard/         # Streamlit / Dash app + Dockerfile
-├── requirements.txt   # Pinned dependencies
-└── LICENSE
+```mermaid
+flowchart LR
+    Q([question]) --> P{point-in-time<br/>data?}
+    P -- no --> R[rebuild the panel]
+    R --> P
+    P -- yes --> C[purged, embargoed CV]
+    C --> B{beats the honest baseline?<br/>Diebold-Mariano}
+    B -- yes --> S([ship, with robustness checks])
+    B -- no --> N([ship the null])
+    style N stroke:#D4AF37,stroke-width:2.5px
 ```
 
+Yes, the null gets the gold outline. That is the point.
+
+## Open source
+
+Fixes and improvements to tools I use daily:
+
+<!-- TODO: remplacer par les URLs réelles des PRs avant de pousser -->
+- **statsmodels**: [merged PR](#) <!-- lien PR statsmodels -->
+- **ultralytics**: [open PR](#) <!-- lien PR ultralytics -->
+
+## How I work
+
+Every serious repo here ships with the same defaults, not because a checklist says so but because I have been burned without them: locked environments (`uv`), `ruff` and `mypy --strict` in CI, `pytest` with coverage on Codecov, pre-commit hooks, and decision records for anything I would otherwise re-litigate six months later.
+
+**Stack.** Python (pandas, scikit-learn, statsmodels, PyTorch, pydantic, pandera) · SQL (DuckDB, PostgreSQL) · R and Stata for econometrics · Docker · GitHub Actions · Streamlit
+
+## Now
+
+- Interning at Aubay × CNRS Fondation Science4Reefs, computer vision for reef monitoring
+- Building `pitfall`, a point-in-time leakage detection toolkit for time-series ML (release soon)
+- Open to full-time roles from **September 2026**: ML engineering, quantitative research, applied science. Paris or remote.
+
+Earlier academic work (FOMC text mining, panel econometrics on Eurostat data) stays public in [sentiment-powell-nlp](https://github.com/maxime2476/sentiment-powell-nlp) and [panel-project](https://github.com/maxime2476/panel-project). That is where the econometrics habit comes from.
+
 ---
 
-<div align="center">
-
-*"Data without context is noise. Context without data is opinion."*
-
-</div>
+<p align="center"><em>A model that scores well on a leaky split is worse than no model.<br/>Most of what I build exists to make that distinction visible.</em></p>
