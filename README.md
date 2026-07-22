@@ -172,6 +172,11 @@ Ce que j'essaie de mettre dans chacun de mes projets sérieux, et qui se vérifi
 Mon temps de code réel de la semaine (WakaTime, mis à jour chaque nuit) :
 
 <!--START_SECTION:waka-->
+
+```txt
+No activity tracked
+```
+
 <!--END_SECTION:waka-->
 
 <div align="center">
