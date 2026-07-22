@@ -1,0 +1,30 @@
+name: WakaTime stats
+on:
+  schedule:
+    - cron: "0 0 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  update-readme:
+    name: Update README with WakaTime stats
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Generate metrics
+        uses: athul/waka-readme@master
+        with:
+          # Prérequis : 1) compte WakaTime + plugin installé dans ton IDE,
+          # 2) secret WAKATIME_API_KEY dans Settings → Secrets → Actions,
+          # 3) marqueurs <!--START_SECTION:waka--> / <!--END_SECTION:waka-->
+          #    déjà présents dans le README (c'est le cas).
+          WAKATIME_API_KEY: ${{ secrets.WAKATIME_API_KEY }}
+          SHOW_TITLE: false
+          BLOCKS: █░
+          TIME_RANGE: last_7_days
+          SHOW_TIME: true
+          SHOW_MASKED_TIME: false
+          LANG_COUNT: 5

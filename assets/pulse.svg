@@ -1,0 +1,53 @@
+<svg viewBox="0 0 300 190" width="300" height="190" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Série temporelle animée y_t = φ y_t-1 + ε_t">
+  <style>
+    .frame { fill:none; stroke:#d0d7de; stroke-width:1; rx:8; }
+    .grid  { stroke:#d0d7de; stroke-width:0.5; opacity:0.7; }
+    .lbl   { fill:#57606a; font: 400 11px 'SFMono-Regular', Consolas, Menlo, monospace; }
+    .eq    { fill:#0969DA; font: 700 13px 'SFMono-Regular', Consolas, Menlo, monospace; }
+    .ts    { fill:none; stroke:#1F6FEB; stroke-width:2; stroke-linecap:round;
+             stroke-dasharray:1; stroke-dashoffset:1;
+             animation: trace 6s ease-in-out infinite; }
+    .dot   { fill:#0969DA; }
+    .liveblink { animation: blink 1.2s step-end infinite; }
+    @keyframes trace { 0%{stroke-dashoffset:1} 55%{stroke-dashoffset:0} 88%{stroke-dashoffset:0; opacity:1} 100%{stroke-dashoffset:0; opacity:0} }
+    @keyframes blink { 50%{opacity:0} }
+    @media (prefers-color-scheme: dark) {
+      .frame, .grid { stroke:#30363d; }
+      .lbl { fill:#9198a1; }
+      .eq  { fill:#58A6FF; }
+      .ts  { stroke:#58A6FF; }
+      .dot { fill:#58A6FF; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .ts { animation:none; stroke-dashoffset:0; }
+      .liveblink { animation:none; }
+    }
+  </style>
+
+  <rect class="frame" x="8" y="8" width="284" height="150" rx="8"/>
+  <g class="grid">
+    <line x1="20" y1="55"  x2="284" y2="55"/>
+    <line x1="20" y1="90"  x2="284" y2="90"/>
+    <line x1="20" y1="125" x2="284" y2="125"/>
+  </g>
+
+  <!-- indicateur live -->
+  <circle class="dot liveblink" cx="24" cy="24" r="4"/>
+  <text class="lbl" x="34" y="28">live · processus AR(1)</text>
+
+  <!-- trajectoire simulée, se trace en boucle -->
+  <path class="ts" pathLength="1"
+        d="M22 96 L38 84 L52 102 L66 78 L80 92 L94 68 L108 86 L122 60 L136 76
+           L150 96 L164 72 L178 88 L192 64 L206 80 L220 56 L234 74 L248 92
+           L262 66 L278 82"/>
+
+  <!-- point mobile suivant la courbe -->
+  <circle class="dot" r="4">
+    <animateMotion dur="6s" repeatCount="indefinite"
+      path="M22 96 L38 84 L52 102 L66 78 L80 92 L94 68 L108 86 L122 60 L136 76
+            L150 96 L164 72 L178 88 L192 64 L206 80 L220 56 L234 74 L248 92
+            L262 66 L278 82"/>
+  </circle>
+
+  <text class="eq" x="22" y="180">y_t = φ·y_{t−1} + ε_t</text>
+</svg>
