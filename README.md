@@ -1,6 +1,6 @@
 <!-- HEADER ANIMÉ : Capsule Render + Flux de données minimaliste -->
 <div align="center">
-  <img src="https://capsule-render.vercel.app/api?type=typing&color=timeGradient&height=200&section=header&text=Initialisation%20du%20profil...&fontSize=40&fontAlignY=40&desc=Connexion%20établie%20avec%20[Ton_Prénom]%20[Ton_Nom]&descAlignY=65&descSize=20&fontColor=ffffff&animation=fadeIn" alt="Header Animé" />
+  <img src="https://capsule-render.vercel.app/api?type=typing&color=timeGradient&height=200&section=header&text=Initialisation%20du%20profil...&fontSize=40&fontAlignY=40&desc=Connexion%20établie%20avec%20Maxime%20Gourguechon&descAlignY=65&descSize=20&fontColor=ffffff&animation=fadeIn" alt="Header Animé" />
 </div>
 
 <div align="center">
@@ -63,11 +63,10 @@ La donnée ne ment pas, mais elle ne dit pas toujours la vérité d'elle-même. 
 graph TD
     A[(Données Brutes / SQL)] -->|Extraction & Nettoyage| B(EDA & Feature Engineering)
     B --> C{Analyse Stratégique}
-    C -->|Recherche de Causalité| D[Modélisation Économétrique] 
+    C -->|Recherche de Causalité| D[Modélisation Économétrique]
     C -->|Optimisation Prédictive| E[Entraînement Machine/Deep Learning]
     D --> F[Inférence & Recommandations Business]
-    E --> G[Validation & Tuning]<img width="1172" height="1717" alt="IMG_1235" src="https://github.com/user-attachments/assets/fbe528d0-e12b-4acf-b40c-748b58589740" />
-
+    E --> G[Validation & Tuning]
     G --> H((Déploiement MLOps / Docker / AWS))
     
     classDef default fill:#0969DA,stroke:#fff,stroke-width:1px,color:#fff;
@@ -79,6 +78,6 @@ graph TD
 ## 📡 Établir une connexion
 
 <p align="center">
-  <code><a href="mailto:[Ton_Email]">PING [Ton_Email]</a></code> | 
-  <code><a href="[Lien_LinkedIn]">CONNECT LinkedIn_Profile</a></code>
+  <code><a href="mailto:maxime.gourguechon76@gmail.com">PING [Ton_Email]</a></code> | 
+  <code><a href="https://www.linkedin.com/in/maximegourguechon/">CONNECT LinkedIn_Profile</a></code>
 </p>
