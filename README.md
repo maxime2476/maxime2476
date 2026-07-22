@@ -21,6 +21,8 @@
 
 ## 🧭 À propos
 
+<img align="right" src="./assets/pulse.svg" width="300" alt="Série temporelle AR(1) animée" />
+
 Data Scientist chez **Aubay** (Boulogne-Billancourt) — **MSc Économétrie & Statistiques**. Polyvalent par choix : aussi à l'aise sur un besoin analytics concret (nettoyage de données, scoring, dashboard, reporting) que sur un projet de **recherche appliquée**, mon appétence particulière. Dans les deux cas, la même conviction : un résultat qu'on ne peut ni reproduire ni vérifier n'est pas un résultat — c'est une anecdote.
 
 - 🔬 **Recherche** — inférence causale sur données macroéconomiques réelles, résultats nuls rapportés aussi visiblement que les positifs
@@ -29,7 +31,9 @@ Data Scientist chez **Aubay** (Boulogne-Billancourt) — **MSc Économétrie & S
 - 🧰 **Terrain** — et le travail moins glamour fait avec le même soin : requêtes SQL, scoring, monitoring, rapports — voir `mastercard-data` ou `linux-sys-monitor`
 - 🤖 **IA générative** — cap actuel : systèmes RAG, agents (LangChain / LangGraph) et LLMs appliqués — avec l'obsession de l'évaluation (métriques de <em>retrieval</em>, taux d'hallucination, <em>LLM-as-judge</em> validé humainement), pas seulement de la démo
 
----
+<br clear="both"/>
+
+<div align="center"><img src="./assets/divider.svg" width="100%" alt="" /></div>
 
 ## 🧠 La Méthode — deux cerveaux, un pipeline
 
@@ -76,7 +80,7 @@ graph LR
 
 </div>
 
----
+<div align="center"><img src="./assets/divider.svg" width="100%" alt="" /></div>
 
 ## 🏛️ Trois piliers, trois projets phares
 
@@ -154,13 +158,13 @@ Chaque modèle est réimplémenté en **R base** à partir de sa **dérivation m
 
 | Projet | Domaine | Stack | Statut |
 | :--- | :--- | :--- | :---: |
-| [**sentiment-powell-nlp**](https://github.com/maxime2476/sentiment-powell-nlp) | NLP sur les conférences du FOMC (2020–2025) — les <em>clusters</em> de langage <em>dovish</em> précèdent les baisses de taux de 2–3 sessions (p < 0.01, Wilcoxon + Bonferroni) | Python · BERT · HuggingFace · TensorFlow | 🟢 |
-| [**panel-project**](https://github.com/maxime2476/panel-project) | Déterminants du PIB/habitant en Europe (2015–2023, Eurostat), impact du Covid-19 — économétrie de panel | Stata · Python · Streamlit | 🟢 |
-| [**mastercard-data**](https://github.com/maxime2476/mastercard-data) | Scoring bancaire par régression logistique (probabilité de souscription carte Gold) — microéconométrie | R · pROC · caret | 🔵 |
-| [**academic-stress**](https://github.com/maxime2476/academic-stress) | Facteurs du stress académique, enquête n = 140 — analyse comportementale | Python · R · Statistiques | 🔵 |
-| [**linux-sys-monitor**](https://github.com/maxime2476/linux-sys-monitor) | Démon de monitoring Bash pour serveurs Linux, alertes Discord/Slack via webhooks | Bash · Docker · systemd | 🔵 |
+| [**sentiment-powell-nlp**](https://github.com/maxime2476/sentiment-powell-nlp) | NLP sur les conférences du FOMC (2020–2025) — les <em>clusters</em> de langage <em>dovish</em> précèdent les baisses de taux de 2–3 sessions (p < 0.01, Wilcoxon + Bonferroni) | Python · BERT · HuggingFace · TensorFlow | <img src="https://img.shields.io/badge/●-Actif-2DA44E?style=flat-square&labelColor=24292F" alt="Actif" /> |
+| [**panel-project**](https://github.com/maxime2476/panel-project) | Déterminants du PIB/habitant en Europe (2015–2023, Eurostat), impact du Covid-19 — économétrie de panel | Stata · Python · Streamlit | <img src="https://img.shields.io/badge/●-Actif-2DA44E?style=flat-square&labelColor=24292F" alt="Actif" /> |
+| [**mastercard-data**](https://github.com/maxime2476/mastercard-data) | Scoring bancaire par régression logistique (probabilité de souscription carte Gold) — microéconométrie | R · pROC · caret | <img src="https://img.shields.io/badge/●-Terminé-0969DA?style=flat-square&labelColor=24292F" alt="Terminé" /> |
+| [**academic-stress**](https://github.com/maxime2476/academic-stress) | Facteurs du stress académique, enquête n = 140 — analyse comportementale | Python · R · Statistiques | <img src="https://img.shields.io/badge/●-Terminé-0969DA?style=flat-square&labelColor=24292F" alt="Terminé" /> |
+| [**linux-sys-monitor**](https://github.com/maxime2476/linux-sys-monitor) | Démon de monitoring Bash pour serveurs Linux, alertes Discord/Slack via webhooks | Bash · Docker · systemd | <img src="https://img.shields.io/badge/●-Terminé-0969DA?style=flat-square&labelColor=24292F" alt="Terminé" /> |
 
----
+<div align="center"><img src="./assets/divider.svg" width="100%" alt="" /></div>
 
 ## 🤖 GenAI Lab — la roadmap publique
 
@@ -169,13 +173,13 @@ Chaque modèle est réimplémenté en **R base** à partir de sa **dérivation m
 
 | Projet | Objectif | Stack visée | Statut |
 | :--- | :--- | :--- | :---: |
-| **rag-eval-lab** | Pipeline RAG complet sur corpus économique (rapports FOMC, Eurostat) avec harnais d'évaluation : <em>retrieval metrics</em> (Recall@k, MRR, nDCG), <em>faithfulness</em>, taux d'hallucination, <em>LLM-as-judge</em> validé contre annotation humaine | LangChain · base vectorielle · RAGAS · HF | 🚧 En construction |
-| **agent-econ-analyst** | Agent d'analyse économétrique : orchestration multi-outils (SQL, statsmodels, recherche documentaire), traçabilité complète des décisions de l'agent, garde-fous testés | LangGraph · function calling · pytest | 📋 Spécification |
-| **llm-fine-tuning** | Prolongement de `sentiment-powell-nlp` : du fine-tuning BERT vers les LLMs (LoRA/QLoRA), comparé honnêtement au <em>prompting</em> et au RAG à coût égal | PyTorch · PEFT · HF | 💡 Cadrage |
+| **rag-eval-lab** | Pipeline RAG complet sur corpus économique (rapports FOMC, Eurostat) avec harnais d'évaluation : <em>retrieval metrics</em> (Recall@k, MRR, nDCG), <em>faithfulness</em>, taux d'hallucination, <em>LLM-as-judge</em> validé contre annotation humaine | LangChain · base vectorielle · RAGAS · HF | <img src="https://img.shields.io/badge/🚧-En_construction-E36209?style=flat-square&labelColor=24292F" alt="En construction" /> |
+| **agent-econ-analyst** | Agent d'analyse économétrique : orchestration multi-outils (SQL, statsmodels, recherche documentaire), traçabilité complète des décisions de l'agent, garde-fous testés | LangGraph · function calling · pytest | <img src="https://img.shields.io/badge/📋-Spécification-0969DA?style=flat-square&labelColor=24292F" alt="Spécification" /> |
+| **llm-fine-tuning** | Prolongement de `sentiment-powell-nlp` : du fine-tuning BERT vers les LLMs (LoRA/QLoRA), comparé honnêtement au <em>prompting</em> et au RAG à coût égal | PyTorch · PEFT · HF | <img src="https://img.shields.io/badge/💡-Cadrage-8250DF?style=flat-square&labelColor=24292F" alt="Cadrage" /> |
 
 *Cette section est un engagement public : les statuts seront mis à jour au fil des livraisons, et chaque projet arrivera avec ses métriques — y compris si elles sont décevantes.*
 
----
+<div align="center"><img src="./assets/divider.svg" width="100%" alt="" /></div>
 
 ## 🛠️ Stack & niveau de maîtrise réel
 
@@ -190,26 +194,20 @@ Chaque modèle est réimplémenté en **R base** à partir de sa **dérivation m
 | GenAI (LangChain, RAG, agents) | `████░░░░░░` En apprentissage actif | Bases vectorielles / éval. LLM (RAGAS) | `████░░░░░░` En apprentissage actif |
 
 <div align="center">
-  <img src="https://img.shields.io/badge/Python-0969DA?style=flat-square&logo=python&logoColor=white" alt="Python" />
-  <img src="https://img.shields.io/badge/R-0969DA?style=flat-square&logo=r&logoColor=white" alt="R" />
+  <a href="https://skillicons.dev">
+    <img src="https://skillicons.dev/icons?i=python,r,pytorch,tensorflow,sklearn,postgres,docker,bash,linux,git,githubactions,latex&perline=12" alt="Python, R, PyTorch, TensorFlow, scikit-learn, PostgreSQL, Docker, Bash, Linux, Git, GitHub Actions, LaTeX" />
+  </a>
+  <br/><br/>
   <img src="https://img.shields.io/badge/Stata-0969DA?style=flat-square" alt="Stata" />
   <img src="https://img.shields.io/badge/Quarto-0969DA?style=flat-square&logo=quarto&logoColor=white" alt="Quarto" />
-  <img src="https://img.shields.io/badge/LaTeX-0969DA?style=flat-square&logo=latex&logoColor=white" alt="LaTeX" />
-  <img src="https://img.shields.io/badge/scikit--learn-0969DA?style=flat-square&logo=scikitlearn&logoColor=white" alt="scikit-learn" />
-  <img src="https://img.shields.io/badge/PyTorch-0969DA?style=flat-square&logo=pytorch&logoColor=white" alt="PyTorch" />
-  <img src="https://img.shields.io/badge/TensorFlow-0969DA?style=flat-square&logo=tensorflow&logoColor=white" alt="TensorFlow" />
+  <img src="https://img.shields.io/badge/DuckDB-0969DA?style=flat-square&logo=duckdb&logoColor=white" alt="DuckDB" />
   <img src="https://img.shields.io/badge/HuggingFace-0969DA?style=flat-square&logo=huggingface&logoColor=white" alt="HuggingFace" />
   <img src="https://img.shields.io/badge/LangChain-0969DA?style=flat-square&logo=langchain&logoColor=white" alt="LangChain" />
   <img src="https://img.shields.io/badge/Ollama-0969DA?style=flat-square&logo=ollama&logoColor=white" alt="Ollama" />
   <img src="https://img.shields.io/badge/Streamlit-0969DA?style=flat-square&logo=streamlit&logoColor=white" alt="Streamlit" />
-  <img src="https://img.shields.io/badge/DuckDB-0969DA?style=flat-square&logo=duckdb&logoColor=white" alt="DuckDB" />
-  <img src="https://img.shields.io/badge/PostgreSQL-0969DA?style=flat-square&logo=postgresql&logoColor=white" alt="PostgreSQL" />
-  <img src="https://img.shields.io/badge/Docker-0969DA?style=flat-square&logo=docker&logoColor=white" alt="Docker" />
-  <img src="https://img.shields.io/badge/GitHub_Actions-0969DA?style=flat-square&logo=githubactions&logoColor=white" alt="GitHub Actions" />
-  <img src="https://img.shields.io/badge/Linux-0969DA?style=flat-square&logo=linux&logoColor=white" alt="Linux" />
 </div>
 
----
+<div align="center"><img src="./assets/divider.svg" width="100%" alt="" /></div>
 
 ## 📏 Mes standards d'ingénierie
 
@@ -226,7 +224,7 @@ Chaque projet sérieux embarque :
 └── Livraison              Docker multi-stage → GHCR → démo live (HF Spaces)
 ```
 
----
+<div align="center"><img src="./assets/divider.svg" width="100%" alt="" /></div>
 
 ## ⏱️ Télémétrie live — ce que j'ai codé cette semaine
 
@@ -235,7 +233,7 @@ Chaque projet sérieux embarque :
 <!--START_SECTION:waka-->
 <!--END_SECTION:waka-->
 
----
+<div align="center"><img src="./assets/divider.svg" width="100%" alt="" /></div>
 
 ## 📊 Activité GitHub
 
@@ -284,7 +282,7 @@ Chaque projet sérieux embarque :
 
 </div>
 
----
+<div align="center"><img src="./assets/divider.svg" width="100%" alt="" /></div>
 
 ## 🔭 En ce moment
 
@@ -293,7 +291,7 @@ Chaque projet sérieux embarque :
 - 🔬 **J'approfondis :** `causal-impact-lab` — stress-tests d'identification et réponse dynamique agrégée
 - 🤝 **Ouvert à toute proposition** — embauche (CDI, mission, freelance) comme collaboration sur projet, du besoin analytics du quotidien au projet de recherche ; affinité particulière pour l'économétrie, l'inférence causale et le NLP
 
----
+<div align="center"><img src="./assets/divider.svg" width="100%" alt="" /></div>
 
 <div align="center">
 
@@ -307,7 +305,7 @@ Chaque projet sérieux embarque :
 
   <br/><br/>
 
-  *« Une donnée sans contexte est du bruit. Un contexte sans donnée est une opinion. »*
+  <img src="https://readme-typing-svg.demolab.com?font=JetBrains+Mono&weight=400&size=15&duration=4500&pause=2000&color=1F6FEB&center=true&vCenter=true&width=700&lines=%C2%AB+Une+donn%C3%A9e+sans+contexte+est+du+bruit.+Un+contexte+sans+donn%C3%A9e+est+une+opinion.+%C2%BB" alt="« Une donnée sans contexte est du bruit. Un contexte sans donnée est une opinion. »" />
 
   <img src="https://capsule-render.vercel.app/api?type=waving&height=110&color=0:0A3069,50:1F6FEB,100:0969DA&section=footer" alt="" />
 
