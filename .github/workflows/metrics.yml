@@ -1,0 +1,30 @@
+name: Stats du profil (auto-hébergées)
+on:
+  schedule:
+    - cron: "0 2 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  github-metrics:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Générer github-metrics.svg
+        uses: lowlighter/metrics@latest
+        with:
+          # ⚠️ METRICS_TOKEN : Personal Access Token (classic) avec les scopes
+          # `repo` et `read:user`, à créer dans GitHub → Settings → Developer
+          # settings → Tokens, puis à ajouter dans les secrets Actions du repo.
+          # Le GITHUB_TOKEN par défaut ne suffit pas pour ce plugin.
+          token: ${{ secrets.METRICS_TOKEN }}
+          user: ${{ github.repository_owner }}
+          filename: github-metrics.svg
+          config_timezone: Europe/Paris
+          # Contenu équivalent aux deux cartes Vercel : stats + langages
+          base: header, activity, community, repositories
+          plugin_languages: yes
+          plugin_languages_limit: 6
+          plugin_languages_sections: most-used
+          plugin_languages_details: percentage
