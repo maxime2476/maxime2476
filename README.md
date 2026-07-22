@@ -1,6 +1,5 @@
-<!-- HEADER ANIMÉ : Capsule Render + Flux de données minimaliste -->
 <div align="center">
-  <img src="https://capsule-render.vercel.app/api?type=typing&color=timeGradient&height=200&section=header&text=Initialisation%20du%20profil...&fontSize=40&fontAlignY=40&desc=Connexion%20etablie%20avec%20Maxime%20Gourguechon&descAlignY=65&descSize=20&fontColor=ffffff&animation=fadeIn" alt="Header Animé" />
+  <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=600&size=26&pause=1000&color=0969DA&center=true&vCenter=true&width=800&lines=Initialisation+du+profil...;Connexion+etablie+avec+Maxime+Gourguechon;Isoler+la+causalite,+optimiser+la+prediction" alt="Typing SVG" />
 </div>
 
 <div align="center">
