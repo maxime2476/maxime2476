@@ -2,10 +2,6 @@
   <img src="https://capsule-render.vercel.app/api?type=waving&height=300&color=0969DA&text=%3E_%20Maxime%20Gourguechon&animation=fadeIn&fontSize=50&desc=Data%20Scientist%20%7C%20Econometre%20%7C%20Ingenieur%20IA&descAlignY=70&fontAlignY=50" alt="Header Animé" />
 </div>
 
-<div align="center">
-  <img src="original-c81fcfe74f7ebff7f3d4910af023bfdf.gif" width="300" alt="Flux de données" style="border-radius: 15px; margin-top: -10px;" />
-</div>
-
 > **Statut système :** `En ligne` | **Télémétrie :** `Active` | **Objectif :** `Isoler la causalité, optimiser la prédiction`
 
 ---
