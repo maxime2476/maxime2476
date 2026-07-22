@@ -48,6 +48,20 @@ La donnée ne ment pas, mais elle ne dit pas toujours la vérité d'elle-même. 
 </table>
 </details>
 
+<details>
+<summary><code>> SHOW SKILLS --format=bars;</code></summary>
+<br>
+En Data Science, la transparence est clé. Voici mon niveau de maîtrise réel, sans survente.
+
+| Modélisation & Maths | Niveau de maîtrise | Ingénierie & Ops | Niveau de maîtrise |
+| :--- | :--- | :--- | :--- |
+| **Séries Temporelles (ARIMA, GARCH)** | ██████████ (Expert) | **Python (Pandas, Numpy)** | ██████████ (Expert) |
+| **Inférence Causale** | ██████████ (Expert) | **SQL / PostGreSQL** | ████████░░ (Avancé) |
+| **Machine Learning (Scikit, XGBoost)** | ██████████ (Expert) | **Docker / Git** | ████████░░ (Avancé) |
+| **Deep Learning (PyTorch)** | ██████░░░░ (Intermédiaire)| **AWS / MLOps (MLFlow)** | ██████░░░░ (Intermédiaire)|
+
+</details>
+
 ---
 
 ## 🧠 Architecture de mon Workflow (Extraction -> MLOps)
