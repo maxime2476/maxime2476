@@ -3,8 +3,7 @@
 </div>
 
 <div align="center">
-  <!-- À FAIRE : Remplace le lien `src` ci-dessous par le lien généré par GitHub une fois que tu auras glissé-déposé le GIF dans l'éditeur -->
-  <img src="https://cdn.dribbble.com/users/1162077/screenshots/4382009/network-loop.gif" width="120" alt="Data Flow Animation" style="border-radius: 15px; margin-top: -20px;" />
+  <img src="original-c81fcfe74f7ebff7f3d4910af023bfdf.gif" width="300" alt="Flux de données" style="border-radius: 15px; margin-top: -10px;" />
 </div>
 
 > **Statut système :** `En ligne` | **Télémétrie :** `Active` | **Objectif :** `Isoler la causalité, optimiser la prédiction`
