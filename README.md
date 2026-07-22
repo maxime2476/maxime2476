@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=600&size=26&pause=1000&color=0969DA&center=true&vCenter=true&width=800&lines=Initialisation+du+profil...;Connexion+etablie+avec+Maxime+Gourguechon;Isoler+la+causalite,+optimiser+la+prediction" alt="Typing SVG" />
+  <img src="https://capsule-render.vercel.app/api?type=waving&height=300&color=0969DA&text=%3E_%20Maxime%20Gourguechon&animation=fadeIn&fontSize=50&desc=Data%20Scientist%20%7C%20Econometre%20%7C%20Ingenieur%20IA&descAlignY=70&fontAlignY=50" alt="Header Animé" />
 </div>
 
 <div align="center">
