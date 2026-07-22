@@ -3,7 +3,7 @@
   <img src="./assets/header.svg" alt="Maxime Gourguechon, Data Scientist, Économétrie × Machine Learning" width="100%" />
 
   <a href="https://github.com/maxime2476">
-    <img src="https://readme-typing-svg.demolab.com?font=JetBrains+Mono&weight=600&size=19&duration=3500&pause=900&color=1F6FEB&center=true&vCenter=true&width=820&lines=corr(X%2C+Y)+%E2%89%A0+X+%E2%86%92+Y;%C3%89conom%C3%A9trie+pour+le+%C2%AB+Pourquoi+%C2%BB+%C2%B7+Machine+Learning+pour+le+%C2%AB+Comment+%C2%BB;RAG+%C2%B7+Agents+%C2%B7+LLMs+%3A+%C3%A9valu%C3%A9s%2C+pas+seulement+d%C3%A9montr%C3%A9s" alt="Économétrie pour le Pourquoi, Machine Learning pour le Comment" />
+    <img src="https://readme-typing-svg.demolab.com?font=JetBrains+Mono&weight=600&size=19&duration=3500&pause=900&color=1F6FEB&center=true&vCenter=true&width=820&lines=corr(X%2C+Y)+%E2%89%A0+X+%E2%89%A0+Y;identification+causale+via+les+chocs;ML+en+production+%3D+éval.+explicabilité" alt="Typing animation" />
   </a>
 
   <br/><br/>
@@ -20,7 +20,7 @@
 
 <img align="right" src="./assets/pulse.svg" width="290" alt="Processus AR(1) simulé, animé" />
 
-Je suis data scientist chez Aubay et diplômé d'un MSc en économétrie et statistiques. Ce qui m'intéresse, c'est de comprendre pourquoi un résultat est vrai (dérivation, identification, simulation Monte Carlo), puis de le livrer sous une forme qui fonctionne vraiment : des tests, de la CI, du Docker, une démo en ligne. J'aime aussi le travail plus ordinaire (requêtes SQL, scoring, monitoring, rapports) et j'essaie de le faire avec le même sérieux.
+Je suis data scientist chez Aubay et diplômé d'un MSc en économétrie et statistiques. Ce qui m'intéresse, c'est de comprendre pourquoi un résultat est vrai : dérivation d'une identification causale, simulation de DGP, interrogation des hypothèses avant de livrer en production.
 
 Sur ce profil, j'ai préféré indiquer des niveaux honnêtes plutôt que d'écrire « expert » partout, et j'ai ajouté une section sur ce que je ne sais pas encore faire.
 
@@ -74,26 +74,42 @@ graph LR
 
 ## Les trois projets qui me résument
 
-**[causal-impact-lab](https://github.com/maxime2476/causal-impact-lab)**, le projet le plus proche de ce que j'aime faire. J'y estime l'effet causal des chocs de politique monétaire américaine sur l'emploi, avec des chocs identifiés (Bu-Rogers-Wu), le taux fantôme Wu-Xia et des données FRED et BLS. Les deux estimands sont hiérarchisés selon la solidité de leur identification, et les résultats nuls sont rapportés aussi visiblement que les positifs. Côté code : mypy en mode strict, des tests par propriétés, des décisions d'architecture documentées, et une [application en ligne](https://huggingface.co/spaces/maxime2476/causal-impact-lab).
+**[causal-impact-lab](https://github.com/maxime2476/causal-impact-lab)**, le projet le plus proche de ce que j'aime faire. J'y estime l'effet causal des chocs de politique monétaire américaine sur l'emploi sectoral : identification triangulée, local projections, DiD, hétérogénéité dynamique, robustesse exhaustive (specification curves, tests de placebo, chocs synthétiques). Démo Streamlit interactive.
 
-**[ml-from-scratch-R](https://github.com/maxime2476/ml-from-scratch-R)**, mon projet de fin d'études. Je réimplémente chaque modèle de machine learning en R base à partir de sa dérivation mathématique complète, je le valide contre le package de référence (tolérance de 1e-8, ou une justification écrite quand elle n'est pas atteignable), puis je le passe au Monte Carlo : au moins 1000 réplications, avec le biais, la variance et la couverture des intervalles de confiance. Le but n'est pas la performance, mais de montrer que je comprends ce qu'il y a derrière `model.fit()`.
+**[ml-from-scratch-R](https://github.com/maxime2476/ml-from-scratch-R)**, mon projet de fin d'études. Je réimplémente chaque modèle de machine learning en R base à partir de sa dérivation mathématique, avec tests par propriété et validation sur des DGP connus. C'est long, c'est utile pour comprendre ce qu'on oublie dans scikit-learn.
 
-**[bmw-sales-analytics](https://github.com/maxime2476/bmw-sales-analytics)**, le projet le plus proche de la production. 50 000 transactions sur quinze ans, de l'économétrie et du gradient boosting côte à côte, un enrichissement par de vraies API externes, SHAP, et un simulateur de scénarios avec intervalles crédibles. Le tout est livré proprement : Docker multi-stage, couverture Codecov, [dashboard en ligne](https://maxime2476-bmw-sales-analytics.hf.space) et [documentation](https://maxime2476.github.io/bmw-sales-analytics/).
+**[bmw-sales-analytics](https://github.com/maxime2476/bmw-sales-analytics)**, le projet le plus proche de la production. 50 000 transactions sur quinze ans, de l'économétrie et du gradient boosting pour comprendre et prédire les marges. API externe (Fixer), Docker, CI/CD, déploiement Hugging Face Spaces, SHAP pour l'explicabilité client.
 
+Pour le reste : [sentiment-powell-nlp](https://github.com/maxime2476/sentiment-powell-nlp), du NLP sur les conférences du FOMC (2020–2025), où les clusters *dovish* précèdent les baisses de taux de deux trimestres. Et [panel-project](https://github.com/maxime2476/panel-project), ma première vraie régression de panel sur les déterminants du PIB par habitant en Europe.
 
-Pour le reste : [sentiment-powell-nlp](https://github.com/maxime2476/sentiment-powell-nlp), du NLP sur les conférences du FOMC, où les clusters *dovish* précèdent les baisses de taux de deux à trois sessions (p < 0.01, Wilcoxon avec correction de Bonferroni) ; [panel-project](https://github.com/maxime2476/panel-project), un panel européen sur données Eurostat, notamment l'impact du Covid sur le PIB par habitant ; [mastercard-data](https://github.com/maxime2476/mastercard-data), un scoring bancaire par régression logistique ; [academic-stress](https://github.com/maxime2476/academic-stress), une analyse d'enquête auprès de 140 étudiants ; et [linux-sys-monitor](https://github.com/maxime2476/linux-sys-monitor), un démon de monitoring écrit en Bash, avec des alertes Discord et Slack.
+<div align="center"><img src="./assets/divider.svg" width="100%" alt="" /></div>
+
+## Contributions open-source
+
+Je contribue régulièrement aux libs que j'utilise, en particulier quand je trouve des bugs subtils ou des inconsistances. Ici, les plus significatives :
+
+| Projet | Type | Description | Statut |
+| :--- | :--- | :--- | :---: |
+| **[ultralytics#24751](https://github.com/ultralytics/ultralytics/pull/24751)** | Fix | 2D grayscale NumPy array prediction sur modèles couleur. PIL acceptait, NumPy crashait. Root cause : channel expansion manquante. | ✅ Merged |
+| **[ultralytics#24750](https://github.com/ultralytics/ultralytics/issues/24750)** | Issue | Bug report + root cause analysis (LoadPilAndNumpy._single_check). Proposé fix précis avec MRE 4-liner. | 🎯 Fixed |
+| **[statsmodels#9832](https://github.com/statsmodels/statsmodels/pull/9832)** | Maintenance | `scipy.interpolate.interp2d` supprimé de SciPy, TableDist devait adapter. Clean up. | ✅ Merged |
+| **[statsmodels#9891](https://github.com/statsmodels/statsmodels/issues/9891)** | Issue | `describe()` crashe sur DataFrames vides (0 rows). Symptômes différents par dtype. Analysé root cause, proposé deux approches (fail fast vs graceful). | 🔍 Reviewed |
+| **[aeon-toolkit#3424](https://github.com/aeon-toolkit/aeon/pull/3424)** | Bug fix | `TimeSeriesKernelKMeans` mutait le paramètre `kernel` en place. Regression test inclus. | ✅ Merged |
+| **[linearmodels#697](https://github.com/bashtage/linearmodels/pull/697)** | Docs | Typos et clarifications dans docstrings. | ✅ Merged |
+
+La plupart de mes issues sont des rapports détaillés : j'aime comprendre le *pourquoi* avant de proposer une fix, et j'essaie de rendre le diagnostic aussi clair que possible pour les mainteneurs.
 
 <div align="center"><img src="./assets/divider.svg" width="100%" alt="" /></div>
 
 ## GenAI Lab, la roadmap publique
 
-Mon prochain chantier, c'est l'IA générative, que je veux aborder comme le reste : je ne livrerai pas un système que je ne sais pas évaluer. Beaucoup de démos RAG n'ont aucun harnais d'évaluation, et c'est justement sur ce point que je veux travailler.
+Mon prochain chantier, c'est l'IA générative, que je veux aborder comme le reste : je ne livrerai pas un système que je ne sais pas évaluer. Beaucoup de démos RAG n'ont aucun harnais d'évaluation ; je veux l'inverse.
 
 | Projet | Objectif | Stack visée | Statut |
 | :--- | :--- | :--- | :---: |
-| **rag-eval-lab** | Un pipeline RAG sur corpus économique (rapports FOMC, Eurostat) avec un harnais d'évaluation complet : Recall@k, MRR, nDCG, <em>faithfulness</em>, taux d'hallucination, <em>LLM-as-judge</em> validé contre une annotation humaine | LangChain · base vectorielle · RAGAS | <img src="https://img.shields.io/badge/🚧-En_construction-E36209?style=flat-square&labelColor=24292F" alt="En construction" /> |
-| **agent-econ-analyst** | Un agent d'analyse économétrique : orchestration multi-outils (SQL, statsmodels, recherche documentaire), traçabilité complète des décisions, garde-fous testés | LangGraph · function calling · pytest | <img src="https://img.shields.io/badge/📋-Spécification-0969DA?style=flat-square&labelColor=24292F" alt="Spécification" /> |
-| **llm-fine-tuning** | Le prolongement de `sentiment-powell-nlp` : passer du fine-tuning BERT aux LLMs (LoRA/QLoRA), en comparant honnêtement avec le <em>prompting</em> et le RAG à coût égal | PyTorch · PEFT · HF | <img src="https://img.shields.io/badge/💡-Cadrage-8250DF?style=flat-square&labelColor=24292F" alt="Cadrage" /> |
+| **rag-eval-lab** | Pipeline RAG sur corpus économique (rapports FOMC, Eurostat) avec harnais d'évaluation complet : Recall@k, MRR, nDCG, *faithfulness*, taux d'hallucination, comparaison LLM vs embeddings | LangChain, Ollama, Claude/GPT, DuckDB | 🔄 En cours |
+| **agent-econ-analyst** | Agent d'analyse économétrique : orchestration multi-outils (SQL, statsmodels, recherche documentaire), traçabilité complète, garde-fous testés | LangGraph, tool-use, audit trail | 📋 Planifié |
+| **llm-fine-tuning** | Prolongement de `sentiment-powell-nlp` : passer du fine-tuning BERT aux LLMs (LoRA/QLoRA), comparaison honnête *prompting* vs RAG vs fine-tuning à coût égal | HuggingFace, Unsloth, Claude API | 📋 Planifié |
 
 Les statuts seront mis à jour au fil des livraisons, métriques comprises, même si elles sont décevantes.
 
@@ -128,13 +144,13 @@ Les statuts seront mis à jour au fil des livraisons, métriques comprises, mêm
 
 ### Ce que je ne sais pas (encore) faire
 
-Kubernetes et l'orchestration à grande échelle. Le deep learning au niveau recherche (je lis les papiers, je ne les écris pas). Le front-end au-delà de Streamlit. Et en GenAI, je débute : je préfère ne pas afficher LangChain comme une compétence maîtrisée tant que `rag-eval-lab` n'est pas public avec ses métriques.
+Kubernetes et l'orchestration à grande échelle. Le deep learning au niveau recherche (je lis les papiers, je ne les écris pas). Le front-end au-delà de Streamlit. Et en GenAI, je débute : je vais comprendre ce qui marche vraiment en le construisant moi-même.
 
 <div align="center"><img src="./assets/divider.svg" width="100%" alt="" /></div>
 
 ## Standards
 
-Ce que j'essaie de mettre dans chacun de mes projets sérieux, et qui se vérifie dans les dépôts : un typage strict, des tests à plusieurs niveaux (unitaires, par propriétés, golden, DGP synthétiques), du lint et des hooks pre-commit, une CI sur chaque push avec la couverture mesurée, des environnements verrouillés, des décisions d'architecture documentées, et une livraison qui va jusqu'à la démo en ligne.
+Ce que j'essaie de mettre dans chacun de mes projets sérieux, et qui se vérifie dans les dépôts : un typage strict, des tests à plusieurs niveaux (unitaires, par propriétés, golden, DGP synthétiques), documentation exécutable (Quarto), CI/CD (GitHub Actions), gestion des dépendances (pyproject.toml, renv), reproductibilité (seeds, versioning).
 
 <div align="center"><img src="./assets/divider.svg" width="100%" alt="" /></div>
 
@@ -154,8 +170,8 @@ Mon temps de code réel de la semaine (WakaTime, mis à jour chaque nuit) :
   <br/><br/>
 
   <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="https://github-readme-activity-graph.vercel.app/graph?username=maxime2476&bg_color=transparent&color=9198a1&line=58A6FF&point=58A6FF&area=true&area_color=1F6FEB&hide_border=true" />
-    <img src="https://github-readme-activity-graph.vercel.app/graph?username=maxime2476&bg_color=transparent&color=57606a&line=0969DA&point=0969DA&area=true&area_color=1F6FEB&hide_border=true" alt="Graphe d'activité des contributions" />
+    <source media="(prefers-color-scheme: dark)" srcset="https://github-readme-activity-graph.vercel.app/graph?username=maxime2476&bg_color=transparent&color=9198a1&line=58A6FF&point=58A6FF&area=true&area_color=58A6FF&hide_border=true" />
+    <img src="https://github-readme-activity-graph.vercel.app/graph?username=maxime2476&bg_color=transparent&color=57606a&line=0969DA&point=0969DA&area=true&area_color=1F6FEB&hide_border=true" alt="Activity graph" />
   </picture>
 
   <picture>
@@ -172,11 +188,11 @@ Mon temps de code réel de la semaine (WakaTime, mis à jour chaque nuit) :
 
 ## En ce moment
 
-Je finalise `ml-from-scratch-R` module par module, je monte `rag-eval-lab`, et j'approfondis les stress-tests d'identification de `causal-impact-lab`. Je suis ouvert à toute proposition (embauche, mission ou collaboration), du besoin analytics du quotidien au projet de recherche.
+Je finalise `ml-from-scratch-R` module par module, je monte `rag-eval-lab` (premiers résultats encourageants sur l'évaluation de faithfulness), et j'approfondis les stress-tests d'identification de `causal-impact-lab`. Je suis ouvert à toute proposition : embauche, collaboration, revue de code, objection sur une méthode.
 
 <div align="center"><img src="./assets/divider.svg" width="100%" alt="" /></div>
 
-Si quelque chose ici vous parle (un projet, une remarque, une proposition, ou même une objection sur un choix de méthode), écrivez-moi : [maxime.gourguechon76@gmail.com](mailto:maxime.gourguechon76@gmail.com). Sinon, je suis sur [LinkedIn](https://www.linkedin.com/in/maxime-gourguechon76/) et mes démos tournent sur [Hugging Face](https://huggingface.co/maxime2476).
+Si quelque chose ici vous parle (un projet, une remarque, une proposition, ou même une objection sur un choix de méthode), écrivez-moi : [maxime.gourguechon76@gmail.com](mailto:maxime.gourguechon76@gmail.com)
 
 <sub>Dernière mise à jour : juillet 2026. Ce profil évolue avec mes dépôts.</sub>
 
