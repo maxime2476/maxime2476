@@ -1,9 +1,10 @@
 <!-- HEADER ANIMÉ : Capsule Render + Flux de données minimaliste -->
 <div align="center">
-  <img src="https://capsule-render.vercel.app/api?type=typing&color=timeGradient&height=200&section=header&text=Initialisation%20du%20profil...&fontSize=40&fontAlignY=40&desc=Connexion%20établie%20avec%20Maxime%20Gourguechon&descAlignY=65&descSize=20&fontColor=ffffff&animation=fadeIn" alt="Header Animé" />
+  <img src="https://capsule-render.vercel.app/api?type=typing&color=timeGradient&height=200&section=header&text=Initialisation%20du%20profil...&fontSize=40&fontAlignY=40&desc=Connexion%20etablie%20avec%20Maxime%20Gourguechon&descAlignY=65&descSize=20&fontColor=ffffff&animation=fadeIn" alt="Header Animé" />
 </div>
 
 <div align="center">
+  <!-- À FAIRE : Remplace le lien `src` ci-dessous par le lien généré par GitHub une fois que tu auras glissé-déposé le GIF dans l'éditeur -->
   <img src="https://cdn.dribbble.com/users/1162077/screenshots/4382009/network-loop.gif" width="120" alt="Data Flow Animation" style="border-radius: 15px; margin-top: -20px;" />
 </div>
 
