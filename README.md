@@ -80,35 +80,6 @@ graph LR
 
 **[bmw-sales-analytics](https://github.com/maxime2476/bmw-sales-analytics)**, le projet le plus proche de la production. 50 000 transactions sur quinze ans, de l'économétrie et du gradient boosting côte à côte, un enrichissement par de vraies API externes, SHAP, et un simulateur de scénarios avec intervalles crédibles. Le tout est livré proprement : Docker multi-stage, couverture Codecov, [dashboard en ligne](https://maxime2476-bmw-sales-analytics.hf.space) et [documentation](https://maxime2476.github.io/bmw-sales-analytics/).
 
-<div align="center">
-
-  <a href="https://github.com/maxime2476/causal-impact-lab">
-    <picture>
-      <source media="(prefers-color-scheme: dark)" srcset="https://github-readme-stats.vercel.app/api/pin/?username=maxime2476&repo=causal-impact-lab&theme=github_dark&title_color=58A6FF&hide_border=true" />
-      <img src="https://github-readme-stats.vercel.app/api/pin/?username=maxime2476&repo=causal-impact-lab&title_color=0969DA&hide_border=true" alt="causal-impact-lab" />
-    </picture>
-  </a>
-  <a href="https://github.com/maxime2476/bmw-sales-analytics">
-    <picture>
-      <source media="(prefers-color-scheme: dark)" srcset="https://github-readme-stats.vercel.app/api/pin/?username=maxime2476&repo=bmw-sales-analytics&theme=github_dark&title_color=58A6FF&hide_border=true" />
-      <img src="https://github-readme-stats.vercel.app/api/pin/?username=maxime2476&repo=bmw-sales-analytics&title_color=0969DA&hide_border=true" alt="bmw-sales-analytics" />
-    </picture>
-  </a>
-
-  <a href="https://github.com/maxime2476/ml-from-scratch-R">
-    <picture>
-      <source media="(prefers-color-scheme: dark)" srcset="https://github-readme-stats.vercel.app/api/pin/?username=maxime2476&repo=ml-from-scratch-R&theme=github_dark&title_color=58A6FF&hide_border=true" />
-      <img src="https://github-readme-stats.vercel.app/api/pin/?username=maxime2476&repo=ml-from-scratch-R&title_color=0969DA&hide_border=true" alt="ml-from-scratch-R" />
-    </picture>
-  </a>
-  <a href="https://github.com/maxime2476/sentiment-powell-nlp">
-    <picture>
-      <source media="(prefers-color-scheme: dark)" srcset="https://github-readme-stats.vercel.app/api/pin/?username=maxime2476&repo=sentiment-powell-nlp&theme=github_dark&title_color=58A6FF&hide_border=true" />
-      <img src="https://github-readme-stats.vercel.app/api/pin/?username=maxime2476&repo=sentiment-powell-nlp&title_color=0969DA&hide_border=true" alt="sentiment-powell-nlp" />
-    </picture>
-  </a>
-
-</div>
 
 Pour le reste : [sentiment-powell-nlp](https://github.com/maxime2476/sentiment-powell-nlp), du NLP sur les conférences du FOMC, où les clusters *dovish* précèdent les baisses de taux de deux à trois sessions (p < 0.01, Wilcoxon avec correction de Bonferroni) ; [panel-project](https://github.com/maxime2476/panel-project), un panel européen sur données Eurostat, notamment l'impact du Covid sur le PIB par habitant ; [mastercard-data](https://github.com/maxime2476/mastercard-data), un scoring bancaire par régression logistique ; [academic-stress](https://github.com/maxime2476/academic-stress), une analyse d'enquête auprès de 140 étudiants ; et [linux-sys-monitor](https://github.com/maxime2476/linux-sys-monitor), un démon de monitoring écrit en Bash, avec des alertes Discord et Slack.
 
@@ -172,23 +143,13 @@ Ce que j'essaie de mettre dans chacun de mes projets sérieux, et qui se vérifi
 Mon temps de code réel de la semaine (WakaTime, mis à jour chaque nuit) :
 
 <!--START_SECTION:waka-->
-
-```txt
-No activity tracked
-```
-
 <!--END_SECTION:waka-->
 
 <div align="center">
 
-  <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="https://github-readme-stats.vercel.app/api?username=maxime2476&show_icons=true&theme=github_dark&title_color=58A6FF&icon_color=58A6FF&hide_border=true&count_private=true&locale=fr" />
-    <img src="https://github-readme-stats.vercel.app/api?username=maxime2476&show_icons=true&title_color=0969DA&icon_color=0969DA&hide_border=true&count_private=true&locale=fr" alt="Statistiques GitHub" height="165" />
-  </picture>
-  <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="https://github-readme-stats.vercel.app/api/top-langs/?username=maxime2476&layout=compact&theme=github_dark&title_color=58A6FF&hide_border=true&locale=fr" />
-    <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=maxime2476&layout=compact&title_color=0969DA&hide_border=true&locale=fr" alt="Langages les plus utilisés" height="165" />
-  </picture>
+  <!-- Stats et langages générés par GitHub Action, committés dans le repo :
+       aucune dépendance à l'instance publique Vercel (peu fiable, cf. issue #1471 du projet) -->
+  <img src="./github-metrics.svg" alt="Statistiques du profil et langages les plus utilisés" width="100%" />
 
   <br/><br/>
 
