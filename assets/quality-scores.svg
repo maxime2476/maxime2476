@@ -1,0 +1,122 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="840" height="645" viewBox="0 0 840 645">
+  <defs>
+    <filter id="cardShadow">
+      <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#000" flood-opacity="0.2"/>
+    </filter>
+  </defs>
+  
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&amp;display=swap');
+    text { font-family: 'JetBrains Mono', 'Cascadia Code', 'Fira Code', monospace; }
+    .title { font-size: 16px; font-weight: 700; fill: #e6edf3; }
+    .subtitle { font-size: 11px; fill: #8b949e; }
+    .card-title { font-size: 13px; font-weight: 700; fill: #58A6FF; }
+    .score-text { font-size: 22px; font-weight: 700; }
+    .score-label { font-size: 9px; }
+    .metric-label { font-size: 10px; fill: #8b949e; }
+    .metric-value { font-size: 10px; font-weight: 600; }
+    .footer { font-size: 10px; fill: #8b949e; }
+    
+    @keyframes scoreReveal {
+      from { stroke-dashoffset: 200; }
+    }
+  </style>
+  
+  <!-- Fond -->
+  <rect width="840" height="645" rx="12" fill="#0d1117" />
+  <rect x="0.5" y="0.5" width="839" height="644" rx="12" fill="none" stroke="#30363d" stroke-width="1"/>
+
+  <text x="24" y="40" class="title">🏗️ Qualité logicielle — scores auto-générés</text>
+  <text x="24" y="58" class="subtitle">Analyse statique des dépôts via l'API GitHub : linting, tests, typage, CI/CD, documentation, reproductibilité</text>
+  <rect x="20" y="85" width="380" height="240" rx="10" fill="#161b22" stroke="#30363d" stroke-width="1" />
+  <text x="35" y="113" class="card-title">causal-impact-lab</text>
+    <circle cx="85" cy="185" r="35" fill="none" stroke="#21262d" stroke-width="8" />
+    <circle cx="85" cy="185" r="35" fill="none" stroke="#d29922" stroke-width="8" stroke-dasharray="171.5 48.4" stroke-dashoffset="0" transform="rotate(-90 85 185)" stroke-linecap="round" />
+    <text x="85" y="187" text-anchor="middle" dominant-baseline="middle" class="score-text" fill="#d29922">78</text>
+    <text x="85" y="201" text-anchor="middle" class="score-label" fill="#8b949e">/ 100</text>
+  <text x="85" y="235" text-anchor="middle" class="metric-label" fill="#d29922">Bon</text>
+    <text x="160" y="137" class="metric-label">Linting</text>
+    <text x="310" y="137" class="metric-value" fill="#3fb950">90</text>
+    <rect x="160" y="141" width="120" height="6" rx="3" fill="#21262d" />
+    <rect x="160" y="141" width="108.0" height="6" rx="3" fill="#3fb950" opacity="0.85" />
+    <text x="160" y="159" class="metric-label">Tests</text>
+    <text x="310" y="159" class="metric-value" fill="#d29922">70</text>
+    <rect x="160" y="163" width="120" height="6" rx="3" fill="#21262d" />
+    <rect x="160" y="163" width="84.0" height="6" rx="3" fill="#d29922" opacity="0.85" />
+    <text x="160" y="181" class="metric-label">Typage</text>
+    <text x="310" y="181" class="metric-value" fill="#3fb950">90</text>
+    <rect x="160" y="185" width="120" height="6" rx="3" fill="#21262d" />
+    <rect x="160" y="185" width="108.0" height="6" rx="3" fill="#3fb950" opacity="0.85" />
+    <text x="160" y="203" class="metric-label">CI/CD</text>
+    <text x="310" y="203" class="metric-value" fill="#d29922">60</text>
+    <rect x="160" y="207" width="120" height="6" rx="3" fill="#21262d" />
+    <rect x="160" y="207" width="72.0" height="6" rx="3" fill="#d29922" opacity="0.85" />
+    <text x="160" y="225" class="metric-label">Documentation</text>
+    <text x="310" y="225" class="metric-value" fill="#3fb950">85</text>
+    <rect x="160" y="229" width="120" height="6" rx="3" fill="#21262d" />
+    <rect x="160" y="229" width="102.0" height="6" rx="3" fill="#3fb950" opacity="0.85" />
+    <text x="160" y="247" class="metric-label">Reproductibilité</text>
+    <text x="310" y="247" class="metric-value" fill="#3fb950">80</text>
+    <rect x="160" y="251" width="120" height="6" rx="3" fill="#21262d" />
+    <rect x="160" y="251" width="96.0" height="6" rx="3" fill="#3fb950" opacity="0.85" />
+  <rect x="420" y="85" width="380" height="240" rx="10" fill="#161b22" stroke="#30363d" stroke-width="1" />
+  <text x="435" y="113" class="card-title">bmw-sales-analytics</text>
+    <circle cx="485" cy="185" r="35" fill="none" stroke="#21262d" stroke-width="8" />
+    <circle cx="485" cy="185" r="35" fill="none" stroke="#3fb950" stroke-width="8" stroke-dasharray="184.7 35.2" stroke-dashoffset="0" transform="rotate(-90 485 185)" stroke-linecap="round" />
+    <text x="485" y="187" text-anchor="middle" dominant-baseline="middle" class="score-text" fill="#3fb950">84</text>
+    <text x="485" y="201" text-anchor="middle" class="score-label" fill="#8b949e">/ 100</text>
+  <text x="485" y="235" text-anchor="middle" class="metric-label" fill="#3fb950">Excellent</text>
+    <text x="560" y="137" class="metric-label">Linting</text>
+    <text x="710" y="137" class="metric-value" fill="#3fb950">90</text>
+    <rect x="560" y="141" width="120" height="6" rx="3" fill="#21262d" />
+    <rect x="560" y="141" width="108.0" height="6" rx="3" fill="#3fb950" opacity="0.85" />
+    <text x="560" y="159" class="metric-label">Tests</text>
+    <text x="710" y="159" class="metric-value" fill="#3fb950">85</text>
+    <rect x="560" y="163" width="120" height="6" rx="3" fill="#21262d" />
+    <rect x="560" y="163" width="102.0" height="6" rx="3" fill="#3fb950" opacity="0.85" />
+    <text x="560" y="181" class="metric-label">Typage</text>
+    <text x="710" y="181" class="metric-value" fill="#d29922">70</text>
+    <rect x="560" y="185" width="120" height="6" rx="3" fill="#21262d" />
+    <rect x="560" y="185" width="84.0" height="6" rx="3" fill="#d29922" opacity="0.85" />
+    <text x="560" y="203" class="metric-label">CI/CD</text>
+    <text x="710" y="203" class="metric-value" fill="#3fb950">100</text>
+    <rect x="560" y="207" width="120" height="6" rx="3" fill="#21262d" />
+    <rect x="560" y="207" width="120.0" height="6" rx="3" fill="#3fb950" opacity="0.85" />
+    <text x="560" y="225" class="metric-label">Documentation</text>
+    <text x="710" y="225" class="metric-value" fill="#d29922">75</text>
+    <rect x="560" y="229" width="120" height="6" rx="3" fill="#21262d" />
+    <rect x="560" y="229" width="90.0" height="6" rx="3" fill="#d29922" opacity="0.85" />
+    <text x="560" y="247" class="metric-label">Reproductibilité</text>
+    <text x="710" y="247" class="metric-value" fill="#3fb950">80</text>
+    <rect x="560" y="251" width="120" height="6" rx="3" fill="#21262d" />
+    <rect x="560" y="251" width="96.0" height="6" rx="3" fill="#3fb950" opacity="0.85" />
+  <rect x="20" y="345" width="380" height="240" rx="10" fill="#161b22" stroke="#30363d" stroke-width="1" />
+  <text x="35" y="373" class="card-title">sentiment-powell-nlp</text>
+    <circle cx="85" cy="445" r="35" fill="none" stroke="#21262d" stroke-width="8" />
+    <circle cx="85" cy="445" r="35" fill="none" stroke="#f85149" stroke-width="8" stroke-dasharray="8.8 211.1" stroke-dashoffset="0" transform="rotate(-90 85 445)" stroke-linecap="round" />
+    <text x="85" y="447" text-anchor="middle" dominant-baseline="middle" class="score-text" fill="#f85149">4</text>
+    <text x="85" y="461" text-anchor="middle" class="score-label" fill="#8b949e">/ 100</text>
+  <text x="85" y="495" text-anchor="middle" class="metric-label" fill="#f85149">À améliorer</text>
+    <text x="160" y="397" class="metric-label">Linting</text>
+    <text x="310" y="397" class="metric-value" fill="#f85149">0</text>
+    <rect x="160" y="401" width="120" height="6" rx="3" fill="#21262d" />
+    <text x="160" y="419" class="metric-label">Tests</text>
+    <text x="310" y="419" class="metric-value" fill="#f85149">0</text>
+    <rect x="160" y="423" width="120" height="6" rx="3" fill="#21262d" />
+    <text x="160" y="441" class="metric-label">Typage</text>
+    <text x="310" y="441" class="metric-value" fill="#f85149">20</text>
+    <rect x="160" y="445" width="120" height="6" rx="3" fill="#21262d" />
+    <rect x="160" y="445" width="24.0" height="6" rx="3" fill="#f85149" opacity="0.85" />
+    <text x="160" y="463" class="metric-label">CI/CD</text>
+    <text x="310" y="463" class="metric-value" fill="#f85149">0</text>
+    <rect x="160" y="467" width="120" height="6" rx="3" fill="#21262d" />
+    <text x="160" y="485" class="metric-label">Documentation</text>
+    <text x="310" y="485" class="metric-value" fill="#f85149">0</text>
+    <rect x="160" y="489" width="120" height="6" rx="3" fill="#21262d" />
+    <text x="160" y="507" class="metric-label">Reproductibilité</text>
+    <text x="310" y="507" class="metric-value" fill="#f85149">10</text>
+    <rect x="160" y="511" width="120" height="6" rx="3" fill="#21262d" />
+    <rect x="160" y="511" width="12.0" height="6" rx="3" fill="#f85149" opacity="0.85" />
+  <text x="24" y="620" class="footer">Score moyen : 55/100 · 3 dépôts analysés</text>
+  <text x="816" y="620" class="footer" text-anchor="end">Dernière analyse : 23/07/2026 à 09:08 UTC</text>
+</svg>

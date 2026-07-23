@@ -1,0 +1,115 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="840" height="766" viewBox="0 0 840 766">
+  <defs>
+    <linearGradient id="mainBarGrad" x1="0%" x2="100%">
+      <stop offset="0%" stop-color="#1F6FEB"/>
+      <stop offset="100%" stop-color="#58A6FF"/>
+    </linearGradient>
+    <radialGradient id="radarGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#1F6FEB" stop-opacity="0.1"/>
+      <stop offset="100%" stop-color="#1F6FEB" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="barGrad_0" x1="0%" x2="100%"><stop offset="0%" stop-color="#1F6FEB"/><stop offset="100%" stop-color="#58A6FF"/></linearGradient>
+    <linearGradient id="barGrad_1" x1="0%" x2="100%"><stop offset="0%" stop-color="#1F6FEB"/><stop offset="100%" stop-color="#58A6FF"/></linearGradient>
+    <linearGradient id="barGrad_2" x1="0%" x2="100%"><stop offset="0%" stop-color="#1F6FEB"/><stop offset="100%" stop-color="#58A6FF"/></linearGradient>
+    <linearGradient id="barGrad_3" x1="0%" x2="100%"><stop offset="0%" stop-color="#1F6FEB"/><stop offset="100%" stop-color="#58A6FF"/></linearGradient>
+    <linearGradient id="barGrad_4" x1="0%" x2="100%"><stop offset="0%" stop-color="#1F6FEB"/><stop offset="100%" stop-color="#58A6FF"/></linearGradient>
+    <linearGradient id="barGrad_5" x1="0%" x2="100%"><stop offset="0%" stop-color="#1F6FEB"/><stop offset="100%" stop-color="#58A6FF"/></linearGradient>
+  </defs>
+  
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&amp;display=swap');
+    text { font-family: 'JetBrains Mono', 'Cascadia Code', 'Fira Code', monospace; }
+    .title { font-size: 16px; font-weight: 700; fill: #e6edf3; }
+    .subtitle { font-size: 11px; fill: #8b949e; }
+    .axis-label { font-size: 11px; font-weight: 600; fill: #e6edf3; }
+    .bar-label { font-size: 12px; font-weight: 600; fill: #e6edf3; }
+    .bar-score { font-size: 11px; font-weight: 600; fill: #58A6FF; }
+    .bar-info { font-size: 9px; fill: #8b949e; }
+    .footer { font-size: 10px; fill: #8b949e; }
+  </style>
+  
+  <!-- Fond -->
+  <rect width="840" height="766" rx="12" fill="#0d1117" />
+  <rect x="0.5" y="0.5" width="839" height="765" rx="12" fill="none" stroke="#30363d" stroke-width="1"/>
+
+  <text x="28" y="44" class="title">Compétences — calculées depuis mes dépôts</text>
+  <text x="28" y="62" class="subtitle">Dernière analyse : 23/07/2026 · Basé sur les langages, dépendances et configurations réels</text>
+  <circle cx="420" cy="249" r="140" fill="url(#radarGlow)" />
+    <polygon points="420.0,225.0 440.8,237.0 440.8,261.0 420.0,273.0 399.2,261.0 399.2,237.0" fill="none" stroke="#21262d" stroke-width="1" opacity="0.3" />
+    <text x="424.0" y="226.0" font-size="8" fill="#8b949e" opacity="0.5">20%</text>
+    <polygon points="420.0,201.0 461.6,225.0 461.6,273.0 420.0,297.0 378.4,273.0 378.4,225.0" fill="none" stroke="#21262d" stroke-width="1" opacity="0.3" />
+    <polygon points="420.0,177.0 482.4,213.0 482.4,285.0 420.0,321.0 357.6,285.0 357.6,213.0" fill="none" stroke="#21262d" stroke-width="1" opacity="0.3" />
+    <text x="424.0" y="178.0" font-size="8" fill="#8b949e" opacity="0.5">60%</text>
+    <polygon points="420.0,153.0 503.1,201.0 503.1,297.0 420.0,345.0 336.9,297.0 336.9,201.0" fill="none" stroke="#21262d" stroke-width="1" opacity="0.3" />
+    <polygon points="420.0,129.0 523.9,189.0 523.9,309.0 420.0,369.0 316.1,309.0 316.1,189.0" fill="none" stroke="#21262d" stroke-width="1" opacity="0.6" />
+    <text x="424.0" y="130.0" font-size="8" fill="#8b949e" opacity="0.5">100%</text>
+    <line x1="420" y1="249" x2="420.0" y2="129.0" stroke="#21262d" stroke-width="1" opacity="0.4" />
+    <line x1="420" y1="249" x2="523.9" y2="189.0" stroke="#21262d" stroke-width="1" opacity="0.4" />
+    <line x1="420" y1="249" x2="523.9" y2="309.0" stroke="#21262d" stroke-width="1" opacity="0.4" />
+    <line x1="420" y1="249" x2="420.0" y2="369.0" stroke="#21262d" stroke-width="1" opacity="0.4" />
+    <line x1="420" y1="249" x2="316.1" y2="309.0" stroke="#21262d" stroke-width="1" opacity="0.4" />
+    <line x1="420" y1="249" x2="316.1" y2="189.0" stroke="#21262d" stroke-width="1" opacity="0.4" />
+    <polygon points="420.0,130.2 523.9,189.0 501.1,295.8 420.0,335.4 337.9,296.4 347.3,207.0" fill="#1F6FEB" fill-opacity="0.15" stroke="#1F6FEB" stroke-width="2" />
+    <circle cx="420.0" cy="130.2" r="4" fill="#58A6FF" stroke="#0d1117" stroke-width="2"><animate attributeName="r" values="4;6;4" dur="3s" repeatCount="indefinite" /></circle>
+    <text x="420.0" y="107.0" text-anchor="middle" dominant-baseline="middle" class="axis-label">Écon.</text>
+    <circle cx="523.9" cy="189.0" r="4" fill="#58A6FF" stroke="#0d1117" stroke-width="2"><animate attributeName="r" values="4;6;4" dur="3s" repeatCount="indefinite" /></circle>
+    <text x="543.0" y="178.0" text-anchor="start" dominant-baseline="middle" class="axis-label">Python DS</text>
+    <circle cx="501.1" cy="295.8" r="4" fill="#58A6FF" stroke="#0d1117" stroke-width="2"><animate attributeName="r" values="4;6;4" dur="3s" repeatCount="indefinite" /></circle>
+    <text x="543.0" y="320.0" text-anchor="start" dominant-baseline="middle" class="axis-label">ML/DL</text>
+    <circle cx="420.0" cy="335.4" r="4" fill="#58A6FF" stroke="#0d1117" stroke-width="2"><animate attributeName="r" values="4;6;4" dur="3s" repeatCount="indefinite" /></circle>
+    <text x="420.0" y="391.0" text-anchor="middle" dominant-baseline="middle" class="axis-label">NLP/GenAI</text>
+    <circle cx="337.9" cy="296.4" r="4" fill="#58A6FF" stroke="#0d1117" stroke-width="2"><animate attributeName="r" values="4;6;4" dur="3s" repeatCount="indefinite" /></circle>
+    <text x="297.0" y="320.0" text-anchor="end" dominant-baseline="middle" class="axis-label">DevOps</text>
+    <circle cx="347.3" cy="207.0" r="4" fill="#58A6FF" stroke="#0d1117" stroke-width="2"><animate attributeName="r" values="4;6;4" dur="3s" repeatCount="indefinite" /></circle>
+    <text x="297.0" y="178.0" text-anchor="end" dominant-baseline="middle" class="axis-label">SQL/DB</text>
+    <text x="64" y="449" class="bar-label">Économétrie & Stats</text>
+    <text x="394" y="465" class="bar-info">3 repos</text>
+    <text x="459" y="465" font-size="14" fill="#3fb950">↑</text>
+    <text x="384" y="449" text-anchor="end" class="bar-score">99%</text>
+    <rect x="64" y="455" width="320" height="10" rx="5" fill="#21262d" />
+    <rect x="64" y="455" width="316.8" height="10" rx="5" fill="url(#barGrad_0)">
+      <animate attributeName="width" from="0" to="316.8" dur="1s" fill="freeze" />
+    </rect>
+    <text x="64" y="487" class="bar-label">Python Data Science</text>
+    <text x="394" y="503" class="bar-info">3 repos</text>
+    <text x="459" y="503" font-size="14" fill="#3fb950">↑</text>
+    <text x="384" y="487" text-anchor="end" class="bar-score">100%</text>
+    <rect x="64" y="493" width="320" height="10" rx="5" fill="#21262d" />
+    <rect x="64" y="493" width="320.0" height="10" rx="5" fill="url(#barGrad_1)">
+      <animate attributeName="width" from="0" to="320.0" dur="1s" fill="freeze" />
+    </rect>
+    <text x="64" y="525" class="bar-label">ML / Deep Learning</text>
+    <text x="394" y="541" class="bar-info">3 repos</text>
+    <text x="459" y="541" font-size="14" fill="#3fb950">↑</text>
+    <text x="384" y="525" text-anchor="end" class="bar-score">78%</text>
+    <rect x="64" y="531" width="320" height="10" rx="5" fill="#21262d" />
+    <rect x="64" y="531" width="249.6" height="10" rx="5" fill="url(#barGrad_2)">
+      <animate attributeName="width" from="0" to="249.6" dur="1s" fill="freeze" />
+    </rect>
+    <text x="64" y="563" class="bar-label">NLP & GenAI</text>
+    <text x="394" y="579" class="bar-info">3 repos</text>
+    <text x="459" y="579" font-size="14" fill="#3fb950">↑</text>
+    <text x="384" y="563" text-anchor="end" class="bar-score">72%</text>
+    <rect x="64" y="569" width="320" height="10" rx="5" fill="#21262d" />
+    <rect x="64" y="569" width="230.4" height="10" rx="5" fill="url(#barGrad_3)">
+      <animate attributeName="width" from="0" to="230.4" dur="1s" fill="freeze" />
+    </rect>
+    <text x="64" y="601" class="bar-label">DevOps & CI/CD</text>
+    <text x="394" y="617" class="bar-info">3 repos</text>
+    <text x="459" y="617" font-size="14" fill="#3fb950">↑</text>
+    <text x="384" y="601" text-anchor="end" class="bar-score">79%</text>
+    <rect x="64" y="607" width="320" height="10" rx="5" fill="#21262d" />
+    <rect x="64" y="607" width="252.8" height="10" rx="5" fill="url(#barGrad_4)">
+      <animate attributeName="width" from="0" to="252.8" dur="1s" fill="freeze" />
+    </rect>
+    <text x="64" y="639" class="bar-label">SQL & Bases de données</text>
+    <text x="394" y="655" class="bar-info">2 repos</text>
+    <text x="459" y="655" font-size="14" fill="#3fb950">↑</text>
+    <text x="384" y="639" text-anchor="end" class="bar-score">70%</text>
+    <rect x="64" y="645" width="320" height="10" rx="5" fill="#21262d" />
+    <rect x="64" y="645" width="224.0" height="10" rx="5" fill="url(#barGrad_5)">
+      <animate attributeName="width" from="0" to="224.0" dur="1s" fill="freeze" />
+    </rect>
+  <text x="28" y="741" class="footer">Basé sur 5 dépôts · 770 fichiers analysés</text>
+  <text x="812" y="741" text-anchor="end" class="footer">Mis à jour automatiquement par GitHub Actions</text>
+</svg>
