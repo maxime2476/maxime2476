@@ -1,0 +1,38 @@
+name: Graphique de compétences dynamique
+on:
+  schedule:
+    - cron: "0 4 * * *"
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  generate-skills:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Configurer Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Installer les dépendances
+        run: pip install requests
+
+      - name: Générer le graphique de compétences
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: python .github/scripts/generate_skills_graph.py
+
+      - name: Commit et push si modifié
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add assets/skills-dynamic.svg
+          git diff --staged --quiet || git commit -m "🎯 Mise à jour du graphique de compétences [skip ci]"
+          git push

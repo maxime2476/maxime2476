@@ -82,6 +82,10 @@ graph LR
 
 Pour le reste : [sentiment-powell-nlp](https://github.com/maxime2476/sentiment-powell-nlp), du NLP sur les conférences du FOMC (2020–2025), où les clusters *dovish* précèdent les baisses de taux de deux trimestres. Et [panel-project](https://github.com/maxime2476/panel-project), ma première vraie régression de panel sur les déterminants du PIB par habitant en Europe.
 
+<div align="center">
+  <img src="./assets/project-tracker.svg" alt="Tableau de progression des projets — mis à jour quotidiennement par GitHub Actions" width="100%" />
+</div>
+
 <div align="center"><img src="./assets/divider.svg" width="100%" alt="" /></div>
 
 ## Contributions open-source
@@ -131,16 +135,12 @@ Les statuts seront mis à jour au fil des livraisons, métriques comprises, mêm
   <img src="https://img.shields.io/badge/Streamlit-0969DA?style=flat-square&logo=streamlit&logoColor=white" alt="Streamlit" />
 </div>
 
-<br/>
-
-| | |
-| :--- | :--- |
-| Économétrie (panel, séries temporelles, inférence causale) | `██████████` c'est mon métier |
-| R (R base, testthat, Quarto) et Python (pandas, NumPy, scikit-learn) | `██████████` au quotidien |
-| Qualité logicielle (ruff, mypy strict, pytest, pre-commit) et Docker/CI | `████████░░` solide, en progression |
-| SQL (PostgreSQL, DuckDB) | `████████░░` solide |
-| Deep learning (PyTorch, TensorFlow) | `██████░░░░` fonctionnel, pas expert |
-| GenAI (LangChain, RAG, agents, évaluation LLM) | `███░░░░░░░` j'apprends, premier projet en cours |
+<!-- Graphique radar dynamique : calculé chaque nuit depuis les langages,
+     imports et configurations de tous mes dépôts publics.
+     Généré par .github/workflows/skills-graph.yml -->
+<div align="center">
+  <img src="./assets/skills-dynamic.svg" alt="Compétences — radar dynamique calculé depuis mes dépôts réels" width="100%" />
+</div>
 
 ### Ce que je ne sais pas (encore) faire
 
@@ -151,6 +151,13 @@ Kubernetes et l'orchestration à grande échelle. Le deep learning au niveau rec
 ## Standards
 
 Ce que j'essaie de mettre dans chacun de mes projets sérieux, et qui se vérifie dans les dépôts : un typage strict, des tests à plusieurs niveaux (unitaires, par propriétés, golden, DGP synthétiques), documentation exécutable (Quarto), CI/CD (GitHub Actions), gestion des dépendances (pyproject.toml, renv), reproductibilité (seeds, versioning).
+
+<!-- Scores de qualité auto-générés : analyse statique de chaque dépôt
+     (linting, tests, typage, CI/CD, documentation, reproductibilité).
+     Généré par .github/workflows/quality-scores.yml -->
+<div align="center">
+  <img src="./assets/quality-scores.svg" alt="Scores de qualité logicielle — auto-générés depuis les dépôts réels" width="100%" />
+</div>
 
 <div align="center"><img src="./assets/divider.svg" width="100%" alt="" /></div>
 
