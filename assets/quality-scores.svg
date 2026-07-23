@@ -93,8 +93,8 @@
   <rect x="20" y="345" width="380" height="240" rx="10" fill="#161b22" stroke="#30363d" stroke-width="1" />
   <text x="35" y="373" class="card-title">sentiment-powell-nlp</text>
     <circle cx="85" cy="445" r="35" fill="none" stroke="#21262d" stroke-width="8" />
-    <circle cx="85" cy="445" r="35" fill="none" stroke="#f85149" stroke-width="8" stroke-dasharray="8.8 211.1" stroke-dashoffset="0" transform="rotate(-90 85 445)" stroke-linecap="round" />
-    <text x="85" y="447" text-anchor="middle" dominant-baseline="middle" class="score-text" fill="#f85149">4</text>
+    <circle cx="85" cy="445" r="35" fill="none" stroke="#f85149" stroke-width="8" stroke-dasharray="35.2 184.7" stroke-dashoffset="0" transform="rotate(-90 85 445)" stroke-linecap="round" />
+    <text x="85" y="447" text-anchor="middle" dominant-baseline="middle" class="score-text" fill="#f85149">16</text>
     <text x="85" y="461" text-anchor="middle" class="score-label" fill="#8b949e">/ 100</text>
   <text x="85" y="495" text-anchor="middle" class="metric-label" fill="#f85149">À améliorer</text>
     <text x="160" y="397" class="metric-label">Linting</text>
@@ -111,12 +111,43 @@
     <text x="310" y="463" class="metric-value" fill="#f85149">0</text>
     <rect x="160" y="467" width="120" height="6" rx="3" fill="#21262d" />
     <text x="160" y="485" class="metric-label">Documentation</text>
-    <text x="310" y="485" class="metric-value" fill="#f85149">0</text>
+    <text x="310" y="485" class="metric-value" fill="#db6d28">55</text>
     <rect x="160" y="489" width="120" height="6" rx="3" fill="#21262d" />
+    <rect x="160" y="489" width="66.0" height="6" rx="3" fill="#db6d28" opacity="0.85" />
     <text x="160" y="507" class="metric-label">Reproductibilité</text>
-    <text x="310" y="507" class="metric-value" fill="#f85149">10</text>
+    <text x="310" y="507" class="metric-value" fill="#f85149">30</text>
     <rect x="160" y="511" width="120" height="6" rx="3" fill="#21262d" />
-    <rect x="160" y="511" width="12.0" height="6" rx="3" fill="#f85149" opacity="0.85" />
-  <text x="24" y="620" class="footer">Score moyen : 55/100 · 3 dépôts analysés</text>
-  <text x="816" y="620" class="footer" text-anchor="end">Dernière analyse : 23/07/2026 à 09:08 UTC</text>
+    <rect x="160" y="511" width="36.0" height="6" rx="3" fill="#f85149" opacity="0.85" />
+  <rect x="420" y="345" width="380" height="240" rx="10" fill="#161b22" stroke="#30363d" stroke-width="1" />
+  <text x="435" y="373" class="card-title">ml-from-scratch-R</text>
+    <circle cx="485" cy="445" r="35" fill="none" stroke="#21262d" stroke-width="8" />
+    <circle cx="485" cy="445" r="35" fill="none" stroke="#d29922" stroke-width="8" stroke-dasharray="149.5 70.4" stroke-dashoffset="0" transform="rotate(-90 485 445)" stroke-linecap="round" />
+    <text x="485" y="447" text-anchor="middle" dominant-baseline="middle" class="score-text" fill="#d29922">68</text>
+    <text x="485" y="461" text-anchor="middle" class="score-label" fill="#8b949e">/ 100</text>
+  <text x="485" y="495" text-anchor="middle" class="metric-label" fill="#d29922">Bon</text>
+    <text x="560" y="397" class="metric-label">Linting</text>
+    <text x="710" y="397" class="metric-value" fill="#f85149">0</text>
+    <rect x="560" y="401" width="120" height="6" rx="3" fill="#21262d" />
+    <text x="560" y="419" class="metric-label">Tests</text>
+    <text x="710" y="419" class="metric-value" fill="#3fb950">85</text>
+    <rect x="560" y="423" width="120" height="6" rx="3" fill="#21262d" />
+    <rect x="560" y="423" width="102.0" height="6" rx="3" fill="#3fb950" opacity="0.85" />
+    <text x="560" y="441" class="metric-label">Typage</text>
+    <text x="710" y="441" class="metric-value" fill="#3fb950">80</text>
+    <rect x="560" y="445" width="120" height="6" rx="3" fill="#21262d" />
+    <rect x="560" y="445" width="96.0" height="6" rx="3" fill="#3fb950" opacity="0.85" />
+    <text x="560" y="463" class="metric-label">CI/CD</text>
+    <text x="710" y="463" class="metric-value" fill="#d29922">70</text>
+    <rect x="560" y="467" width="120" height="6" rx="3" fill="#21262d" />
+    <rect x="560" y="467" width="84.0" height="6" rx="3" fill="#d29922" opacity="0.85" />
+    <text x="560" y="485" class="metric-label">Documentation</text>
+    <text x="710" y="485" class="metric-value" fill="#d29922">75</text>
+    <rect x="560" y="489" width="120" height="6" rx="3" fill="#21262d" />
+    <rect x="560" y="489" width="90.0" height="6" rx="3" fill="#d29922" opacity="0.85" />
+    <text x="560" y="507" class="metric-label">Reproductibilité</text>
+    <text x="710" y="507" class="metric-value" fill="#3fb950">85</text>
+    <rect x="560" y="511" width="120" height="6" rx="3" fill="#21262d" />
+    <rect x="560" y="511" width="102.0" height="6" rx="3" fill="#3fb950" opacity="0.85" />
+  <text x="24" y="620" class="footer">Score moyen : 62/100 · 4 dépôts analysés</text>
+  <text x="816" y="620" class="footer" text-anchor="end">Dernière analyse : 23/07/2026 à 13:18 UTC</text>
 </svg>
