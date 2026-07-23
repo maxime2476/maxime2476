@@ -34,5 +34,13 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add assets/skills-dynamic.svg
-          git diff --staged --quiet || git commit -m "🎯 Mise à jour du graphique de compétences [skip ci]"
-          git push
+          git diff --staged --quiet && exit 0
+          git commit -m "🎯 Mise à jour du graphique de compétences [skip ci]"
+          # Rebase sur le remote pour éviter les conflits avec les autres workflows
+          for i in 1 2 3; do
+            git pull --rebase origin main && git push && exit 0
+            echo "Tentative $i échouée, retry dans 5s..."
+            sleep 5
+          done
+          echo "Échec du push après 3 tentatives"
+          exit 1

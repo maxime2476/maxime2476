@@ -34,5 +34,12 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add assets/quality-scores.svg
-          git diff --staged --quiet || git commit -m "🏗️ Mise à jour des scores de qualité [skip ci]"
-          git push
+          git diff --staged --quiet && exit 0
+          git commit -m "🏗️ Mise à jour des scores de qualité [skip ci]"
+          for i in 1 2 3; do
+            git pull --rebase origin main && git push && exit 0
+            echo "Tentative $i échouée, retry dans 5s..."
+            sleep 5
+          done
+          echo "Échec du push après 3 tentatives"
+          exit 1
