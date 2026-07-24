@@ -59,8 +59,8 @@
   <text x="330" y="154" class="cell-dim">il y a 3 sem.</text>
   <text x="460" y="154" class="cell-text">26</text>
   <rect x="540" y="144" width="160" height="12" rx="6" ry="6" fill="#30363d" opacity="0.5" />
-  <rect x="540" y="144" width="32.0" height="12" rx="6" ry="6" fill="url(#barGrad)" />
-  <text x="708" y="154" class="cell-dim">20</text>
+  <rect x="540" y="144" width="19.2" height="12" rx="6" ry="6" fill="url(#barGrad)" />
+  <text x="708" y="154" class="cell-dim">12</text>
   <text x="770" y="154" class="ci-pass">✓</text>
   <rect x="20" y="172" width="800" height="44" fill="#1c2129" />
   <text x="30" y="198" class="cell-link">ml-from-scratch-R</text>
@@ -127,5 +127,5 @@
   <text x="708" y="462" class="cell-dim">0</text>
   <text x="770" y="462" class="ci-none">—</text>
   <text x="24" y="515" class="footer">5 dépôts actifs · 309 commits au total</text>
-  <text x="816" y="515" class="footer" text-anchor="end">Dernière mise à jour : 23/07/2026 à 13:22 UTC</text>
+  <text x="816" y="515" class="footer" text-anchor="end">Dernière mise à jour : 24/07/2026 à 05:50 UTC</text>
 </svg>
