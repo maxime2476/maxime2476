@@ -33,7 +33,7 @@
   <rect x="0.5" y="0.5" width="839" height="765" rx="12" fill="none" stroke="#30363d" stroke-width="1"/>
 
   <text x="28" y="44" class="title">Compétences — calculées depuis mes dépôts</text>
-  <text x="28" y="62" class="subtitle">Dernière analyse : 23/07/2026 · Basé sur les langages, dépendances et configurations réels</text>
+  <text x="28" y="62" class="subtitle">Dernière analyse : 24/07/2026 · Basé sur les langages, dépendances et configurations réels</text>
   <circle cx="420" cy="249" r="140" fill="url(#radarGlow)" />
     <polygon points="420.0,225.0 440.8,237.0 440.8,261.0 420.0,273.0 399.2,261.0 399.2,237.0" fill="none" stroke="#21262d" stroke-width="1" opacity="0.3" />
     <text x="424.0" y="226.0" font-size="8" fill="#8b949e" opacity="0.5">20%</text>
