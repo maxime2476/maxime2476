@@ -166,6 +166,15 @@ Ce que j'essaie de mettre dans chacun de mes projets sérieux, et qui se vérifi
 Mon temps de code réel de la semaine (WakaTime, mis à jour chaque nuit) :
 
 <!--START_SECTION:waka-->
+
+```txt
+Python       2 hrs 52 mins         ░░░░░░░░░░░██████████████   44.23 %
+Markdown     1 hr 23 mins          ░░░░░████████████████████   21.41 %
+TypeScript   45 mins               ░░░██████████████████████   11.66 %
+CSS          37 mins               ░░███████████████████████   09.72 %
+YAML         18 mins               ░████████████████████████   04.64 %
+```
+
 <!--END_SECTION:waka-->
 
 <div align="center">
