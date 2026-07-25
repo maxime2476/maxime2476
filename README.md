@@ -168,11 +168,11 @@ Mon temps de code réel de la semaine (WakaTime, mis à jour chaque nuit) :
 <!--START_SECTION:waka-->
 
 ```txt
-Python       2 hrs 52 mins         ░░░░░░░░░░░██████████████   44.23 %
-Markdown     1 hr 23 mins          ░░░░░████████████████████   21.41 %
-TypeScript   45 mins               ░░░██████████████████████   11.66 %
-CSS          37 mins               ░░███████████████████████   09.72 %
-YAML         18 mins               ░████████████████████████   04.64 %
+Python       2 hrs 52 mins         ░░░░░░░░░░░██████████████   42.74 %
+TypeScript   1 hr 4 mins           ░░░░█████████████████████   15.92 %
+CSS          51 mins               ░░░██████████████████████   12.76 %
+Markdown     42 mins               ░░░██████████████████████   10.41 %
+YAML         18 mins               ░████████████████████████   04.49 %
 ```
 
 <!--END_SECTION:waka-->
