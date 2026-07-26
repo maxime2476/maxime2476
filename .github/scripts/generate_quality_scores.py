@@ -17,11 +17,15 @@ GITHUB_USER = "maxime2476"
 TOKEN = os.environ.get("GITHUB_TOKEN", "")
 
 # Projets à analyser
+# La grille de notation ci-dessous suppose un projet Python ou R (typage
+# statique, pyproject/renv, pytest/testthat). L'appliquer à un dépôt Bash
+# produit un score bas pour de mauvaises raisons : linux-sys-monitor est donc
+# suivi par generate_project_tracker.py, qui lui est agnostique, mais pas noté ici.
 REPOS = [
     "causal-impact-lab",
     "bmw-sales-analytics",
-    "sentiment-powell-nlp",
     "ml-from-scratch-R",
+    "sentiment-powell-nlp",
 ]
 
 OUTPUT_PATH = os.path.join(os.path.dirname(__file__), "..", "..", "assets", "quality-scores.svg")
@@ -109,6 +113,18 @@ def list_workflows(repo):
     return []
 
 
+def get_ci_conclusion(repo):
+    """Conclusion du dernier run terminé : "success", "failure", ... ou None.
+
+    Même source que generate_project_tracker.py : les deux SVG doivent
+    s'accorder sur l'état de la CI, sinon ils se contredisent dans le README.
+    """
+    url = f"https://api.github.com/repos/{GITHUB_USER}/{repo}/actions/runs?per_page=1&status=completed"
+    result = api_get(url)
+    runs = (result or {}).get("workflow_runs") or []
+    return runs[0].get("conclusion") if runs else None
+
+
 # ── Calcul des scores ─────────────────────────────────────────────────────
 
 def compute_scores(repo):
@@ -145,7 +161,7 @@ def compute_scores(repo):
     workflows = list_workflows(repo)
     for wf in workflows:
         wf_content = get_file_content(repo, f".github/workflows/{wf}")
-        if any(kw in wf_content.lower() for kw in ["ruff", "flake8", "pylint", "lint", "lintr"]):
+        if any(kw in wf_content.lower() for kw in ["ruff", "flake8", "pylint", "lint", "lintr", "shellcheck", "shfmt"]):
             lint_score += 40
             break
     
@@ -248,8 +264,18 @@ def compute_scores(repo):
         readme = get_file_content(repo, "README.md")
         if "actions/workflows" in readme or "github.com" in readme:
             ci_score += 15
-    
-    scores["ci"] = min(100, ci_score)
+
+    ci_score = min(100, ci_score)
+
+    # Une CI qui existe mais qui échoue ne vaut pas une CI qui passe.
+    # Sans ce garde-fou, le score ne mesure que la présence de fichiers YAML.
+    conclusion = get_ci_conclusion(repo)
+    if conclusion == "failure":
+        ci_score = min(ci_score, 45)
+    elif conclusion is None:
+        ci_score = min(ci_score, 60)
+
+    scores["ci"] = ci_score
     
     # ── Documentation ──
     doc_score = 0

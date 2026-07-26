@@ -22,6 +22,7 @@ PROJECTS = [
     ("causal-impact-lab",    "active"),
     ("ml-from-scratch-R",    "active"),
     ("bmw-sales-analytics",  "active"),
+    ("linux-sys-monitor",    "maintained"),
     ("sentiment-powell-nlp",  "maintained"),
     ("panel-project",        "maintained"),
     ("rag-eval-lab",         "planned"),

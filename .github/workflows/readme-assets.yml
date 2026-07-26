@@ -1,0 +1,66 @@
+name: Visuels du README
+
+# Un seul job pour tous les SVG générés : les scripts partagent la même source
+# (l'API GitHub) et un job unique produit un commit par jour au lieu d'un par
+# script, ce qui garde l'historique du dépôt lisible.
+on:
+  schedule:
+    - cron: "0 3 * * *"
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: readme-assets
+  cancel-in-progress: false
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Configurer Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Installer les dépendances
+        run: pip install requests
+
+      - name: Générer le suivi de progression
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: python .github/scripts/generate_project_tracker.py
+
+      - name: Générer les scores de qualité
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: python .github/scripts/generate_quality_scores.py
+
+      # Le calendrier passe par l'API GraphQL. METRICS_TOKEN (le PAT déjà
+      # utilisé par metrics.yml, scope read:user) est préféré parce qu'il est
+      # sûr sur contributionsCollection ; sinon on retombe sur le token par défaut.
+      - name: Générer le calendrier de commits
+        env:
+          GITHUB_TOKEN: ${{ secrets.METRICS_TOKEN || secrets.GITHUB_TOKEN }}
+        run: python .github/scripts/generate_commit_calendar.py
+
+      - name: Commit et push si modifié
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add assets/project-tracker.svg assets/quality-scores.svg assets/commit-calendar.svg
+          git diff --staged --quiet && exit 0
+          git commit -m "chore: mise à jour des visuels du README [skip ci]"
+          for i in 1 2 3; do
+            git pull --rebase origin main && git push && exit 0
+            echo "Tentative $i échouée, retry dans 5s..."
+            sleep 5
+          done
+          echo "Échec du push après 3 tentatives"
+          exit 1
