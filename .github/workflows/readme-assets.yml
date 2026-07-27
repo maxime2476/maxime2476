@@ -50,11 +50,23 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.METRICS_TOKEN || secrets.GITHUB_TOKEN }}
         run: python .github/scripts/generate_commit_calendar.py
 
+      - name: Générer le plancher de détection
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: python .github/scripts/generate_mde.py
+
+      # Passe aussi par GraphQL pour les contributions quotidiennes.
+      - name: Générer l'étude d'événement
+        env:
+          GITHUB_TOKEN: ${{ secrets.METRICS_TOKEN || secrets.GITHUB_TOKEN }}
+        run: python .github/scripts/generate_event_study.py
+
       - name: Commit et push si modifié
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add assets/project-tracker.svg assets/quality-scores.svg assets/commit-calendar.svg
+          git add assets/project-tracker.svg assets/quality-scores.svg \
+                  assets/commit-calendar.svg assets/mde.svg assets/event-study.svg
           git diff --staged --quiet && exit 0
           git commit -m "chore: mise à jour des visuels du README [skip ci]"
           for i in 1 2 3; do

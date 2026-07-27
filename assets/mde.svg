@@ -1,0 +1,65 @@
+<svg viewBox="0 0 900 352" width="900" height="352" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Effet minimum détectable de causal-impact-lab par horizon, comparé à la réponse estimée. h=12 : |β̂| = 0.19 contre un plancher de 0.28 · h=24 : |β̂| = 0.10 contre un plancher de 0.42.">
+  <style>
+    text { font-family: 'JetBrains Mono', 'Cascadia Code', 'SFMono-Regular', Consolas, monospace; }
+    .title    { font-size: 15px; font-weight: 700; fill: #24292f; }
+    .subtitle { font-size: 10.5px; fill: #57606a; }
+    .tick     { font-size: 9px; fill: #57606a; }
+    .lab      { font-size: 9.5px; font-weight: 700; fill: #0a4da2; }
+    .footer   { font-size: 9.5px; fill: #57606a; }
+    .axis     { stroke: #d0d7de; stroke-width: 1; }
+    .zero     { stroke: #57606a; stroke-width: 1.1; stroke-dasharray: 4 4; opacity: 0.7; }
+    .blind    { fill: #0969DA; opacity: 0.13; }
+    .blindln  { stroke: #0969DA; stroke-width: 1.4; fill: none; opacity: 0.75; }
+    .beta     { stroke: #0a4da2; stroke-width: 2.4; fill: none; }
+    .dot      { fill: #0a4da2; }
+    .mark     { stroke: #0a4da2; stroke-width: 1; stroke-dasharray: 3 3; opacity: 0.55; }
+
+    @media (prefers-color-scheme: dark) {
+      .title { fill: #e6edf3; }
+      .subtitle, .tick, .footer { fill: #9198a1; }
+      .axis { stroke: #30363d; }
+      .zero { stroke: #9198a1; }
+      .blind { fill: #58A6FF; opacity: 0.15; }
+      .blindln { stroke: #58A6FF; }
+      .beta { stroke: #a5d6ff; } .dot { fill: #a5d6ff; }
+      .lab  { fill: #a5d6ff; } .mark { stroke: #a5d6ff; }
+    }
+
+    .beta, .blind, .blindln { animation: draw 0.6s ease-out backwards; }
+    @keyframes draw { from { opacity: 0; } }
+    @media (prefers-reduced-motion: reduce) { .beta, .blind, .blindln { animation: none; } }
+  </style>
+  <text class="title" x="24" y="36">Ce que ce design pouvait détecter</text>
+  <text class="footer" x="876" y="36" text-anchor="end">27/07/2026</text>
+  <text class="subtitle" x="24" y="54">causal-impact-lab. Enveloppe : effet minimum détectable à 80 % de puissance, seuil bilatéral 5 %.</text>
+  <text class="subtitle" x="24" y="68">Calculé sur les écarts-types publiés dans headline_irf.csv. Trait plein : la réponse estimée β̂(h).</text>
+  <polygon class="blind" points="74.0,131.7 106.9,140.2 139.8,147.6 172.8,151.5 205.7,150.9 238.6,149.6 271.5,142.9 304.4,121.5 337.3,132.3 370.2,110.2 403.2,127.1 436.1,135.9 469.0,140.5 501.9,131.5 534.8,129.7 567.8,100.6 600.7,127.9 633.6,127.5 666.5,133.5 699.4,134.8 732.3,131.9 765.2,131.1 798.2,133.2 831.1,128.2 864.0,124.8 864.0,219.2 831.1,215.8 798.2,210.8 765.2,212.9 732.3,212.1 699.4,209.2 666.5,210.5 633.6,216.5 600.7,216.1 567.8,243.4 534.8,214.3 501.9,212.5 469.0,203.5 436.1,208.1 403.2,216.9 370.2,233.8 337.3,211.7 304.4,222.5 271.5,201.1 238.6,194.4 205.7,193.1 172.8,192.5 139.8,196.4 106.9,203.8 74.0,212.3"/>
+  <polyline class="blindln" points="74.0,131.7 106.9,140.2 139.8,147.6 172.8,151.5 205.7,150.9 238.6,149.6 271.5,142.9 304.4,121.5 337.3,132.3 370.2,110.2 403.2,127.1 436.1,135.9 469.0,140.5 501.9,131.5 534.8,129.7 567.8,100.6 600.7,127.9 633.6,127.5 666.5,133.5 699.4,134.8 732.3,131.9 765.2,131.1 798.2,133.2 831.1,128.2 864.0,124.8"/>
+  <polyline class="blindln" points="74.0,212.3 106.9,203.8 139.8,196.4 172.8,192.5 205.7,193.1 238.6,194.4 271.5,201.1 304.4,222.5 337.3,211.7 370.2,233.8 403.2,216.9 436.1,208.1 469.0,203.5 501.9,212.5 534.8,214.3 567.8,243.4 600.7,216.1 633.6,216.5 666.5,210.5 699.4,209.2 732.3,212.1 765.2,212.9 798.2,210.8 831.1,215.8 864.0,219.2"/>
+  <line class="zero" x1="74.0" y1="172.0" x2="864.0" y2="172.0"/>
+  <line class="axis" x1="74.0" y1="260.0" x2="864.0" y2="260.0"/>
+  <text class="tick" x="74.0" y="274.0" text-anchor="middle">0</text>
+  <text class="tick" x="205.7" y="274.0" text-anchor="middle">4</text>
+  <text class="tick" x="337.3" y="274.0" text-anchor="middle">8</text>
+  <text class="tick" x="469.0" y="274.0" text-anchor="middle">12</text>
+  <text class="tick" x="600.7" y="274.0" text-anchor="middle">16</text>
+  <text class="tick" x="732.3" y="274.0" text-anchor="middle">20</text>
+  <text class="tick" x="864.0" y="274.0" text-anchor="middle">24</text>
+  <text class="tick" x="469.0" y="288.0" text-anchor="middle">horizon h, en mois</text>
+  <text class="tick" x="66.0" y="235.0" text-anchor="end">-0.5</text>
+  <text class="tick" x="66.0" y="175.0" text-anchor="end">+0.0</text>
+  <text class="tick" x="66.0" y="115.0" text-anchor="end">+0.5</text>
+  <polyline class="beta" points="74.0,183.9 106.9,177.4 139.8,169.2 172.8,167.2 205.7,169.3 238.6,172.4 271.5,167.0 304.4,162.8 337.3,170.9 370.2,151.1 403.2,170.1 436.1,152.7 469.0,150.8 501.9,158.3 534.8,157.1 567.8,175.6 600.7,161.6 633.6,155.0 666.5,173.3 699.4,171.9 732.3,188.5 765.2,183.1 798.2,171.6 831.1,174.6 864.0,160.4"/>
+  <line class="mark" x1="469.0" y1="88.0" x2="469.0" y2="260.0"/>
+  <circle class="dot" cx="469.0" cy="150.8" r="4"/>
+  <text class="lab" x="469.0" y="82.0" text-anchor="middle">h = 12</text>
+  <text class="tick" x="469.0" y="166.8" text-anchor="middle">β̂ = +0.19</text>
+  <text class="tick" x="469.0" y="133.5" text-anchor="middle">plancher 0.28</text>
+  <line class="mark" x1="864.0" y1="88.0" x2="864.0" y2="260.0"/>
+  <circle class="dot" cx="864.0" cy="160.4" r="4"/>
+  <text class="lab" x="864.0" y="82.0" text-anchor="middle">h = 24</text>
+  <text class="tick" x="864.0" y="176.4" text-anchor="middle">β̂ = +0.10</text>
+  <text class="tick" x="864.0" y="117.8" text-anchor="middle">plancher 0.42</text>
+  <text class="footer" x="24" y="324">h=12 : |β̂| = 0.19 contre un plancher de 0.28 · h=24 : |β̂| = 0.10 contre un plancher de 0.42. Les deux tiennent sous le plancher.</text>
+  <text class="footer" x="24" y="339">Aucune taille d'effet minimale n'était pré-enregistrée : ce plancher ne tranche pas entre nul informatif et étude sous-dimensionnée.</text>
+</svg>

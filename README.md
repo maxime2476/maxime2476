@@ -49,6 +49,14 @@ Résultat : sur l'échantillon disponible, la réponse relative de l'emploi à l
 
 Le complément agrégé va dans le sens attendu (θ ≈ −6.6 % à h = 12) mais repose sur un instrument externe faible, donc je le rapporte à part et il ne sauve pas le résultat principal.
 
+Publier un nul sans dire ce qu'on aurait pu voir ne vaut pas grand-chose. À partir des écarts-types que j'ai publiés, le graphique ci-dessous trace l'effet minimum détectable à 80 % de puissance. Tout ce qui tombe dans l'enveloppe est hors de portée du design, quelle que soit la vérité. Mes deux estimations aux horizons de décision tiennent sous ce plancher.
+
+Je n'avais pas pré-enregistré de taille d'effet minimale d'intérêt. Ce plancher ne dit donc pas si mon nul est informatif ou si l'étude était sous-dimensionnée, et c'est une limite de mon plan d'analyse que je corrigerai dans le prochain.
+
+<div align="center">
+  <img src="./assets/mde.svg" alt="Effet minimum détectable par horizon, comparé à la réponse estimée" width="100%" />
+</div>
+
 ### [ml-from-scratch-R](https://github.com/maxime2476/ml-from-scratch-R)
 
 Mon projet de fin d'études. Seize modules, de l'algèbre linéaire à SHAP, chacun réimplémenté en R base à partir de sa dérivation mathématique complète. Chaque module livre quatre choses dans cet ordre : la dérivation, le code, la validation contre le package de référence à une tolérance de `1e-8`, et une étude Monte Carlo d'au moins mille réplications sur un DGP connu qui mesure biais, variance et couverture.
@@ -119,6 +127,18 @@ Je mets le retard 7 en évidence qu'il ressorte ou non, parce que c'est l'hypoth
 
 <div align="center">
   <img src="./assets/commit-calendar.svg" alt="Calendrier des contributions sur un an, profil moyen par jour de la semaine et autocorrélogramme de la série quotidienne" width="100%" />
+</div>
+
+### La même méthode, retournée contre moi
+
+J'ai appliqué la procédure de `causal-impact-lab` à mes propres commits : fenêtre d'événement autour de mes pull requests mergées en amont, écart à la moyenne des sept jours précédents, intervalles de Student, et le plancher de détection affiché à côté.
+
+Le résultat est un contre-exemple utile. Quatre événements, dont trois tombent en trois jours, donc les fenêtres se recouvrent et il ne reste que deux épisodes vraiment indépendants. Le plancher dépasse d'un ordre de grandeur mon activité quotidienne ordinaire. Quelques horizons sortent de l'intervalle, à peu près ce que le hasard produit quand on en teste quinze.
+
+Ce graphique ne mesure donc rien. Il montre à quoi ressemble un design sans puissance, ce qui est la première chose à savoir reconnaître avant d'en croire un.
+
+<div align="center">
+  <img src="./assets/event-study.svg" alt="Étude d'événement sur mes contributions quotidiennes autour de mes pull requests mergées, avec son plancher de détection" width="100%" />
 </div>
 
 ## Me contacter
