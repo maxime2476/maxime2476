@@ -58,8 +58,8 @@
   <line class="mark" x1="864.0" y1="88.0" x2="864.0" y2="260.0"/>
   <circle class="dot" cx="864.0" cy="160.4" r="4"/>
   <text class="lab" x="864.0" y="82.0" text-anchor="middle">h = 24</text>
-  <text class="tick" x="864.0" y="176.4" text-anchor="middle">β̂ = +0.10</text>
-  <text class="tick" x="864.0" y="117.8" text-anchor="middle">plancher 0.42</text>
+  <text class="tick" x="864.0" y="176.4" text-anchor="end">β̂ = +0.10</text>
+  <text class="tick" x="864.0" y="117.8" text-anchor="end">plancher 0.42</text>
   <text class="footer" x="24" y="324">h=12 : |β̂| = 0.19 contre un plancher de 0.28 · h=24 : |β̂| = 0.10 contre un plancher de 0.42. Les deux tiennent sous le plancher.</text>
   <text class="footer" x="24" y="339">Aucune taille d'effet minimale n'était pré-enregistrée : ce plancher ne tranche pas entre nul informatif et étude sous-dimensionnée.</text>
 </svg>
