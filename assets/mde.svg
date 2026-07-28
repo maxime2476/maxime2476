@@ -30,7 +30,7 @@
     @media (prefers-reduced-motion: reduce) { .beta, .blind, .blindln { animation: none; } }
   </style>
   <text class="title" x="24" y="36">Ce que ce design pouvait détecter</text>
-  <text class="footer" x="876" y="36" text-anchor="end">27/07/2026</text>
+  <text class="footer" x="876" y="36" text-anchor="end">28/07/2026</text>
   <text class="subtitle" x="24" y="54">causal-impact-lab. Enveloppe : effet minimum détectable à 80 % de puissance, seuil bilatéral 5 %.</text>
   <text class="subtitle" x="24" y="68">Calculé sur les écarts-types publiés dans headline_irf.csv. Trait plein : la réponse estimée β̂(h).</text>
   <polygon class="blind" points="74.0,131.7 106.9,140.2 139.8,147.6 172.8,151.5 205.7,150.9 238.6,149.6 271.5,142.9 304.4,121.5 337.3,132.3 370.2,110.2 403.2,127.1 436.1,135.9 469.0,140.5 501.9,131.5 534.8,129.7 567.8,100.6 600.7,127.9 633.6,127.5 666.5,133.5 699.4,134.8 732.3,131.9 765.2,131.1 798.2,133.2 831.1,128.2 864.0,124.8 864.0,219.2 831.1,215.8 798.2,210.8 765.2,212.9 732.3,212.1 699.4,209.2 666.5,210.5 633.6,216.5 600.7,216.1 567.8,243.4 534.8,214.3 501.9,212.5 469.0,203.5 436.1,208.1 403.2,216.9 370.2,233.8 337.3,211.7 304.4,222.5 271.5,201.1 238.6,194.4 205.7,193.1 172.8,192.5 139.8,196.4 106.9,203.8 74.0,212.3"/>
