@@ -37,7 +37,6 @@ Je contribue aux bibliothèques que j'utilise, surtout quand je tombe sur un bug
 | [aeon-toolkit#3424](https://github.com/aeon-toolkit/aeon/pull/3424) | Bug fix | `TimeSeriesKernelKMeans` mutait le paramètre `kernel` en place. Test de non-régression inclus. | Mergée |
 | [linearmodels#697](https://github.com/bashtage/linearmodels/pull/697) | Docs | Coquilles et clarifications dans les docstrings. | Mergée |
 | [ultralytics#24750](https://github.com/ultralytics/ultralytics/issues/24750) | Issue | Rapport et analyse de cause racine (`LoadPilAndNumpy._single_check`), correctif proposé avec un MRE de 4 lignes. | Corrigée |
-| [statsmodels#9891](https://github.com/statsmodels/statsmodels/issues/9891) | Issue | `describe()` plante sur un DataFrame vide, avec des symptômes différents selon le dtype. Deux approches proposées : échec explicite ou dégradation propre. | En revue |
 
 ## Les projets
 
