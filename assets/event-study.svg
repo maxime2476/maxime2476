@@ -29,7 +29,7 @@
     @media (prefers-reduced-motion: reduce) { .ci, .dot { animation: none; } }
   </style>
   <text class="title" x="24" y="36">La même méthode, retournée contre moi</text>
-  <text class="footer" x="876" y="36" text-anchor="end">01/08/2026</text>
+  <text class="footer" x="876" y="36" text-anchor="end">02/08/2026</text>
   <text class="subtitle" x="24" y="54">Étude d'événement sur mes contributions quotidiennes autour de mes 4 pull requests mergées en amont.</text>
   <text class="subtitle" x="24" y="68">Écart à la moyenne des 7 jours précédents. Barres : intervalles de Student à 95 %. Zone pâle : sous le plancher de détection.</text>
   <clipPath id="plot"><rect x="74.0" y="90.0" width="790.0" height="168.0"/></clipPath>
@@ -97,6 +97,6 @@
   <circle class="dot" cx="826.4" cy="192.8" r="2.8" style="animation-delay:0.60s"><title>h = +13 : -7.50 [-15.98, +0.98]</title></circle>
   <line class="ci" x1="864.0" y1="228.3" x2="864.0" y2="165.3" style="animation-delay:0.62s"/>
   <circle class="dot" cx="864.0" cy="196.8" r="2.8" style="animation-delay:0.62s"><title>h = +14 : -9.00 [-20.90, +2.90]</title></circle>
-  <text class="footer" x="24" y="328">n = 4 événements, 2 épisodes indépendants. Plancher 13.8 contributions/jour contre une moyenne de 1.1, soit 13 fois l'ordinaire.</text>
+  <text class="footer" x="24" y="328">n = 4 événements, 2 épisodes indépendants. Plancher 13.8 contributions/jour contre une moyenne de 1.1, soit 12 fois l'ordinaire.</text>
   <text class="footer" x="24" y="343">3/15 horizons hors intervalle, 0.8 attendu sous H0. Fenêtres non indépendantes (3 merges en 3 jours). Ne conclut rien, et c'est le propos.</text>
 </svg>
