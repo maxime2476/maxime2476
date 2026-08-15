@@ -29,7 +29,7 @@
     @media (prefers-reduced-motion: reduce) { .ci, .dot { animation: none; } }
   </style>
   <text class="title" x="24" y="36">La même méthode, retournée contre moi</text>
-  <text class="footer" x="876" y="36" text-anchor="end">14/08/2026</text>
+  <text class="footer" x="876" y="36" text-anchor="end">15/08/2026</text>
   <text class="subtitle" x="24" y="54">Étude d'événement sur mes contributions quotidiennes autour de mes 4 pull requests mergées en amont.</text>
   <text class="subtitle" x="24" y="68">Écart à la moyenne des 7 jours précédents. Barres : intervalles de Student à 95 %. Zone pâle : sous le plancher de détection.</text>
   <clipPath id="plot"><rect x="74.0" y="90.0" width="790.0" height="168.0"/></clipPath>
