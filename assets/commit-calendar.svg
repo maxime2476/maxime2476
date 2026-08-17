@@ -42,7 +42,7 @@
     }
   </style>
   <text class="title" x="24" y="36">Un an de commits, lu comme une série temporelle</text>
-  <text class="subtitle" x="24" y="54">476 contributions sur 365 jours. Les commits des robots de ce dépôt sont attribués à github-actions[bot] et n'entrent pas dans ce décompte.</text>
+  <text class="subtitle" x="24" y="54">478 contributions sur 366 jours. Les commits des robots de ce dépôt sont attribués à github-actions[bot] et n'entrent pas dans ce décompte.</text>
   <text class="tick" x="100.0" y="82.0">sept.</text>
   <text class="tick" x="156.0" y="82.0">oct.</text>
   <text class="tick" x="212.0" y="82.0">nov.</text>
@@ -422,7 +422,8 @@
   <rect class="cell l3" x="772.0" y="144.0" width="11.5" height="11.5" style="animation-delay:0.56s"><title>2026-08-13 : 6 contribution(s)</title></rect>
   <rect class="cell l0" x="772.0" y="158.0" width="11.5" height="11.5" style="animation-delay:0.56s"><title>2026-08-14 : 0 contribution(s)</title></rect>
   <rect class="cell l1" x="772.0" y="172.0" width="11.5" height="11.5" style="animation-delay:0.56s"><title>2026-08-15 : 1 contribution(s)</title></rect>
-  <rect class="cell l0" x="786.0" y="88.0" width="11.5" height="11.5" style="animation-delay:0.57s"><title>2026-08-16 : 0 contribution(s)</title></rect>
+  <rect class="cell l1" x="786.0" y="88.0" width="11.5" height="11.5" style="animation-delay:0.57s"><title>2026-08-16 : 2 contribution(s)</title></rect>
+  <rect class="cell l0" x="786.0" y="102.0" width="11.5" height="11.5" style="animation-delay:0.57s"><title>2026-08-17 : 0 contribution(s)</title></rect>
   <text class="tick" x="660.0" y="198.0">moins</text>
   <rect class="cell l0" x="690.0" y="189.0" width="11.5" height="11.5" style="animation-delay:0.6s"/>
   <rect class="cell l1" x="704.0" y="189.0" width="11.5" height="11.5" style="animation-delay:0.6s"/>
@@ -433,9 +434,9 @@
   <text class="panel" x="58.0" y="214.0">Profil hebdomadaire</text>
   <text class="subtitle" x="58.0" y="228.0">contributions moyennes par jour</text>
   <line class="axis" x1="58.0" y1="330.0" x2="364.0" y2="330.0"/>
-  <rect class="bar" x="61.0" y="302.7" width="37.7" height="27.3" rx="2" style="animation-delay:0.70s"><title>dim. : 0.72 par jour</title></rect>
+  <rect class="bar" x="61.0" y="301.3" width="37.7" height="28.7" rx="2" style="animation-delay:0.70s"><title>dim. : 0.75 par jour</title></rect>
   <text class="tick" x="79.9" y="343.0" text-anchor="middle">D</text>
-  <rect class="bar" x="104.7" y="307.3" width="37.7" height="22.7" rx="2" style="animation-delay:0.75s"><title>lun. : 0.60 par jour</title></rect>
+  <rect class="bar" x="104.7" y="307.7" width="37.7" height="22.3" rx="2" style="animation-delay:0.75s"><title>lun. : 0.58 par jour</title></rect>
   <text class="tick" x="123.6" y="343.0" text-anchor="middle">L</text>
   <rect class="bar" x="148.4" y="259.8" width="37.7" height="70.2" rx="2" style="animation-delay:0.80s"><title>mar. : 1.85 par jour</title></rect>
   <text class="tick" x="167.3" y="343.0" text-anchor="middle">M</text>
@@ -449,23 +450,23 @@
   <text class="tick" x="342.1" y="343.0" text-anchor="middle">S</text>
   <text class="panel" x="452.0" y="214.0">Autocorrélogramme</text>
   <text class="subtitle" x="452.0" y="228.0">retards de 1 à 21 jours, bandes à 95 %</text>
-  <rect class="band" x="452.0" y="284.7" width="366.0" height="62.6"/>
-  <line class="bandline" x1="452.0" y1="284.7" x2="818.0" y2="284.7"/>
+  <rect class="band" x="452.0" y="284.8" width="366.0" height="62.5"/>
+  <line class="bandline" x1="452.0" y1="284.8" x2="818.0" y2="284.8"/>
   <line class="axis" x1="452.0" y1="316.0" x2="818.0" y2="316.0"/>
-  <line class="stem" x1="460.0" y1="316.0" x2="460.0" y2="265.7" style="animation-delay:0.93s"><title>retard 1 : r = 0.165</title></line>
+  <line class="stem" x1="460.0" y1="316.0" x2="460.0" y2="265.8" style="animation-delay:0.93s"><title>retard 1 : r = 0.165</title></line>
   <text class="tick" x="460.0" y="329.0" text-anchor="middle">1</text>
-  <line class="stem" x1="477.0" y1="316.0" x2="477.0" y2="268.6" style="animation-delay:0.96s"><title>retard 2 : r = 0.155</title></line>
-  <line class="stem" x1="493.9" y1="316.0" x2="493.9" y2="296.5" style="animation-delay:0.99s"><title>retard 3 : r = 0.064</title></line>
-  <line class="stem" x1="510.9" y1="316.0" x2="510.9" y2="299.0" style="animation-delay:1.02s"><title>retard 4 : r = 0.056</title></line>
-  <line class="stem" x1="527.8" y1="316.0" x2="527.8" y2="304.5" style="animation-delay:1.05s"><title>retard 5 : r = 0.038</title></line>
-  <line class="stem" x1="544.8" y1="316.0" x2="544.8" y2="301.6" style="animation-delay:1.08s"><title>retard 6 : r = 0.047</title></line>
-  <line class="stem-hi" x1="561.7" y1="316.0" x2="561.7" y2="293.0" style="animation-delay:1.11s"><title>retard 7 : r = 0.075</title></line>
-  <circle class="tip" cx="561.7" cy="293.0" r="3.2"/>
-  <text class="tiplab" x="561.7" y="285.0" text-anchor="middle">semaine</text>
+  <line class="stem" x1="477.0" y1="316.0" x2="477.0" y2="268.7" style="animation-delay:0.96s"><title>retard 2 : r = 0.155</title></line>
+  <line class="stem" x1="493.9" y1="316.0" x2="493.9" y2="296.3" style="animation-delay:0.99s"><title>retard 3 : r = 0.065</title></line>
+  <line class="stem" x1="510.9" y1="316.0" x2="510.9" y2="297.9" style="animation-delay:1.02s"><title>retard 4 : r = 0.059</title></line>
+  <line class="stem" x1="527.8" y1="316.0" x2="527.8" y2="304.8" style="animation-delay:1.05s"><title>retard 5 : r = 0.037</title></line>
+  <line class="stem" x1="544.8" y1="316.0" x2="544.8" y2="301.9" style="animation-delay:1.08s"><title>retard 6 : r = 0.046</title></line>
+  <line class="stem-hi" x1="561.7" y1="316.0" x2="561.7" y2="292.6" style="animation-delay:1.11s"><title>retard 7 : r = 0.077</title></line>
+  <circle class="tip" cx="561.7" cy="292.6" r="3.2"/>
+  <text class="tiplab" x="561.7" y="284.6" text-anchor="middle">semaine</text>
   <text class="tick" x="561.7" y="329.0" text-anchor="middle">7</text>
-  <line class="stem" x1="578.7" y1="316.0" x2="578.7" y2="285.6" style="animation-delay:1.14s"><title>retard 8 : r = 0.100</title></line>
+  <line class="stem" x1="578.7" y1="316.0" x2="578.7" y2="285.9" style="animation-delay:1.14s"><title>retard 8 : r = 0.099</title></line>
   <line class="stem" x1="595.6" y1="316.0" x2="595.6" y2="309.0" style="animation-delay:1.17s"><title>retard 9 : r = 0.023</title></line>
-  <line class="stem" x1="612.6" y1="316.0" x2="612.6" y2="305.8" style="animation-delay:1.20s"><title>retard 10 : r = 0.033</title></line>
+  <line class="stem" x1="612.6" y1="316.0" x2="612.6" y2="305.7" style="animation-delay:1.20s"><title>retard 10 : r = 0.034</title></line>
   <line class="stem" x1="629.5" y1="316.0" x2="629.5" y2="299.0" style="animation-delay:1.23s"><title>retard 11 : r = 0.056</title></line>
   <line class="stem" x1="646.5" y1="316.0" x2="646.5" y2="288.8" style="animation-delay:1.26s"><title>retard 12 : r = 0.089</title></line>
   <line class="stem" x1="663.4" y1="316.0" x2="663.4" y2="310.5" style="animation-delay:1.29s"><title>retard 13 : r = 0.018</title></line>
@@ -474,11 +475,11 @@
   <line class="stem" x1="697.3" y1="316.0" x2="697.3" y2="314.2" style="animation-delay:1.35s"><title>retard 15 : r = 0.006</title></line>
   <line class="stem" x1="714.3" y1="316.0" x2="714.3" y2="255.2" style="animation-delay:1.38s"><title>retard 16 : r = 0.199</title></line>
   <line class="stem" x1="731.2" y1="316.0" x2="731.2" y2="298.0" style="animation-delay:1.41s"><title>retard 17 : r = 0.059</title></line>
-  <line class="stem" x1="748.2" y1="316.0" x2="748.2" y2="286.1" style="animation-delay:1.44s"><title>retard 18 : r = 0.098</title></line>
-  <line class="stem" x1="765.1" y1="316.0" x2="765.1" y2="282.6" style="animation-delay:1.47s"><title>retard 19 : r = 0.110</title></line>
+  <line class="stem" x1="748.2" y1="316.0" x2="748.2" y2="286.2" style="animation-delay:1.44s"><title>retard 18 : r = 0.098</title></line>
+  <line class="stem" x1="765.1" y1="316.0" x2="765.1" y2="282.5" style="animation-delay:1.47s"><title>retard 19 : r = 0.110</title></line>
   <line class="stem" x1="782.1" y1="316.0" x2="782.1" y2="289.4" style="animation-delay:1.50s"><title>retard 20 : r = 0.087</title></line>
-  <line class="stem" x1="799.0" y1="316.0" x2="799.0" y2="280.3" style="animation-delay:1.53s"><title>retard 21 : r = 0.117</title></line>
+  <line class="stem" x1="799.0" y1="316.0" x2="799.0" y2="280.0" style="animation-delay:1.53s"><title>retard 21 : r = 0.118</title></line>
   <text class="tick" x="799.0" y="329.0" text-anchor="middle">21</text>
   <text class="footer" x="24" y="370">ACF : 5/21 retards franchissent la bande, 1.1 attendu sous H0. Retard 7 : r = 0.08.</text>
-  <text class="footer" x="876" y="370" text-anchor="end">calculé le 16/08/2026</text>
+  <text class="footer" x="876" y="370" text-anchor="end">calculé le 17/08/2026</text>
 </svg>
