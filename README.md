@@ -17,9 +17,38 @@ passé beaucoup de temps sur les augmentations (flou, dérive colorimétrique de
 Albumentations) et sur l'automatisation de la préparation du dataset, ce qui a retiré six
 heures par cycle d'entraînement.
 
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="assets/pipeline-dark.svg">
+  <img alt="Pipeline de segmentation : 8 000 images de récifs coralliens, détection YOLO, masques SAM 3, 92 % de précision, avec préparation automatisée du dataset et augmentations ciblées." src="assets/pipeline-light.svg" width="900">
+</picture>
+
 À côté, je termine un M2 Économétrie et Statistiques à l'Université de Lille. Je cherche
 un CDI à partir de septembre 2026, à Paris ou en remote, sur la partie modèle : data
 scientist, ML engineer, AI engineer.
+
+## Une décision, écrite comme j'écris mes ADR
+
+Mes dépôts consignent leurs choix d'architecture dans des ADR datés, parce que dans six mois
+j'aurai oublié pourquoi j'ai écarté l'autre option. Autant appliquer le format à la décision
+qu'on me demande d'expliquer à chaque entretien.
+
+> **ADR-0000 : quitter la finance pour la data science**
+>
+> - Statut : accepté
+> - Date : septembre 2024
+>
+> **Contexte.** Licence d'économie à Rouen, puis un M1 de finance et ingénierie financière à
+> l'IAE Saint-Étienne. Bonne formation au risque et à la modélisation, mais la partie du travail
+> que je voulais faire était l'estimation elle-même, pas la salle de marché.
+>
+> **Décision.** Basculer sur le master Économétrie et Statistiques de Lille, et rattraper la
+> programmation par les projets plutôt que par les cours : un dépôt public à chaque nouvelle
+> famille de méthodes, mis en production jusqu'au bout.
+>
+> **Conséquences.**
+> - Je code depuis moins longtemps qu'un profil sorti d'école d'ingénieur, et ça se voit sur les sujets d'infrastructure.
+> - En échange je lis un papier d'économétrie appliquée sans traducteur, je repère un biais de sélection avant de lancer le modèle, et je sais reconnaître un résultat qui ne vaut rien.
+> - Décision non révisée depuis. Le stage de vision par ordinateur chez Aubay a confirmé le point : ce qui m'intéresse est la construction du modèle.
 
 ## Quatre projets qui disent comment je travaille
 
@@ -80,6 +109,23 @@ pipeline TF-IDF et K-Means sur 40 conférences de presse du FOMC, qui relie le t
 dovish de la Fed aux rendements boursiers à trente jours. C'est plus ancien, mais c'est là que
 j'ai commencé à faire du NLP sérieusement.
 
+## Trois façons de vérifier ce que je raconte
+
+Plutôt que d'être cru sur parole, voici comment ouvrir le capot, selon le temps disponible.
+
+`3 min` &nbsp; Les deux applications tournent en ligne, rien à installer :
+[le simulateur BMW](https://maxime2476-bmw-sales-analytics.hf.space) et
+[causal-impact-lab](https://huggingface.co/spaces/maxime2476/causal-impact-lab).
+
+`20 min` &nbsp; Lire deux fichiers. [Les résultats de causal-impact-lab](https://github.com/maxime2476/causal-impact-lab/blob/main/docs/results.md)
+annoncent le verdict, ses caveats et la limite de couverture des données, dans cet ordre.
+[Le rapport de capacité prédictive de BMW](https://github.com/maxime2476/bmw-sales-analytics/blob/main/reports/predictive_capability.md)
+explique pourquoi le modèle n'était pas déployable et ce que j'ai livré à la place.
+
+`1 h` &nbsp; Cloner `causal-impact-lab`, puis `uv sync --all-extras`, `uv run pytest`,
+`uv run ruff check .` et `uv run mypy`. Ce sont exactement les portes de qualité qui tournent en
+CI à chaque push, elles doivent passer sur votre machine aussi.
+
 ## Ma façon de faire, en quatre lignes
 
 - J'écris la question et ce qui la ferait échouer avant de lancer la première régression, sinon on finit toujours par trouver ce qu'on cherchait.
@@ -119,5 +165,7 @@ autour de 1200 ELO.
 <sub>Les illustrations de cette page sont des SVG animés écrits pour ce profil, pas des badges
 générés : la courbe du haut est une vraie courbe de survie (bande de confiance, marques de
 censure, médiane), et la fonction de réponse plus haut est tracée depuis les résultats réels de
-<a href="https://github.com/maxime2476/causal-impact-lab">causal-impact-lab</a>. Le GIF est un
-enregistrement du tableau de bord, pas une maquette.</sub>
+<a href="https://github.com/maxime2476/causal-impact-lab">causal-impact-lab</a>, recopiés dans
+<code>data/headline_irf.csv</code>. Le GIF est un enregistrement du tableau de bord, pas une
+maquette. Tout se régénère avec <code>python tools/render_assets.py</code> : si un chiffre bouge,
+l'image bouge avec lui.</sub>
