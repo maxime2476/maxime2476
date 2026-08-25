@@ -302,9 +302,85 @@ def pipeline(p):
             + "</svg>\n")
 
 
+# --------------------------------------------------------------------------- #
+# 5. Carte des methodes (trois colonnes assumees)
+# --------------------------------------------------------------------------- #
+COLUMNS = [
+    ("LIVR&#201; ET EN SERVICE",
+     "d&#233;ploy&#233; publiquement, ou tourn&#233; dans le",
+     "pipeline du stage",
+     ["YOLO + SAM 3", "Albumentations", "XGBoost", "SHAP", "lifelines",
+      "statsmodels", "projections locales", "MediaPipe + OpenCV", "DuckDB",
+      "Streamlit", "Docker", "GitHub Actions", "pytest + mypy"]),
+    ("UTILIS&#201; EN PROJET",
+     "travail s&#233;rieux, m&#233;moire ou projet public,",
+     "jamais mis en service",
+     ["PyTorch", "double machine learning", "LP bay&#233;sienne", "TF-IDF + K-Means",
+      "DEA &amp; Simar-Wilson", "bootstrap non gaussien", "MLflow", "R", "SAS",
+      "SQL", "Power BI"]),
+    ("LU, PAS ENCORE LIVR&#201;",
+     "je sais de quoi il s'agit et ce que &#231;a co&#251;te,",
+     "je ne l'ai pas encore fait tourner",
+     ["d&#233;ploiement manag&#233; AWS", "monitoring en production",
+      "agents LLM en production"]),
+]
+
+
+def methods(p):
+    xs = (44, 326, 608)
+    colw = 248
+    top = 46
+    body = []
+    rows_max = max(len(c[3]) for c in COLUMNS)
+    i = 0
+    for ci, (title, crit1, crit2, items) in enumerate(COLUMNS):
+        x = xs[ci]
+        col = p["accent"] if ci == 0 else (p["ink"] if ci == 1 else p["muted"])
+        body.append(
+            f'<text x="{x}" y="{top}" font-family="{MONO}" font-size="10.5" '
+            f'letter-spacing="1.5" fill="{col}">{title}</text>'
+            f'<text x="{x}" y="{top + 18}" font-family="{SANS}" font-size="10.5" '
+            f'fill="{p["muted"]}">{crit1}</text>'
+            f'<text x="{x}" y="{top + 31}" font-family="{SANS}" font-size="10.5" '
+            f'fill="{p["muted"]}">{crit2}</text>'
+            f'<line x1="{x}" y1="{top + 46}" x2="{x + colw}" y2="{top + 46}" '
+            f'stroke="{p["border"]}" stroke-width="1"/>')
+        y = top + 64
+        for it in items:
+            plain = it.replace("&#201;", "E").replace("&#233;", "e").replace("&amp;", "&")
+            plain = plain.replace("&#232;", "e").replace("&#231;", "c").replace("&#251;", "u")
+            w = round(6.65 * len(plain)) + 22
+            b = round(0.2 + i * 0.04, 2)
+            fill = p["chip"] if ci < 2 else p["bg"]
+            dash = ' stroke-dasharray="4 3"' if ci == 2 else ""
+            body.append(
+                f'<g transform="translate(0 0)">{rise(b, 7, 0.45)}'
+                f'<rect x="{x}" y="{y}" width="{w}" height="26" rx="7" fill="{fill}" '
+                f'stroke="{p["border"]}"{dash}/>'
+                f'<text x="{x + 11}" y="{y + 17.5}" font-family="{MONO}" font-size="11" '
+                f'fill="{p["ink"] if ci < 2 else p["muted"]}">{it}</text></g>')
+            y += 32
+            i += 1
+    h = top + 64 + rows_max * 32 + 42
+    body.append(
+        f'<text x="44" y="{h - 18}" font-family="{MONO}" font-size="9.5" '
+        f'fill="{p["muted"]}">classement fait sur pi&#232;ces : d&#233;p&#244;ts publics, '
+        f'applications en ligne, pipeline du stage</text>')
+    seps = "".join(
+        f'<line x1="{x}" y1="{top - 16}" x2="{x}" y2="{h - 20}" stroke="{p["border"]}" '
+        f'stroke-width="1" opacity="0.6"/>' for x in (302, 584))
+    head = (f'<svg xmlns="http://www.w3.org/2000/svg" width="900" height="{h}" '
+            f'viewBox="0 0 900 {h}" role="img" aria-label="Carte des methodes : livre et en '
+            f'service, utilise en projet, lu pas encore livre">')
+    return (head
+            + f'<rect x="0.5" y="0.5" width="899" height="{h - 1}" rx="14" fill="{p["bg"]}" '
+              f'stroke="{p["border"]}"/>'
+            + seps + "".join(body) + "</svg>\n")
+
+
 for mode, pal in PALETTES.items():
     (OUT / f"header-{mode}.svg").write_text(header(pal), encoding="utf-8")
-    (OUT / f"stack-{mode}.svg").write_text(stack(pal), encoding="utf-8")
+    (OUT / f"methods-{mode}.svg").write_text(methods(pal), encoding="utf-8")
     (OUT / f"irf-{mode}.svg").write_text(irf(pal), encoding="utf-8")
     (OUT / f"pipeline-{mode}.svg").write_text(pipeline(pal), encoding="utf-8")
 print("ok", sorted(f.name for f in OUT.iterdir()))

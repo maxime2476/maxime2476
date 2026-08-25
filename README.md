@@ -126,6 +126,15 @@ explique pourquoi le modèle n'était pas déployable et ce que j'ai livré à l
 `uv run ruff check .` et `uv run mypy`. Ce sont exactement les portes de qualité qui tournent en
 CI à chaque push, elles doivent passer sur votre machine aussi.
 
+## Trois notes
+
+Un modèle se défend à l'écrit autant qu'au tableau blanc. Trois textes courts, tirés de choses
+que j'ai réellement eues à trancher.
+
+- [Ce que la censure change quand on mesure un abandon](notes/01-censure-et-abandon.md) &nbsp;·&nbsp; pourquoi compter les inactifs récents comme des partants fabrique une épidémie d'abandons à la fin de chaque fenêtre d'observation, et ce que ça donne en code.
+- [Un dataset peut être impeccable et ne rien contenir](notes/02-un-dataset-propre-et-vide.md) &nbsp;·&nbsp; comment prouver l'absence de signal au lieu de la soupçonner : contrôle positif, test de permutation, uniformité, fuite de cible.
+- [Ce qui casse quand on segmente sous l'eau](notes/03-segmenter-sous-l-eau.md) &nbsp;·&nbsp; l'eau absorbe le rouge, la rotation et la symétrie ne protègent de rien, et le gain le plus rentable n'était pas dans le modèle.
+
 ## Ma façon de faire, en quatre lignes
 
 - J'écris la question et ce qui la ferait échouer avant de lancer la première régression, sinon on finit toujours par trouver ce qu'on cherchait.
@@ -133,14 +142,16 @@ CI à chaque push, elles doivent passer sur votre machine aussi.
 - Un modèle qui ne tourne que dans mon notebook ne compte pas. Docker, tests, CI et suivi d'expériences font partie du travail, pas de la finition.
 - Les choix d'architecture sont datés et justifiés dans des ADR, parce que dans six mois j'aurai oublié pourquoi j'ai écarté l'autre option.
 
-## Les outils
+## Les méthodes, rangées par ce que j'en ai vraiment fait
 
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="assets/stack-dark.svg">
-  <img alt="Modèles : PyTorch, scikit-learn, XGBoost, LightGBM, YOLO, SAM, MediaPipe, lifelines, statsmodels, SHAP. Données : Python, SQL, R, pandas, NumPy, DuckDB, Plotly, Bash, SAS. Mise en prod : Docker, GitHub Actions, MLflow, pytest, ruff, mypy, uv, Streamlit, Hugging Face Spaces, Power BI." src="assets/stack-light.svg" width="900">
+  <source media="(prefers-color-scheme: dark)" srcset="assets/methods-dark.svg">
+  <img alt="Carte des méthodes en trois colonnes. Livré et en service : YOLO et SAM 3, Albumentations, XGBoost, SHAP, lifelines, statsmodels, projections locales, MediaPipe et OpenCV, DuckDB, Streamlit, Docker, GitHub Actions, pytest et mypy. Utilisé en projet : PyTorch, double machine learning, LP bayésienne, TF-IDF et K-Means, DEA et Simar-Wilson, bootstrap non gaussien, MLflow, R, SAS, SQL, Power BI. Lu, pas encore livré : déploiement managé AWS, monitoring en production, agents LLM en production." src="assets/methods-light.svg" width="900">
 </picture>
 
-Ce que j'utilise vraiment, pas la liste de tout ce que j'ai croisé une fois.
+Une barre de compétence à 90 % ne veut rien dire, alors voici les trois seuls niveaux que je sais
+défendre en entretien. La troisième colonne est courte et elle est exacte : ce sont les sujets où
+je peux tenir une conversation et pas encore une mise en production.
 
 ## Ce que je ne sais pas encore
 
@@ -160,7 +171,12 @@ autour de 1200 ELO.
 
 ## Me joindre
 
-[LinkedIn](https://www.linkedin.com/in/maximegourguechon/) · [maximeg2408@gmail.com](mailto:maximeg2408@gmail.com)
+[LinkedIn](https://www.linkedin.com/in/maximegourguechon/) ·
+[maximeg2408@gmail.com](mailto:maximeg2408@gmail.com) ·
+[CV en PDF](https://github.com/maxime2476/cv/releases/latest/download/CV_Maxime_Gourguechon.pdf)
+
+<sub>Le CV est compilé par GitHub Actions depuis [son source LaTeX](https://github.com/maxime2476/cv)
+à chaque modification, donc ce lien pointe toujours vers la version courante.</sub>
 
 <sub>Les illustrations de cette page sont des SVG animés écrits pour ce profil, pas des badges
 générés : la courbe du haut est une vraie courbe de survie (bande de confiance, marques de
