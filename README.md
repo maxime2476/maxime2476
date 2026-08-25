@@ -35,6 +35,15 @@ première page. C'est le résultat dont je suis le plus fier, et c'est celui qui
 « marché ».
 <br><sub>`statsmodels` · `double ML` · `inférence bayésienne` · `pytest` · `mypy --strict` · `Docker` · [démo](https://huggingface.co/spaces/maxime2476/causal-impact-lab)</sub>
 
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="assets/irf-dark.svg">
+  <img alt="Fonction de réponse estimée : effet relatif d'un choc monétaire restrictif sur l'emploi, panel QCEW 1994-2020, intervalle de confiance à 95 % couvrant zéro à tous les horizons de décision." src="assets/irf-light.svg" width="900">
+</picture>
+
+<sub>La figure est tracée depuis `app/assets/headline_irf.csv` du dépôt, sans retouche. C'est
+exactement ce que la bande de confiance doit montrer quand un résultat est nul : le signe est
+là, la précision ne suit pas.</sub>
+
 **[git-survival](https://github.com/maxime2476/git-survival)** &nbsp;·&nbsp; de l'analyse de
 survie appliquée aux historiques Git, pour estimer quand un contributeur décroche. Les mêmes
 outils qu'en épidémiologie, sauf que le « décès » est un dernier commit, et que la censure
@@ -52,6 +61,11 @@ de livrer un modèle décoratif, j'ai documenté l'absence de signal et réorien
 un simulateur de scénarios avec intervalles de crédibilité. Le reste est de la plomberie
 assumée : tests, couverture, images multi-étapes, CI, docs publiées.
 <br><sub>`XGBoost` · `SHAP` · `DuckDB` · `MLflow` · `Docker` · `GitHub Actions` · [démo](https://maxime2476-bmw-sales-analytics.hf.space)</sub>
+
+<a href="https://maxime2476-bmw-sales-analytics.hf.space"><img alt="Aperçu animé du tableau de bord BMW Sales Analytics : vue exécutive, intégrité des données, économétrie, benchmark ML, explicabilité SHAP, simulateur de scénarios." src="assets/bmw-demo.gif" width="900"></a>
+
+<sub>Le tableau de bord en conditions réelles, de la vue exécutive au simulateur de scénarios.
+Cliquer ouvre la démo en ligne.</sub>
 
 **[heron](https://github.com/maxime2476/heron)** &nbsp;·&nbsp; « nommé d'après l'oiseau qui a une
 meilleure posture que toi ». Un moniteur de posture par webcam qui tourne en local, sans rien
@@ -102,6 +116,8 @@ autour de 1200 ELO.
 
 [LinkedIn](https://www.linkedin.com/in/maximegourguechon/) · [maximeg2408@gmail.com](mailto:maximeg2408@gmail.com)
 
-<sub>Les deux illustrations de cette page sont des SVG écrits pour ce profil, pas des badges
-générés. La courbe du haut est une vraie courbe de survie, avec sa bande de confiance, ses
-marques de censure et sa médiane, comme celles que sort <a href="https://github.com/maxime2476/git-survival">git-survival</a>.</sub>
+<sub>Les illustrations de cette page sont des SVG animés écrits pour ce profil, pas des badges
+générés : la courbe du haut est une vraie courbe de survie (bande de confiance, marques de
+censure, médiane), et la fonction de réponse plus haut est tracée depuis les résultats réels de
+<a href="https://github.com/maxime2476/causal-impact-lab">causal-impact-lab</a>. Le GIF est un
+enregistrement du tableau de bord, pas une maquette.</sub>
