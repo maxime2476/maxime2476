@@ -1,10 +1,14 @@
 # -*- coding: utf-8 -*-
-"""Genere les SVG animes du README (variantes claire et sombre).
+"""Genere les SVG du README, en variante claire et sombre.
 
 Usage : python tools/render_assets.py
 
-Regle: chaque element a comme attribut de base son etat FINAL, les animations
-partent d'un `from`. Un rendu qui ignore SMIL affiche donc la figure terminee.
+Deux regles tenues partout :
+
+1. L'etat de base d'un element est son etat FINAL. Les animations sont des
+   animations CSS qui partent d'un etat transitoire ; un rendu qui les ignore
+   affiche donc la figure terminee, jamais une page vide.
+2. Toute animation est desactivee sous `prefers-reduced-motion: reduce`.
 """
 import csv
 from pathlib import Path
@@ -15,36 +19,40 @@ IRF_CSV = ROOT / "data" / "headline_irf.csv"
 
 PALETTES = {
     "light": dict(bg="#FDFCFB", border="#E5E1DA", ink="#17181A", muted="#6B655E",
-                  accent="#C2410C", grid="#E9E4DC", chip="#FFFFFF", band="0.13", band2="0.18",
-                  ghost="#B9B2A9"),
-    "dark":  dict(bg="#0E1116", border="#222A33", ink="#E9EDF2", muted="#8B949E",
-                  accent="#F97316", grid="#1B222B", chip="#141A21", band="0.13", band2="0.14",
-                  ghost="#4C5561"),
+                  accent="#C2410C", grid="#E9E4DC", chip="#FFFFFF",
+                  band="0.13", band2="0.18", ghost="#B9B2A9"),
+    "dark": dict(bg="#0E1116", border="#222A33", ink="#E9EDF2", muted="#8B949E",
+                 accent="#F97316", grid="#1B222B", chip="#141A21",
+                 band="0.13", band2="0.14", ghost="#4C5561"),
 }
 
 MONO = "ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace"
 SANS = "-apple-system,BlinkMacSystemFont,'Segoe UI',Inter,Helvetica,Arial,sans-serif"
 
+STYLE = """<style>
+  .rise{animation:rise .55s cubic-bezier(.22,.61,.36,1) both}
+  .wipe{animation:wipe 1.3s cubic-bezier(.22,.61,.36,1) both}
+  .halo{animation:halo 2.6s ease-out .9s infinite}
+  .travel{animation:travel 5s linear infinite}
+  @keyframes rise{from{opacity:0;transform:translateY(9px)}to{opacity:1;transform:none}}
+  @keyframes wipe{from{clip-path:inset(0 100% 0 0)}to{clip-path:inset(0 0 0 0)}}
+  @keyframes halo{0%{r:3.6;opacity:.55}70%{r:13;opacity:0}100%{r:13;opacity:0}}
+  @keyframes travel{from{opacity:.85;transform:translateX(0)}to{opacity:.85;transform:translateX(812px)}}
+  @media (prefers-reduced-motion: reduce){
+    .rise,.wipe,.halo,.travel{animation:none}
+  }
+</style>"""
 
-def fade(begin, dur=0.5, frm="0"):
-    return (f'<animate attributeName="opacity" from="{frm}" to="1" '
-            f'begin="{begin}s" dur="{dur}s" fill="freeze"/>')
+
+def delay(seconds):
+    return f' style="animation-delay:{round(seconds, 2)}s"'
 
 
-def rise(begin, dy=10, dur=0.6):
-    return (f'<animateTransform attributeName="transform" type="translate" '
-            f'from="0 {dy}" to="0 0" begin="{begin}s" dur="{dur}s" fill="freeze"/>')
-
-
-def pulse(cx, cy, color):
-    """Halo qui bat en boucle autour du dernier point."""
+def marker(cx, cy, color):
+    """Point plein, entoure d'un halo qui bat en boucle."""
     return (f'<circle cx="{cx}" cy="{cy}" r="3.6" fill="{color}"/>'
-            f'<circle cx="{cx}" cy="{cy}" r="3.6" fill="none" stroke="{color}" '
-            f'stroke-width="1.4" opacity="0">'
-            f'<animate attributeName="r" from="3.6" to="12" dur="2.4s" '
-            f'begin="1.6s" repeatCount="indefinite"/>'
-            f'<animate attributeName="opacity" values="0;0.55;0" dur="2.4s" '
-            f'begin="1.6s" repeatCount="indefinite"/></circle>')
+            f'<circle class="halo" cx="{cx}" cy="{cy}" r="3.6" fill="none" '
+            f'stroke="{color}" stroke-width="1.4" opacity="0"/>')
 
 
 # --------------------------------------------------------------------------- #
@@ -60,40 +68,37 @@ TICKS = [(636, 83), (698, 104), (770, 127), (840, 148)]
 
 def header(p):
     ticks = "".join(
-        f'<line x1="{x}" y1="{y-5}" x2="{x}" y2="{y+5}" stroke="{p["accent"]}" '
+        f'<line x1="{x}" y1="{y - 5}" x2="{x}" y2="{y + 5}" stroke="{p["accent"]}" '
         f'stroke-width="1.4" stroke-linecap="round"/>' for x, y in TICKS)
+    lines = [
+        (f'<text x="44" y="70" font-family="{MONO}" font-size="11.5" letter-spacing="2.4" '
+         f'fill="{p["accent"]}">DATA SCIENTIST / ING&#201;NIEUR IA</text>', 0.05),
+        (f'<text x="44" y="119" font-size="38" font-weight="700" fill="{p["ink"]}">'
+         f'Maxime Gourguechon</text>', 0.14),
+        (f'<text x="44" y="149" font-size="15" fill="{p["muted"]}">Vision par ordinateur, '
+         f'NLP, inf&#233;rence causale.</text>', 0.24),
+        (f'<text x="44" y="180" font-size="13.5" fill="{p["muted"]}">M2 &#201;conom&#233;trie '
+         f'&amp; Statistiques (Lille) &#183; stage data science chez Aubay</text>', 0.32),
+        (f'<circle cx="48" cy="205" r="3.5" fill="{p["accent"]}"/>'
+         f'<text x="60" y="209" font-size="13.5" fill="{p["muted"]}">CDI &#224; partir de '
+         f'septembre 2026, Paris ou remote</text>', 0.4),
+    ]
+    txt = "".join(f'<g class="rise"{delay(d)}>{el}</g>' for el, d in lines)
     return f'''<svg xmlns="http://www.w3.org/2000/svg" width="900" height="250" viewBox="0 0 900 250" role="img" aria-label="Maxime Gourguechon, data scientist, vision par ordinateur, NLP, inference causale">
-  <defs>
-    <clipPath id="wipetxt">
-      <rect x="36" y="46" width="520" height="180">
-        <animate attributeName="width" from="0" to="520" begin="0.1s" dur="1.1s" fill="freeze"/>
-      </rect>
-    </clipPath>
-    <clipPath id="wipe">
-      <rect x="556" y="40" width="308" height="200">
-        <animate attributeName="width" from="0" to="308" begin="0.35s" dur="1.5s" fill="freeze" calcMode="spline" keySplines="0.22 0.61 0.36 1" keyTimes="0;1" values="0;308"/>
-      </rect>
-    </clipPath>
-  </defs>
+  {STYLE}
   <rect x="0.5" y="0.5" width="899" height="249" rx="14" fill="{p['bg']}" stroke="{p['border']}"/>
-  <g font-family="{SANS}" clip-path="url(#wipetxt)">
-    <text x="44" y="70" font-family="{MONO}" font-size="11.5" letter-spacing="2.4" fill="{p['accent']}">DATA SCIENTIST / ING&#201;NIEUR IA</text>
-    <text x="44" y="119" font-size="38" font-weight="700" fill="{p['ink']}">Maxime Gourguechon</text>
-    <text x="44" y="149" font-size="15" fill="{p['muted']}">Vision par ordinateur, NLP, inf&#233;rence causale.</text>
-    <text x="44" y="180" font-size="13.5" fill="{p['muted']}">M2 &#201;conom&#233;trie &amp; Statistiques (Lille) &#183; stage data science chez Aubay</text>
-    <circle cx="48" cy="205" r="3.5" fill="{p['accent']}"/><text x="60" y="209" font-size="13.5" fill="{p['muted']}">CDI &#224; partir de septembre 2026, Paris ou remote</text>
-  </g>
+  <g font-family="{SANS}">{txt}</g>
   <g>
     <line x1="560" y1="52" x2="560" y2="186" stroke="{p['grid']}" stroke-width="1.2"/>
     <line x1="560" y1="186" x2="860" y2="186" stroke="{p['grid']}" stroke-width="1.2"/>
-    <g clip-path="url(#wipe)">
+    <g class="wipe" style="animation-delay:.25s">
       <path d="{BAND}" fill="{p['accent']}" fill-opacity="{p['band']}"/>
       <line x1="560" y1="124" x2="752" y2="124" stroke="{p['muted']}" stroke-width="1" stroke-dasharray="3 4" opacity="0.75"/>
       <line x1="752" y1="124" x2="752" y2="186" stroke="{p['muted']}" stroke-width="1" stroke-dasharray="3 4" opacity="0.75"/>
       <path d="{CURVE}" fill="none" stroke="{p['accent']}" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round"/>
       {ticks}
     </g>
-    {pulse(856, 148, p['accent'])}
+    {marker(856, 148, p['accent'])}
     <g font-family="{MONO}" font-size="10" fill="{p['muted']}" text-anchor="end">
       <text x="551" y="66">1.0</text>
       <text x="551" y="128">0.5</text>
@@ -108,49 +113,61 @@ def header(p):
 
 
 # --------------------------------------------------------------------------- #
-# 2. Outils
+# 2. Schema du pipeline
 # --------------------------------------------------------------------------- #
-GROUPS = [
-    ("MOD&#200;LES", ["PyTorch", "scikit-learn", "XGBoost", "LightGBM", "YOLO", "SAM",
-                      "MediaPipe", "lifelines", "statsmodels", "SHAP"]),
-    ("DONN&#201;ES", ["Python", "SQL", "R", "pandas", "NumPy", "DuckDB", "Plotly",
-                      "Bash", "SAS"]),
-    ("MISE EN PROD", ["Docker", "GitHub Actions", "MLflow", "pytest", "ruff",
-                      "mypy", "uv", "Streamlit", "Hugging Face Spaces", "Power BI"]),
+NODES = [
+    (44, 186, "8 000 images", "r&#233;cifs coralliens", False),
+    (270, 160, "YOLO", "d&#233;tection", False),
+    (470, 160, "SAM 3", "masques", False),
+    (670, 186, "92 %", "de pr&#233;cision", True),
 ]
 
 
-def stack(p):
-    x0, right, chip_h, gap = 176, 862, 27, 8
-    y, i = 40, 0
-    body = []
-    for gi, (label, items) in enumerate(GROUPS):
-        body.append(f'<text x="44" y="{y + 18}" font-family="{MONO}" font-size="11" '
-                    f'letter-spacing="1.6" fill="{p["accent"]}">{label}</text>')
-        x = x0
-        for it in items:
-            w = round(6.65 * len(it)) + 24
-            if x + w > right:
-                x, y = x0, y + chip_h + gap
-            b = round(0.25 + i * 0.045, 2)
-            body.append(
-                f'<g transform="translate(0 0)">{rise(b, 7, 0.45)}'
-                f'<rect x="{x}" y="{y}" width="{w}" height="{chip_h}" rx="7" '
-                f'fill="{p["chip"]}" stroke="{p["border"]}"/>'
-                f'<text x="{x + 12}" y="{y + 18}" font-family="{MONO}" font-size="11.5" '
-                f'fill="{p["ink"]}">{it}</text></g>')
-            x += w + gap
-            i += 1
-        y += chip_h + 26
-    h = y + 8
-    return (f'<svg xmlns="http://www.w3.org/2000/svg" width="900" height="{h}" '
-            f'viewBox="0 0 900 {h}" role="img" aria-label="Outils utilis&#233;s">'
-            f'<rect x="0.5" y="0.5" width="899" height="{h-1}" rx="14" '
-            f'fill="{p["bg"]}" stroke="{p["border"]}"/>' + "".join(body) + "</svg>\n")
+def pipeline(p):
+    boxes = []
+    for k, (x, w, title, sub, hi) in enumerate(NODES):
+        stroke = p["accent"] if hi else p["border"]
+        ink = p["accent"] if hi else p["ink"]
+        boxes.append(
+            f'<g class="rise"{delay(0.12 + 0.16 * k)}>'
+            f'<rect x="{x}" y="78" width="{w}" height="60" rx="10" fill="{p["chip"]}" '
+            f'stroke="{stroke}" stroke-width="{1.6 if hi else 1}"/>'
+            f'<text x="{x + w / 2}" y="{108 if hi else 106}" font-family="{SANS}" '
+            f'font-size="{22 if hi else 15}" font-weight="600" fill="{ink}" '
+            f'text-anchor="middle">{title}</text>'
+            f'<text x="{x + w / 2}" y="124" font-family="{MONO}" font-size="10" '
+            f'fill="{p["muted"]}" text-anchor="middle">{sub}</text></g>')
+    arrows = "".join(
+        f'<line x1="{x}" y1="108" x2="{x + 30}" y2="108" stroke="{p["muted"]}" '
+        f'stroke-width="1.4"/>'
+        f'<path d="M{x + 30},108 L{x + 24},104.5 L{x + 24},111.5 Z" fill="{p["muted"]}"/>'
+        for x in (230, 430, 630))
+    brackets = "".join(
+        f'<path d="M{a},150 V157 H{b} V150" fill="none" stroke="{p["grid"]}" '
+        f'stroke-width="1.4"/>' for a, b in ((44, 230), (270, 630)))
+    notes = "".join(
+        f'<text x="{x}" y="{y}" font-family="{MONO}" font-size="10" fill="{p["muted"]}" '
+        f'text-anchor="middle">{t}</text>'
+        for x, y, t in (
+            (137, 174, "pr&#233;paration des donn&#233;es"),
+            (137, 188, "automatis&#233;e : 6 h de moins par cycle"),
+            (450, 174, "d&#233;fauts ajout&#233;s pendant l&#8217;entra&#238;nement :"),
+            (450, 188, "flou et dominante bleu-vert de l&#8217;eau")))
+    # point qui circule le long de la chaine, masque par les boites
+    # opacite de base nulle : sans animation, pas de point orphelin sur la 1re boite
+    packet = (f'<circle class="travel" cx="44" cy="108" r="3.2" fill="{p["accent"]}" '
+              f'opacity="0"/>')
+    return f'''<svg xmlns="http://www.w3.org/2000/svg" width="900" height="212" viewBox="0 0 900 212" role="img" aria-label="Pipeline de segmentation : 8000 images de recifs, YOLO, SAM 3, 92 pour cent de precision">
+  {STYLE}
+  <rect x="0.5" y="0.5" width="899" height="211" rx="14" fill="{p['bg']}" stroke="{p['border']}"/>
+  <text x="44" y="46" font-family="{MONO}" font-size="11" letter-spacing="1.8" fill="{p['accent']}">STAGE AUBAY &#183; SEGMENTATION DE R&#201;CIFS CORALLIENS</text>
+  {packet}{arrows}{"".join(boxes)}{brackets}{notes}
+</svg>
+'''
 
 
 # --------------------------------------------------------------------------- #
-# 3. Fonction de reponse (donnees reelles de causal-impact-lab)
+# 3. Effet estime (donnees reelles de causal-impact-lab)
 # --------------------------------------------------------------------------- #
 def load_irf():
     rows = []
@@ -176,9 +193,9 @@ def irf(p):
     post = [r for r in rows if r[0] >= 0]
 
     def band(seg):
-        up = " ".join(f"{X(h)},{Y(hi)}" for h, _, _, hi in seg)
-        lo = " ".join(f"{X(h)},{Y(lo_)}" for h, _, lo_, _ in reversed(seg))
-        return f"M{up} L{lo} Z".replace("M", "M ").replace("L", "L ")
+        up = " L ".join(f"{X(h)},{Y(hi)}" for h, _, _, hi in seg)
+        lo = " L ".join(f"{X(h)},{Y(low)}" for h, _, low, _ in reversed(seg))
+        return f"M {up} L {lo} Z"
 
     def line(seg):
         return "M " + " L ".join(f"{X(h)},{Y(b)}" for h, b, _, _ in seg)
@@ -189,38 +206,34 @@ def irf(p):
         f'<text x="{x0 - 10}" y="{Y(v) + 3.5}" font-family="{MONO}" font-size="10" '
         f'fill="{p["muted"]}" text-anchor="end">{v:+.2f}</text>'
         for v in (0.10, 0.05, -0.05, -0.10, -0.15))
-
     xticks = "".join(
         f'<text x="{X(h)}" y="{ybot + 20}" font-family="{MONO}" font-size="10" '
-        f'fill="{p["muted"]}" text-anchor="middle">{h:+d}</text>' for h in (-6, 0, 6, 12, 18, 24))
+        f'fill="{p["muted"]}" text-anchor="middle">{h:+d}</text>'
+        for h in (-6, 0, 6, 12, 18, 24))
 
-    fr = lambda v: f"{v:.3f}".replace(".", ",")
+    def fr(v):
+        return f"{v:.3f}".replace(".", ",")
+
     b12 = next(r for r in rows if r[0] == 12)
     ax, ay = X(12), Y(b12[1])
-    return f'''<svg xmlns="http://www.w3.org/2000/svg" width="900" height="340" viewBox="0 0 900 340" role="img" aria-label="Fonction de reponse estimee de l'emploi relatif a un choc monetaire restrictif">
-  <defs>
-    <clipPath id="irfwipe">
-      <rect x="{x0 - 2}" y="{ytop - 12}" width="{x1 - x0 + 6}" height="{ybot - ytop + 24}">
-        <animate attributeName="width" from="0" to="{x1 - x0 + 6}" begin="0.3s" dur="1.7s" fill="freeze"/>
-      </rect>
-    </clipPath>
-  </defs>
+    return f'''<svg xmlns="http://www.w3.org/2000/svg" width="900" height="340" viewBox="0 0 900 340" role="img" aria-label="Effet estime d'une hausse des taux sur l'emploi, avec une marge d'erreur qui contient zero">
+  {STYLE}
   <rect x="0.5" y="0.5" width="899" height="339" rx="14" fill="{p['bg']}" stroke="{p['border']}"/>
-  <text x="44" y="34" font-family="{SANS}" font-size="15" font-weight="600" fill="{p['ink']}">Effet d'une hausse des taux d'int&#233;r&#234;t sur l'emploi</text>
-  <text x="44" y="52" font-family="{SANS}" font-size="12" fill="{p['muted']}">Emploi am&#233;ricain, 1994-2020. L'effet va dans le sens attendu, mais la marge d'erreur contient toujours z&#233;ro.</text>
+  <text x="44" y="34" font-family="{SANS}" font-size="15" font-weight="600" fill="{p['ink']}">Effet d&#8217;une hausse des taux d&#8217;int&#233;r&#234;t sur l&#8217;emploi</text>
+  <text x="44" y="52" font-family="{SANS}" font-size="12" fill="{p['muted']}">Emploi am&#233;ricain, 1994-2020. L&#8217;effet va dans le sens attendu, mais la marge d&#8217;erreur contient toujours z&#233;ro.</text>
   {grid}
   <line x1="{x0}" y1="{Y(0)}" x2="{x1}" y2="{Y(0)}" stroke="{p['muted']}" stroke-width="1.2" opacity="0.55"/>
   <text x="{x0 - 10}" y="{Y(0) + 3.5}" font-family="{MONO}" font-size="10" fill="{p['muted']}" text-anchor="end">0</text>
   <line x1="{X(0)}" y1="{ytop - 6}" x2="{X(0)}" y2="{ybot + 4}" stroke="{p['muted']}" stroke-width="1" stroke-dasharray="3 4" opacity="0.7"/>
   <text x="{X(0) + 6}" y="{ytop + 2}" font-family="{MONO}" font-size="10" fill="{p['muted']}">hausse des taux</text>
-  <g clip-path="url(#irfwipe)">
+  <g class="wipe" style="animation-delay:.2s">
     <path d="{band(pre)}" fill="{p['ghost']}" fill-opacity="0.20"/>
     <path d="{line(pre)}" fill="none" stroke="{p['ghost']}" stroke-width="1.8" stroke-dasharray="4 3"/>
     <path d="{band(post)}" fill="{p['accent']}" fill-opacity="{p['band2']}"/>
     <path d="{line(post)}" fill="none" stroke="{p['accent']}" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"/>
   </g>
-  <g>
-    {pulse(ax, ay, p['accent'])}
+  <g class="rise" style="animation-delay:1.35s">
+    {marker(ax, ay, p['accent'])}
     <line x1="{ax}" y1="{ay - 8}" x2="{ax}" y2="{ay - 38}" stroke="{p['muted']}" stroke-width="1"/>
     <text x="{ax - 6}" y="{ay - 44}" font-family="{MONO}" font-size="10.5" fill="{p['ink']}" text-anchor="middle">12 mois : {fr(b12[1])}</text>
     <text x="{ax - 6}" y="{ay - 31}" font-family="{MONO}" font-size="9.5" fill="{p['muted']}" text-anchor="middle">marge d&#8217;erreur : {fr(b12[2])} &#224; {fr(b12[3])}</text>
@@ -231,7 +244,7 @@ def irf(p):
     <line x1="44" y1="{ybot + 62}" x2="70" y2="{ybot + 62}" stroke="{p['accent']}" stroke-width="2.4"/>
     <text x="76" y="{ybot + 65.5}">effet estim&#233;</text>
     <rect x="216" y="{ybot + 57}" width="26" height="10" fill="{p['accent']}" fill-opacity="{p['band2']}"/>
-    <text x="248" y="{ybot + 65.5}">marge d'erreur (95 %)</text>
+    <text x="248" y="{ybot + 65.5}">marge d&#8217;erreur (95 %)</text>
     <line x1="470" y1="{ybot + 62}" x2="496" y2="{ybot + 62}" stroke="{p['ghost']}" stroke-width="1.8" stroke-dasharray="4 3"/>
     <text x="502" y="{ybot + 65.5}">avant la hausse</text>
     <text x="{x1}" y="{ybot + 65.5}" text-anchor="end">source : causal-impact-lab</text>
@@ -241,70 +254,7 @@ def irf(p):
 
 
 # --------------------------------------------------------------------------- #
-# 4. Pipeline du stage (schema)
-# --------------------------------------------------------------------------- #
-NODES = [
-    (44, 186, "8 000 images", "r&#233;cifs coralliens", False),
-    (270, 160, "YOLO", "d&#233;tection", False),
-    (470, 160, "SAM 3", "masques", False),
-    (670, 186, "92 %", "de pr&#233;cision", True),
-]
-
-
-def arrow(x, p):
-    return (f'<line x1="{x}" y1="108" x2="{x + 30}" y2="108" stroke="{p["muted"]}" '
-            f'stroke-width="1.4"/>'
-            f'<path d="M{x + 30},108 L{x + 24},104.5 L{x + 24},111.5 Z" fill="{p["muted"]}"/>')
-
-
-def bracket(x1, x2, p):
-    return (f'<path d="M{x1},150 V157 H{x2} V150" fill="none" stroke="{p["grid"]}" '
-            f'stroke-width="1.4"/>')
-
-
-def pipeline(p):
-    boxes = []
-    for k, (x, w, title, sub, hi) in enumerate(NODES):
-        stroke = p["accent"] if hi else p["border"]
-        ink = p["accent"] if hi else p["ink"]
-        size = 22 if hi else 15
-        boxes.append(
-            f'<g transform="translate(0 0)">{rise(round(0.15 + 0.18 * k, 2), 9, 0.5)}'
-            f'<rect x="{x}" y="78" width="{w}" height="60" rx="10" fill="{p["chip"]}" '
-            f'stroke="{stroke}" stroke-width="{1.6 if hi else 1}"/>'
-            f'<text x="{x + w / 2}" y="{108 if hi else 106}" font-family="{SANS}" '
-            f'font-size="{size}" font-weight="600" fill="{ink}" text-anchor="middle">{title}</text>'
-            f'<text x="{x + w / 2}" y="124" font-family="{MONO}" font-size="10" '
-            f'fill="{p["muted"]}" text-anchor="middle">{sub}</text></g>')
-    arrows = "".join(arrow(x, p) for x in (230, 430, 630))
-    # opacite de base a 0 : sans SMIL, pas de point orphelin dans le coin
-    packet = (f'<circle r="3.2" fill="{p["accent"]}" opacity="0">'
-              f'<animate attributeName="opacity" values="0.9;0.9" dur="5s" repeatCount="indefinite"/>'
-              f'<animateMotion path="M44,108 H856" dur="5s" repeatCount="indefinite"/>'
-              f'</circle>')
-    head = ('<svg xmlns="http://www.w3.org/2000/svg" width="900" height="212" '
-            'viewBox="0 0 900 212" role="img" aria-label="Pipeline de segmentation : '
-            '8000 images de recifs, YOLO, SAM 3, 92 pour cent de precision">')
-    return (head
-            + f'<rect x="0.5" y="0.5" width="899" height="211" rx="14" fill="{p["bg"]}" '
-              f'stroke="{p["border"]}"/>'
-            + f'<text x="44" y="46" font-family="{MONO}" font-size="11" letter-spacing="1.8" '
-              f'fill="{p["accent"]}">STAGE AUBAY &#183; SEGMENTATION DE R&#201;CIFS CORALLIENS</text>'
-            + packet + arrows + "".join(boxes)
-            + bracket(44, 230, p) + bracket(270, 630, p)
-            + f'<text x="137" y="174" font-family="{MONO}" font-size="10" fill="{p["muted"]}" '
-              f'text-anchor="middle">pr&#233;paration des donn&#233;es</text>'
-            + f'<text x="137" y="188" font-family="{MONO}" font-size="10" fill="{p["muted"]}" '
-              f'text-anchor="middle">automatis&#233;e : 6 h de moins par cycle</text>'
-            + f'<text x="450" y="174" font-family="{MONO}" font-size="10" fill="{p["muted"]}" '
-              f'text-anchor="middle">d&#233;fauts ajout&#233;s pendant l&#8217;entra&#238;nement :</text>'
-            + f'<text x="450" y="188" font-family="{MONO}" font-size="10" fill="{p["muted"]}" '
-              f'text-anchor="middle">flou et dominante bleu-vert de l&#8217;eau</text>'
-            + "</svg>\n")
-
-
-# --------------------------------------------------------------------------- #
-# 5. Carte des methodes (trois colonnes assumees)
+# 4. Carte des methodes
 # --------------------------------------------------------------------------- #
 COLUMNS = [
     ("LIVR&#201; ET EN SERVICE",
@@ -320,8 +270,8 @@ COLUMNS = [
       "DEA &amp; Simar-Wilson", "bootstrap non gaussien", "MLflow", "R", "SAS",
       "SQL", "Power BI"]),
     ("LU, PAS ENCORE LIVR&#201;",
-     "je sais de quoi il s'agit et ce que &#231;a co&#251;te,",
-     "je ne l'ai pas encore fait tourner",
+     "je sais de quoi il s&#8217;agit et ce que &#231;a co&#251;te,",
+     "je ne l&#8217;ai pas encore fait tourner",
      ["d&#233;ploiement manag&#233; AWS", "monitoring en production",
       "agents LLM en production"]),
 ]
@@ -329,11 +279,9 @@ COLUMNS = [
 
 def methods(p):
     xs = (44, 326, 608)
-    colw = 248
-    top = 46
-    body = []
+    colw, top = 248, 46
+    body, i = [], 0
     rows_max = max(len(c[3]) for c in COLUMNS)
-    i = 0
     for ci, (title, crit1, crit2, items) in enumerate(COLUMNS):
         x = xs[ci]
         col = p["accent"] if ci == 0 else (p["ink"] if ci == 1 else p["muted"])
@@ -348,14 +296,15 @@ def methods(p):
             f'stroke="{p["border"]}" stroke-width="1"/>')
         y = top + 64
         for it in items:
-            plain = it.replace("&#201;", "E").replace("&#233;", "e").replace("&amp;", "&")
-            plain = plain.replace("&#232;", "e").replace("&#231;", "c").replace("&#251;", "u")
+            plain = (it.replace("&#201;", "E").replace("&#233;", "e")
+                       .replace("&amp;", "&").replace("&#232;", "e")
+                       .replace("&#231;", "c").replace("&#251;", "u")
+                       .replace("&#8217;", "'"))
             w = round(6.65 * len(plain)) + 22
-            b = round(0.2 + i * 0.04, 2)
             fill = p["chip"] if ci < 2 else p["bg"]
             dash = ' stroke-dasharray="4 3"' if ci == 2 else ""
             body.append(
-                f'<g transform="translate(0 0)">{rise(b, 7, 0.45)}'
+                f'<g class="rise"{delay(0.15 + i * 0.035)}>'
                 f'<rect x="{x}" y="{y}" width="{w}" height="26" rx="7" fill="{fill}" '
                 f'stroke="{p["border"]}"{dash}/>'
                 f'<text x="{x + 11}" y="{y + 17.5}" font-family="{MONO}" font-size="11" '
@@ -370,18 +319,86 @@ def methods(p):
     seps = "".join(
         f'<line x1="{x}" y1="{top - 16}" x2="{x}" y2="{h - 20}" stroke="{p["border"]}" '
         f'stroke-width="1" opacity="0.6"/>' for x in (302, 584))
-    head = (f'<svg xmlns="http://www.w3.org/2000/svg" width="900" height="{h}" '
+    return (f'<svg xmlns="http://www.w3.org/2000/svg" width="900" height="{h}" '
             f'viewBox="0 0 900 {h}" role="img" aria-label="Carte des methodes : livre et en '
-            f'service, utilise en projet, lu pas encore livre">')
-    return (head
-            + f'<rect x="0.5" y="0.5" width="899" height="{h - 1}" rx="14" fill="{p["bg"]}" '
-              f'stroke="{p["border"]}"/>'
-            + seps + "".join(body) + "</svg>\n")
+            f'service, utilise en projet, lu pas encore livre">{STYLE}'
+            f'<rect x="0.5" y="0.5" width="899" height="{h - 1}" rx="14" fill="{p["bg"]}" '
+            f'stroke="{p["border"]}"/>{seps}{"".join(body)}</svg>\n')
+
+
+# --------------------------------------------------------------------------- #
+# 5. Vignettes cliquables : un mini-graphique par projet
+# --------------------------------------------------------------------------- #
+def card_causal(p):
+    """Bande d'incertitude qui traverse le zero."""
+    return (f'<path d="M 16,74 L 46,70 L 76,66 L 106,72 L 136,68 L 166,71 L 196,69 '
+            f'L 196,90 L 166,94 L 136,92 L 106,96 L 76,90 L 46,88 L 16,86 Z" '
+            f'fill="{p["accent"]}" fill-opacity="{p["band2"]}"/>'
+            f'<line x1="16" y1="80" x2="196" y2="80" stroke="{p["muted"]}" '
+            f'stroke-width="1" opacity="0.6"/>'
+            f'<path d="M 16,80 L 46,79 L 76,78 L 106,84 L 136,80 L 166,82 L 196,79" '
+            f'fill="none" stroke="{p["accent"]}" stroke-width="1.8"/>')
+
+
+def card_survival(p):
+    """Courbe de survie en escalier."""
+    return (f'<path d="M16,62 H46 V70 H76 V76 H106 V85 H136 V90 H166 V96 H196" '
+            f'fill="none" stroke="{p["accent"]}" stroke-width="1.8" '
+            f'stroke-linejoin="round"/>'
+            f'<line x1="60" y1="66" x2="60" y2="74" stroke="{p["accent"]}" stroke-width="1.2"/>'
+            f'<line x1="120" y1="81" x2="120" y2="89" stroke="{p["accent"]}" stroke-width="1.2"/>'
+            f'<line x1="180" y1="92" x2="180" y2="100" stroke="{p["accent"]}" stroke-width="1.2"/>')
+
+
+def card_bmw(p):
+    """Nuage de points sans structure, droite plate."""
+    pts = [(24, 68), (39, 92), (54, 74), (69, 96), (84, 66), (99, 88), (114, 72),
+           (129, 94), (144, 70), (159, 90), (174, 78), (189, 86)]
+    dots = "".join(f'<circle cx="{x}" cy="{y}" r="2.2" fill="{p["muted"]}" '
+                   f'opacity="0.7"/>' for x, y in pts)
+    return (dots + f'<line x1="16" y1="81" x2="196" y2="81" stroke="{p["accent"]}" '
+                   f'stroke-width="1.8" stroke-dasharray="5 4"/>')
+
+
+def card_heron(p):
+    """Score de posture qui passe sous le seuil."""
+    return (f'<line x1="16" y1="88" x2="196" y2="88" stroke="{p["muted"]}" '
+            f'stroke-width="1" stroke-dasharray="3 4" opacity="0.7"/>'
+            f'<path d="M16,72 L46,70 L76,75 L106,71 L136,94 L166,92 L196,74" '
+            f'fill="none" stroke="{p["accent"]}" stroke-width="1.8" '
+            f'stroke-linejoin="round"/>'
+            f'<circle cx="136" cy="94" r="3" fill="{p["accent"]}"/>')
+
+
+CARDS = [
+    ("causal", "causal-impact-lab", "un effet trop impr&#233;cis", "pour conclure", card_causal),
+    ("survival", "git-survival", "quand un contributeur", "d&#233;croche", card_survival),
+    ("bmw", "bmw-sales-analytics", "50 000 ventes,", "aucun signal", card_bmw),
+    ("heron", "heron", "la posture surveill&#233;e", "en local", card_heron),
+]
+
+
+def card(p, title, l1, l2, motif):
+    return f'''<svg xmlns="http://www.w3.org/2000/svg" width="212" height="116" viewBox="0 0 212 116" role="img" aria-label="{title}">
+  {STYLE}
+  <rect x="0.5" y="0.5" width="211" height="115" rx="12" fill="{p['bg']}" stroke="{p['border']}"/>
+  <g class="rise">
+    <text x="16" y="26" font-family="{MONO}" font-size="10.5" fill="{p['accent']}">{title}</text>
+    <text x="16" y="42" font-family="{SANS}" font-size="10.5" fill="{p['muted']}">{l1}</text>
+    <text x="16" y="55" font-family="{SANS}" font-size="10.5" fill="{p['muted']}">{l2}</text>
+  </g>
+  <g class="wipe" style="animation-delay:.3s">{motif(p)}</g>
+</svg>
+'''
 
 
 for mode, pal in PALETTES.items():
     (OUT / f"header-{mode}.svg").write_text(header(pal), encoding="utf-8")
-    (OUT / f"methods-{mode}.svg").write_text(methods(pal), encoding="utf-8")
-    (OUT / f"irf-{mode}.svg").write_text(irf(pal), encoding="utf-8")
     (OUT / f"pipeline-{mode}.svg").write_text(pipeline(pal), encoding="utf-8")
-print("ok", sorted(f.name for f in OUT.iterdir()))
+    (OUT / f"irf-{mode}.svg").write_text(irf(pal), encoding="utf-8")
+    (OUT / f"methods-{mode}.svg").write_text(methods(pal), encoding="utf-8")
+    for slug, title, l1, l2, motif in CARDS:
+        (OUT / f"card-{slug}-{mode}.svg").write_text(
+            card(pal, title, l1, l2, motif), encoding="utf-8")
+
+print("ok", len(sorted(OUT.iterdir())), "fichiers dans assets/")

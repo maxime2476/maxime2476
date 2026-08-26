@@ -1,27 +1,33 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="900" height="340" viewBox="0 0 900 340" role="img" aria-label="Fonction de reponse estimee de l'emploi relatif a un choc monetaire restrictif">
-  <defs>
-    <clipPath id="irfwipe">
-      <rect x="90" y="64" width="772" height="200">
-        <animate attributeName="width" from="0" to="772" begin="0.3s" dur="1.7s" fill="freeze"/>
-      </rect>
-    </clipPath>
-  </defs>
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="340" viewBox="0 0 900 340" role="img" aria-label="Effet estime d'une hausse des taux sur l'emploi, avec une marge d'erreur qui contient zero">
+  <style>
+  .rise{animation:rise .55s cubic-bezier(.22,.61,.36,1) both}
+  .wipe{animation:wipe 1.3s cubic-bezier(.22,.61,.36,1) both}
+  .halo{animation:halo 2.6s ease-out .9s infinite}
+  .travel{animation:travel 5s linear infinite}
+  @keyframes rise{from{opacity:0;transform:translateY(9px)}to{opacity:1;transform:none}}
+  @keyframes wipe{from{clip-path:inset(0 100% 0 0)}to{clip-path:inset(0 0 0 0)}}
+  @keyframes halo{0%{r:3.6;opacity:.55}70%{r:13;opacity:0}100%{r:13;opacity:0}}
+  @keyframes travel{from{opacity:.85;transform:translateX(0)}to{opacity:.85;transform:translateX(812px)}}
+  @media (prefers-reduced-motion: reduce){
+    .rise,.wipe,.halo,.travel{animation:none}
+  }
+</style>
   <rect x="0.5" y="0.5" width="899" height="339" rx="14" fill="#FDFCFB" stroke="#E5E1DA"/>
-  <text x="44" y="34" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Inter,Helvetica,Arial,sans-serif" font-size="15" font-weight="600" fill="#17181A">Effet d'une hausse des taux d'int&#233;r&#234;t sur l'emploi</text>
-  <text x="44" y="52" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Inter,Helvetica,Arial,sans-serif" font-size="12" fill="#6B655E">Emploi am&#233;ricain, 1994-2020. L'effet va dans le sens attendu, mais la marge d'erreur contient toujours z&#233;ro.</text>
+  <text x="44" y="34" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Inter,Helvetica,Arial,sans-serif" font-size="15" font-weight="600" fill="#17181A">Effet d&#8217;une hausse des taux d&#8217;int&#233;r&#234;t sur l&#8217;emploi</text>
+  <text x="44" y="52" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Inter,Helvetica,Arial,sans-serif" font-size="12" fill="#6B655E">Emploi am&#233;ricain, 1994-2020. L&#8217;effet va dans le sens attendu, mais la marge d&#8217;erreur contient toujours z&#233;ro.</text>
   <line x1="92" y1="90.0" x2="858" y2="90.0" stroke="#E9E4DC" stroke-width="1"/><text x="82" y="93.5" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="10" fill="#6B655E" text-anchor="end">+0.10</text><line x1="92" y1="117.9" x2="858" y2="117.9" stroke="#E9E4DC" stroke-width="1"/><text x="82" y="121.4" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="10" fill="#6B655E" text-anchor="end">+0.05</text><line x1="92" y1="173.8" x2="858" y2="173.8" stroke="#E9E4DC" stroke-width="1"/><text x="82" y="177.3" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="10" fill="#6B655E" text-anchor="end">-0.05</text><line x1="92" y1="201.7" x2="858" y2="201.7" stroke="#E9E4DC" stroke-width="1"/><text x="82" y="205.2" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="10" fill="#6B655E" text-anchor="end">-0.10</text><line x1="92" y1="229.7" x2="858" y2="229.7" stroke="#E9E4DC" stroke-width="1"/><text x="82" y="233.2" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="10" fill="#6B655E" text-anchor="end">-0.15</text>
   <line x1="92" y1="145.8" x2="858" y2="145.8" stroke="#6B655E" stroke-width="1.2" opacity="0.55"/>
   <text x="82" y="149.3" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="10" fill="#6B655E" text-anchor="end">0</text>
   <line x1="245.2" y1="70" x2="245.2" y2="256" stroke="#6B655E" stroke-width="1" stroke-dasharray="3 4" opacity="0.7"/>
   <text x="251.2" y="78" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="10" fill="#6B655E">hausse des taux</text>
-  <g clip-path="url(#irfwipe)">
-    <path d="M 92.0,79.9 117.5,93.8 143.1,100.5 168.6,114.0 194.1,134.7 L 194.1,155.9 168.6,163.5 143.1,154.4 117.5,158.5 92.0,158.4 Z" fill="#B9B2A9" fill-opacity="0.20"/>
+  <g class="wipe" style="animation-delay:.2s">
+    <path d="M 92.0,79.9 L 117.5,93.8 L 143.1,100.5 L 168.6,114.0 L 194.1,134.7 L 194.1,155.9 L 168.6,163.5 L 143.1,154.4 L 117.5,158.5 L 92.0,158.4 Z" fill="#B9B2A9" fill-opacity="0.20"/>
     <path d="M 92.0,119.1 L 117.5,126.2 L 143.1,127.5 L 168.6,138.8 L 194.1,145.3" fill="none" stroke="#B9B2A9" stroke-width="1.8" stroke-dasharray="4 3"/>
-    <path d="M 245.2,140.7 270.7,139.3 296.3,148.2 321.8,151.1 347.3,145.9 372.9,146.9 398.4,134.8 423.9,121.2 449.5,123.2 475.0,101.1 500.5,121.2 526.1,108.9 551.6,107.2 577.1,113.8 602.7,122.8 628.2,133.9 653.7,122.7 679.3,114.8 704.8,119.3 730.3,107.7 755.9,108.9 781.4,106.2 806.9,98.4 832.5,95.9 858.0,90.8 L 858.0,214.6 832.5,217.0 806.9,219.3 781.4,223.1 755.9,229.3 730.3,228.4 704.8,236.2 679.3,231.5 653.7,235.7 628.2,246.3 602.7,226.8 577.1,217.1 551.6,207.7 526.1,203.6 500.5,212.7 475.0,207.1 449.5,212.5 423.9,215.6 398.4,216.1 372.9,221.8 347.3,216.8 321.8,211.6 296.3,202.4 270.7,188.3 245.2,178.8 Z" fill="#C2410C" fill-opacity="0.18"/>
+    <path d="M 245.2,140.7 L 270.7,139.3 L 296.3,148.2 L 321.8,151.1 L 347.3,145.9 L 372.9,146.9 L 398.4,134.8 L 423.9,121.2 L 449.5,123.2 L 475.0,101.1 L 500.5,121.2 L 526.1,108.9 L 551.6,107.2 L 577.1,113.8 L 602.7,122.8 L 628.2,133.9 L 653.7,122.7 L 679.3,114.8 L 704.8,119.3 L 730.3,107.7 L 755.9,108.9 L 781.4,106.2 L 806.9,98.4 L 832.5,95.9 L 858.0,90.8 L 858.0,214.6 L 832.5,217.0 L 806.9,219.3 L 781.4,223.1 L 755.9,229.3 L 730.3,228.4 L 704.8,236.2 L 679.3,231.5 L 653.7,235.7 L 628.2,246.3 L 602.7,226.8 L 577.1,217.1 L 551.6,207.7 L 526.1,203.6 L 500.5,212.7 L 475.0,207.1 L 449.5,212.5 L 423.9,215.6 L 398.4,216.1 L 372.9,221.8 L 347.3,216.8 L 321.8,211.6 L 296.3,202.4 L 270.7,188.3 L 245.2,178.8 Z" fill="#C2410C" fill-opacity="0.18"/>
     <path d="M 245.2,159.8 L 270.7,163.8 L 296.3,175.3 L 321.8,181.3 L 347.3,181.3 L 372.9,184.4 L 398.4,175.4 L 423.9,168.4 L 449.5,167.8 L 475.0,154.1 L 500.5,167.0 L 526.1,156.3 L 551.6,157.5 L 577.1,165.5 L 602.7,174.8 L 628.2,190.1 L 653.7,179.2 L 679.3,173.1 L 704.8,177.7 L 730.3,168.1 L 755.9,169.1 L 781.4,164.6 L 806.9,158.9 L 832.5,156.5 L 858.0,152.7" fill="none" stroke="#C2410C" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"/>
   </g>
-  <g>
-    <circle cx="551.6" cy="157.5" r="3.6" fill="#C2410C"/><circle cx="551.6" cy="157.5" r="3.6" fill="none" stroke="#C2410C" stroke-width="1.4" opacity="0"><animate attributeName="r" from="3.6" to="12" dur="2.4s" begin="1.6s" repeatCount="indefinite"/><animate attributeName="opacity" values="0;0.55;0" dur="2.4s" begin="1.6s" repeatCount="indefinite"/></circle>
+  <g class="rise" style="animation-delay:1.35s">
+    <circle cx="551.6" cy="157.5" r="3.6" fill="#C2410C"/><circle class="halo" cx="551.6" cy="157.5" r="3.6" fill="none" stroke="#C2410C" stroke-width="1.4" opacity="0"/>
     <line x1="551.6" y1="149.5" x2="551.6" y2="119.5" stroke="#6B655E" stroke-width="1"/>
     <text x="545.6" y="113.5" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="10.5" fill="#17181A" text-anchor="middle">12 mois : -0,021</text>
     <text x="545.6" y="126.5" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="9.5" fill="#6B655E" text-anchor="middle">marge d&#8217;erreur : -0,111 &#224; 0,069</text>
@@ -32,7 +38,7 @@
     <line x1="44" y1="314" x2="70" y2="314" stroke="#C2410C" stroke-width="2.4"/>
     <text x="76" y="317.5">effet estim&#233;</text>
     <rect x="216" y="309" width="26" height="10" fill="#C2410C" fill-opacity="0.18"/>
-    <text x="248" y="317.5">marge d'erreur (95 %)</text>
+    <text x="248" y="317.5">marge d&#8217;erreur (95 %)</text>
     <line x1="470" y1="314" x2="496" y2="314" stroke="#B9B2A9" stroke-width="1.8" stroke-dasharray="4 3"/>
     <text x="502" y="317.5">avant la hausse</text>
     <text x="858" y="317.5" text-anchor="end">source : causal-impact-lab</text>

@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="212" height="116" viewBox="0 0 212 116" role="img" aria-label="git-survival">
+  <style>
+  .rise{animation:rise .55s cubic-bezier(.22,.61,.36,1) both}
+  .wipe{animation:wipe 1.3s cubic-bezier(.22,.61,.36,1) both}
+  .halo{animation:halo 2.6s ease-out .9s infinite}
+  .travel{animation:travel 5s linear infinite}
+  @keyframes rise{from{opacity:0;transform:translateY(9px)}to{opacity:1;transform:none}}
+  @keyframes wipe{from{clip-path:inset(0 100% 0 0)}to{clip-path:inset(0 0 0 0)}}
+  @keyframes halo{0%{r:3.6;opacity:.55}70%{r:13;opacity:0}100%{r:13;opacity:0}}
+  @keyframes travel{from{opacity:.85;transform:translateX(0)}to{opacity:.85;transform:translateX(812px)}}
+  @media (prefers-reduced-motion: reduce){
+    .rise,.wipe,.halo,.travel{animation:none}
+  }
+</style>
+  <rect x="0.5" y="0.5" width="211" height="115" rx="12" fill="#FDFCFB" stroke="#E5E1DA"/>
+  <g class="rise">
+    <text x="16" y="26" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="10.5" fill="#C2410C">git-survival</text>
+    <text x="16" y="42" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Inter,Helvetica,Arial,sans-serif" font-size="10.5" fill="#6B655E">quand un contributeur</text>
+    <text x="16" y="55" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Inter,Helvetica,Arial,sans-serif" font-size="10.5" fill="#6B655E">d&#233;croche</text>
+  </g>
+  <g class="wipe" style="animation-delay:.3s"><path d="M16,62 H46 V70 H76 V76 H106 V85 H136 V90 H166 V96 H196" fill="none" stroke="#C2410C" stroke-width="1.8" stroke-linejoin="round"/><line x1="60" y1="66" x2="60" y2="74" stroke="#C2410C" stroke-width="1.2"/><line x1="120" y1="81" x2="120" y2="89" stroke="#C2410C" stroke-width="1.2"/><line x1="180" y1="92" x2="180" y2="100" stroke="#C2410C" stroke-width="1.2"/></g>
+</svg>

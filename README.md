@@ -11,6 +11,9 @@ Je viens de l'économie, pas de l'informatique. J'y ai appris à me méfier des 
 vérifier qu'un résultat tient debout avant d'y croire. Le code, je l'ai appris sur mes projets,
 et ils sont tous ici.
 
+
+<a href="https://github.com/maxime2476/causal-impact-lab"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/card-causal-dark.svg"><img alt="causal-impact-lab : un effet trop imprécis pour conclure" src="assets/card-causal-light.svg" width="212"></picture></a> <a href="https://github.com/maxime2476/git-survival"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/card-survival-dark.svg"><img alt="git-survival : quand un contributeur décroche" src="assets/card-survival-light.svg" width="212"></picture></a> <a href="https://github.com/maxime2476/bmw-sales-analytics"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/card-bmw-dark.svg"><img alt="bmw-sales-analytics : 50 000 ventes, aucun signal" src="assets/card-bmw-light.svg" width="212"></picture></a> <a href="https://github.com/maxime2476/heron"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/card-heron-dark.svg"><img alt="heron : la posture surveillée en local" src="assets/card-heron-light.svg" width="212"></picture></a>
+
 ## Ce que je fais en ce moment
 
 Chez Aubay, je travaille sur la segmentation d'images de récifs coralliens : retrouver chaque
@@ -56,6 +59,16 @@ dépôt, avec sa raison : la période disponible est trop courte pour trancher.
 autour est la marge d'erreur. Tant que cette zone contient zéro, on ne peut pas affirmer que
 l'effet existe. C'est le cas ici, et c'est la conclusion.</sub>
 
+<details>
+<summary>Le détail technique</summary>
+
+- Quatre estimateurs se répondent : projection locale sur panel avec interaction, LP-DiD, double machine learning, projection locale hiérarchique bayésienne. Aucun ne conclut, ce qui est en soi une information.
+- Les données couvrent 1994 à 2020, au niveau État par secteur à trois chiffres NAICS, soit environ 4 500 cellules. Les chocs viennent de la série Bu-Rogers-Wu, le taux directeur du taux fantôme de Wu-Xia.
+- L'écart-type est calculé de quatre façons différentes, parce que le choix naïf le divisait par trois et rendait tout significatif. C'est documenté dans une décision datée du dépôt.
+- Les contrôles automatiques du dépôt refusent une modification qui casse les tests, le typage strict ou le style.
+
+</details>
+
 <sub>`statsmodels` · `double machine learning` · `pytest` · `Docker` · [l'appli en ligne](https://huggingface.co/spaces/maxime2476/causal-impact-lab)</sub>
 
 ### git-survival
@@ -70,6 +83,16 @@ Toute la difficulté tient dans un détail : quelqu'un qui n'a rien poussé depu
 n'est pas forcément parti. Une moyenne ne sait pas quoi faire de ce cas, ces méthodes-là si.
 L'outil sort un rapport HTML avec les courbes et la liste des contributeurs les plus près de
 décrocher.
+
+<details>
+<summary>Le détail technique</summary>
+
+- Un contributeur est considéré comme parti après 90 jours sans commit. Sinon sa ligne est marquée comme incomplète et compte quand même, c'est tout l'intérêt de la méthode.
+- Trois modèles : Kaplan-Meier pour la courbe d'ensemble, Cox pour isoler les facteurs de risque, et un modèle à temps accéléré qui choisit lui-même sa loi entre plusieurs candidates.
+- Les facteurs testés sont la part de commits nocturnes et de week-end, le fait d'être seul à toucher ses fichiers, le ton des messages de commit, et le départ des collaborateurs proches.
+- Les identités sont fusionnées avant l'analyse : une même personne avec deux adresses e-mail créerait un faux abandon. Mon propre historique a le problème.
+
+</details>
 
 <sub>`lifelines` · `PyDriller` · `Plotly` · `Streamlit`</sub>
 
@@ -86,6 +109,16 @@ programme, lancé sur des données témoins où le signal existe, obtient un R²
 vraies données, il tombe à zéro. À la place du modèle, j'ai livré un simulateur : on y manipule
 des hypothèses explicites au lieu de recevoir une prédiction sans fondement.
 
+<details>
+<summary>Le détail technique</summary>
+
+- Le test décisif est celui de permutation : on mélange les étiquettes au hasard et on compare. Le modèle entraîné sur les vraies données ne fait pas mieux que sur les fausses (p = 0,90).
+- Trois autres tests confirment : le prix et le kilométrage se comportent comme des tirages uniformes, et aucune paire de colonnes catégorielles n'est liée aux autres.
+- Une colonne prédisait la cible parfaitement, parce qu'elle en était une transformation directe. Repérée et écartée avant modélisation.
+- Le reste est de la plomberie assumée : 67 % de couverture de tests, image Docker multi-étapes, suivi d'expériences avec MLflow, documentation publiée automatiquement.
+
+</details>
+
 <sub>`XGBoost` · `SHAP` · `DuckDB` · `Docker` · [l'appli en ligne](https://maxime2476-bmw-sales-analytics.hf.space)</sub>
 
 <a href="https://maxime2476-bmw-sales-analytics.hf.space"><img alt="Aperçu animé du tableau de bord BMW Sales Analytics." src="assets/bmw-demo.gif" width="900"></a>
@@ -99,6 +132,16 @@ calibrage, puis me prévient quand je m'en éloigne. Il compte aussi mes clignem
 la fatigue des yeux. Tout reste sur ma machine, rien ne part ailleurs.
 
 Le nom vient de l'oiseau, qui a une meilleure posture que moi.
+
+<details>
+<summary>Le détail technique</summary>
+
+- La posture de référence est apprise par un Isolation Forest pendant le calibrage, ce qui évite de coder des seuils d'angle à la main et tient quand je tourne la tête.
+- La fatigue oculaire vient du rapport d'ouverture des yeux, calculé sur le maillage facial de MediaPipe, qui donne un taux de clignements par minute.
+- La capture vidéo et l'analyse tournent dans deux fils d'exécution séparés, sinon l'affichage saccade dès que l'analyse ralentit.
+- L'historique est stocké en SQLite et consultable dans un tableau de bord. Les alertes passent par les notifications natives de Windows.
+
+</details>
 
 <sub>`MediaPipe` · `OpenCV` · `scikit-learn` · `SQLite`</sub>
 
