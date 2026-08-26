@@ -12,8 +12,6 @@ vérifier qu'un résultat tient debout avant d'y croire. Le code, je l'ai appris
 et ils sont tous ici.
 
 
-<a href="https://github.com/maxime2476/causal-impact-lab"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/card-causal-dark.svg"><img alt="causal-impact-lab : un effet trop imprécis pour conclure" src="assets/card-causal-light.svg" width="212"></picture></a> <a href="https://github.com/maxime2476/git-survival"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/card-survival-dark.svg"><img alt="git-survival : quand un contributeur décroche" src="assets/card-survival-light.svg" width="212"></picture></a> <a href="https://github.com/maxime2476/bmw-sales-analytics"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/card-bmw-dark.svg"><img alt="bmw-sales-analytics : 50 000 ventes, aucun signal" src="assets/card-bmw-light.svg" width="212"></picture></a> <a href="https://github.com/maxime2476/heron"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/card-heron-dark.svg"><img alt="heron : la posture surveillée en local" src="assets/card-heron-light.svg" width="212"></picture></a>
-
 ## Ce que je fais en ce moment
 
 Chez Aubay, je travaille sur la segmentation d'images de récifs coralliens : retrouver chaque

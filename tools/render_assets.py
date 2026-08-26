@@ -326,79 +326,10 @@ def methods(p):
             f'stroke="{p["border"]}"/>{seps}{"".join(body)}</svg>\n')
 
 
-# --------------------------------------------------------------------------- #
-# 5. Vignettes cliquables : un mini-graphique par projet
-# --------------------------------------------------------------------------- #
-def card_causal(p):
-    """Bande d'incertitude qui traverse le zero."""
-    return (f'<path d="M 16,74 L 46,70 L 76,66 L 106,72 L 136,68 L 166,71 L 196,69 '
-            f'L 196,90 L 166,94 L 136,92 L 106,96 L 76,90 L 46,88 L 16,86 Z" '
-            f'fill="{p["accent"]}" fill-opacity="{p["band2"]}"/>'
-            f'<line x1="16" y1="80" x2="196" y2="80" stroke="{p["muted"]}" '
-            f'stroke-width="1" opacity="0.6"/>'
-            f'<path d="M 16,80 L 46,79 L 76,78 L 106,84 L 136,80 L 166,82 L 196,79" '
-            f'fill="none" stroke="{p["accent"]}" stroke-width="1.8"/>')
-
-
-def card_survival(p):
-    """Courbe de survie en escalier."""
-    return (f'<path d="M16,62 H46 V70 H76 V76 H106 V85 H136 V90 H166 V96 H196" '
-            f'fill="none" stroke="{p["accent"]}" stroke-width="1.8" '
-            f'stroke-linejoin="round"/>'
-            f'<line x1="60" y1="66" x2="60" y2="74" stroke="{p["accent"]}" stroke-width="1.2"/>'
-            f'<line x1="120" y1="81" x2="120" y2="89" stroke="{p["accent"]}" stroke-width="1.2"/>'
-            f'<line x1="180" y1="92" x2="180" y2="100" stroke="{p["accent"]}" stroke-width="1.2"/>')
-
-
-def card_bmw(p):
-    """Nuage de points sans structure, droite plate."""
-    pts = [(24, 68), (39, 92), (54, 74), (69, 96), (84, 66), (99, 88), (114, 72),
-           (129, 94), (144, 70), (159, 90), (174, 78), (189, 86)]
-    dots = "".join(f'<circle cx="{x}" cy="{y}" r="2.2" fill="{p["muted"]}" '
-                   f'opacity="0.7"/>' for x, y in pts)
-    return (dots + f'<line x1="16" y1="81" x2="196" y2="81" stroke="{p["accent"]}" '
-                   f'stroke-width="1.8" stroke-dasharray="5 4"/>')
-
-
-def card_heron(p):
-    """Score de posture qui passe sous le seuil."""
-    return (f'<line x1="16" y1="88" x2="196" y2="88" stroke="{p["muted"]}" '
-            f'stroke-width="1" stroke-dasharray="3 4" opacity="0.7"/>'
-            f'<path d="M16,72 L46,70 L76,75 L106,71 L136,94 L166,92 L196,74" '
-            f'fill="none" stroke="{p["accent"]}" stroke-width="1.8" '
-            f'stroke-linejoin="round"/>'
-            f'<circle cx="136" cy="94" r="3" fill="{p["accent"]}"/>')
-
-
-CARDS = [
-    ("causal", "causal-impact-lab", "un effet trop impr&#233;cis", "pour conclure", card_causal),
-    ("survival", "git-survival", "quand un contributeur", "d&#233;croche", card_survival),
-    ("bmw", "bmw-sales-analytics", "50 000 ventes,", "aucun signal", card_bmw),
-    ("heron", "heron", "la posture surveill&#233;e", "en local", card_heron),
-]
-
-
-def card(p, title, l1, l2, motif):
-    return f'''<svg xmlns="http://www.w3.org/2000/svg" width="212" height="116" viewBox="0 0 212 116" role="img" aria-label="{title}">
-  {STYLE}
-  <rect x="0.5" y="0.5" width="211" height="115" rx="12" fill="{p['bg']}" stroke="{p['border']}"/>
-  <g class="rise">
-    <text x="16" y="26" font-family="{MONO}" font-size="10.5" fill="{p['accent']}">{title}</text>
-    <text x="16" y="42" font-family="{SANS}" font-size="10.5" fill="{p['muted']}">{l1}</text>
-    <text x="16" y="55" font-family="{SANS}" font-size="10.5" fill="{p['muted']}">{l2}</text>
-  </g>
-  <g class="wipe" style="animation-delay:.3s">{motif(p)}</g>
-</svg>
-'''
-
-
 for mode, pal in PALETTES.items():
     (OUT / f"header-{mode}.svg").write_text(header(pal), encoding="utf-8")
     (OUT / f"pipeline-{mode}.svg").write_text(pipeline(pal), encoding="utf-8")
     (OUT / f"irf-{mode}.svg").write_text(irf(pal), encoding="utf-8")
     (OUT / f"methods-{mode}.svg").write_text(methods(pal), encoding="utf-8")
-    for slug, title, l1, l2, motif in CARDS:
-        (OUT / f"card-{slug}-{mode}.svg").write_text(
-            card(pal, title, l1, l2, motif), encoding="utf-8")
 
 print("ok", len(sorted(OUT.iterdir())), "fichiers dans assets/")
