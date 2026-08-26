@@ -101,7 +101,7 @@ def header(p):
     </g>
     <text x="744" y="181" font-family="{MONO}" font-size="10" fill="{p['muted']}" text-anchor="end">m&#233;diane</text>
     <text x="860" y="204" font-family="{MONO}" font-size="10" fill="{p['muted']}" text-anchor="end">temps depuis le 1er commit</text>
-    <text x="560" y="228" font-family="{MONO}" font-size="10.5" fill="{p['muted']}">S(t) &#183; survie des contributeurs (Kaplan-Meier)</text>
+    <text x="560" y="228" font-family="{MONO}" font-size="10.5" fill="{p['muted']}">part des contributeurs encore actifs, au fil du temps</text>
   </g>
 </svg>
 '''
@@ -194,6 +194,7 @@ def irf(p):
         f'<text x="{X(h)}" y="{ybot + 20}" font-family="{MONO}" font-size="10" '
         f'fill="{p["muted"]}" text-anchor="middle">{h:+d}</text>' for h in (-6, 0, 6, 12, 18, 24))
 
+    fr = lambda v: f"{v:.3f}".replace(".", ",")
     b12 = next(r for r in rows if r[0] == 12)
     ax, ay = X(12), Y(b12[1])
     return f'''<svg xmlns="http://www.w3.org/2000/svg" width="900" height="340" viewBox="0 0 900 340" role="img" aria-label="Fonction de reponse estimee de l'emploi relatif a un choc monetaire restrictif">
@@ -205,13 +206,13 @@ def irf(p):
     </clipPath>
   </defs>
   <rect x="0.5" y="0.5" width="899" height="339" rx="14" fill="{p['bg']}" stroke="{p['border']}"/>
-  <text x="44" y="34" font-family="{SANS}" font-size="15" font-weight="600" fill="{p['ink']}">R&#233;ponse relative de l'emploi &#224; un choc mon&#233;taire restrictif</text>
-  <text x="44" y="52" font-family="{SANS}" font-size="12" fill="{p['muted']}">Panel QCEW 1994-2020, NAICS 3 chiffres &#183; les 25 horizons post-choc sont n&#233;gatifs, aucun n'est significatif apr&#232;s correction BH</text>
+  <text x="44" y="34" font-family="{SANS}" font-size="15" font-weight="600" fill="{p['ink']}">Effet d'une hausse des taux d'int&#233;r&#234;t sur l'emploi</text>
+  <text x="44" y="52" font-family="{SANS}" font-size="12" fill="{p['muted']}">Emploi am&#233;ricain, 1994-2020. L'effet va dans le sens attendu, mais la marge d'erreur contient toujours z&#233;ro.</text>
   {grid}
   <line x1="{x0}" y1="{Y(0)}" x2="{x1}" y2="{Y(0)}" stroke="{p['muted']}" stroke-width="1.2" opacity="0.55"/>
   <text x="{x0 - 10}" y="{Y(0) + 3.5}" font-family="{MONO}" font-size="10" fill="{p['muted']}" text-anchor="end">0</text>
   <line x1="{X(0)}" y1="{ytop - 6}" x2="{X(0)}" y2="{ybot + 4}" stroke="{p['muted']}" stroke-width="1" stroke-dasharray="3 4" opacity="0.7"/>
-  <text x="{X(0) + 6}" y="{ytop + 2}" font-family="{MONO}" font-size="10" fill="{p['muted']}">choc</text>
+  <text x="{X(0) + 6}" y="{ytop + 2}" font-family="{MONO}" font-size="10" fill="{p['muted']}">hausse des taux</text>
   <g clip-path="url(#irfwipe)">
     <path d="{band(pre)}" fill="{p['ghost']}" fill-opacity="0.20"/>
     <path d="{line(pre)}" fill="none" stroke="{p['ghost']}" stroke-width="1.8" stroke-dasharray="4 3"/>
@@ -220,20 +221,20 @@ def irf(p):
   </g>
   <g>
     {pulse(ax, ay, p['accent'])}
-    <line x1="{ax}" y1="{ay - 8}" x2="{ax}" y2="{ay - 26}" stroke="{p['muted']}" stroke-width="1"/>
-    <text x="{ax - 6}" y="{ay - 32}" font-family="{MONO}" font-size="10.5" fill="{p['ink']}" text-anchor="middle">h = 12 &#183; &#946; = {b12[1]:.3f}</text>
-    <text x="{ax - 6}" y="{ay - 19}" font-family="{MONO}" font-size="9.5" fill="{p['muted']}" text-anchor="middle">IC 95 % [{b12[2]:.3f} ; {b12[3]:.3f}]</text>
+    <line x1="{ax}" y1="{ay - 8}" x2="{ax}" y2="{ay - 38}" stroke="{p['muted']}" stroke-width="1"/>
+    <text x="{ax - 6}" y="{ay - 44}" font-family="{MONO}" font-size="10.5" fill="{p['ink']}" text-anchor="middle">12 mois : {fr(b12[1])}</text>
+    <text x="{ax - 6}" y="{ay - 31}" font-family="{MONO}" font-size="9.5" fill="{p['muted']}" text-anchor="middle">marge d&#8217;erreur : {fr(b12[2])} &#224; {fr(b12[3])}</text>
   </g>
   {xticks}
-  <text x="{(x0 + x1) // 2}" y="{ybot + 38}" font-family="{MONO}" font-size="10" fill="{p['muted']}" text-anchor="middle">horizon h, en mois apr&#232;s le choc</text>
+  <text x="{(x0 + x1) // 2}" y="{ybot + 38}" font-family="{MONO}" font-size="10" fill="{p['muted']}" text-anchor="middle">mois apr&#232;s la hausse des taux</text>
   <g font-family="{MONO}" font-size="10" fill="{p['muted']}">
     <line x1="44" y1="{ybot + 62}" x2="70" y2="{ybot + 62}" stroke="{p['accent']}" stroke-width="2.4"/>
-    <text x="76" y="{ybot + 65.5}">estimation ponctuelle</text>
+    <text x="76" y="{ybot + 65.5}">effet estim&#233;</text>
     <rect x="216" y="{ybot + 57}" width="26" height="10" fill="{p['accent']}" fill-opacity="{p['band2']}"/>
-    <text x="248" y="{ybot + 65.5}">IC 95 %</text>
-    <line x1="330" y1="{ybot + 62}" x2="356" y2="{ybot + 62}" stroke="{p['ghost']}" stroke-width="1.8" stroke-dasharray="4 3"/>
-    <text x="362" y="{ybot + 65.5}">leads (test de pr&#233;-tendance)</text>
-    <text x="{x1}" y="{ybot + 65.5}" text-anchor="end">source : causal-impact-lab, app/assets/headline_irf.csv</text>
+    <text x="248" y="{ybot + 65.5}">marge d'erreur (95 %)</text>
+    <line x1="470" y1="{ybot + 62}" x2="496" y2="{ybot + 62}" stroke="{p['ghost']}" stroke-width="1.8" stroke-dasharray="4 3"/>
+    <text x="502" y="{ybot + 65.5}">avant la hausse</text>
+    <text x="{x1}" y="{ybot + 65.5}" text-anchor="end">source : causal-impact-lab</text>
   </g>
 </svg>
 '''
@@ -246,7 +247,7 @@ NODES = [
     (44, 186, "8 000 images", "r&#233;cifs coralliens", False),
     (270, 160, "YOLO", "d&#233;tection", False),
     (470, 160, "SAM 3", "masques", False),
-    (670, 186, "92 %", "pr&#233;cision de segmentation", True),
+    (670, 186, "92 %", "de pr&#233;cision", True),
 ]
 
 
@@ -292,13 +293,13 @@ def pipeline(p):
             + packet + arrows + "".join(boxes)
             + bracket(44, 230, p) + bracket(270, 630, p)
             + f'<text x="137" y="174" font-family="{MONO}" font-size="10" fill="{p["muted"]}" '
-              f'text-anchor="middle">pr&#233;paration et validation du dataset</text>'
+              f'text-anchor="middle">pr&#233;paration des donn&#233;es</text>'
             + f'<text x="137" y="188" font-family="{MONO}" font-size="10" fill="{p["muted"]}" '
-              f'text-anchor="middle">automatis&#233;es : 6 h de moins par cycle</text>'
+              f'text-anchor="middle">automatis&#233;e : 6 h de moins par cycle</text>'
             + f'<text x="450" y="174" font-family="{MONO}" font-size="10" fill="{p["muted"]}" '
-              f'text-anchor="middle">augmentations cibl&#233;es (Albumentations) :</text>'
+              f'text-anchor="middle">d&#233;fauts ajout&#233;s pendant l&#8217;entra&#238;nement :</text>'
             + f'<text x="450" y="188" font-family="{MONO}" font-size="10" fill="{p["muted"]}" '
-              f'text-anchor="middle">flou et d&#233;rive colorim&#233;trique sous-marine</text>'
+              f'text-anchor="middle">flou et dominante bleu-vert de l&#8217;eau</text>'
             + "</svg>\n")
 
 

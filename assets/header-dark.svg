@@ -37,6 +37,6 @@
     </g>
     <text x="744" y="181" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="10" fill="#8B949E" text-anchor="end">m&#233;diane</text>
     <text x="860" y="204" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="10" fill="#8B949E" text-anchor="end">temps depuis le 1er commit</text>
-    <text x="560" y="228" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="10.5" fill="#8B949E">S(t) &#183; survie des contributeurs (Kaplan-Meier)</text>
+    <text x="560" y="228" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="10.5" fill="#8B949E">part des contributeurs encore actifs, au fil du temps</text>
   </g>
 </svg>

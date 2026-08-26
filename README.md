@@ -3,171 +3,151 @@
   <img alt="Maxime Gourguechon, data scientist. Vision par ordinateur, NLP, inférence causale." src="assets/header-light.svg" width="900">
 </picture>
 
-Je construis des modèles. Du deep learning quand la donnée est riche (images, texte),
-de l'économétrie quand la question est causale et qu'une erreur d'interprétation coûte
-plus cher qu'un point de F1.
+Salut, moi c'est Maxime. Je suis en master d'économétrie à Lille et en stage de fin d'études chez
+Aubay, en vision par ordinateur. Je cherche un premier poste en data science ou en IA pour
+septembre 2026, du côté de ceux qui construisent les modèles.
 
-## En ce moment
+Je viens de l'économie, pas de l'informatique. J'y ai appris à me méfier des corrélations et à
+vérifier qu'un résultat tient debout avant d'y croire. Le code, je l'ai appris sur mes projets,
+et ils sont tous ici.
 
-Stage de fin d'études chez Aubay, en vision par ordinateur, sur la segmentation d'images
-de récifs coralliens. Le pipeline se fait en deux temps, YOLO pour la détection puis SAM3
-pour le masque, sur 8 000 images, et il tient 92 % de précision. Le vrai travail n'a pas
-été le modèle : il a été l'écart entre des photos propres et de vraies plongées. J'ai donc
-passé beaucoup de temps sur les augmentations (flou, dérive colorimétrique de l'eau, avec
-Albumentations) et sur l'automatisation de la préparation du dataset, ce qui a retiré six
-heures par cycle d'entraînement.
+## Ce que je fais en ce moment
+
+Chez Aubay, je travaille sur la segmentation d'images de récifs coralliens : retrouver chaque
+corail sur une photo et détourer son contour au pixel près, sur environ 8 000 images.
+
+Ça marche en deux temps. Un premier modèle repère les coraux, un second découpe leur contour.
+Le faire fonctionner sur des photos propres n'a pas été le plus dur. Le vrai problème est arrivé
+avec les images de plongée réelles : c'est flou, ça bouge, et l'eau avale le rouge, donc tout
+vire au bleu-vert. J'ai fabriqué ces défauts à la main pendant l'entraînement, pour que le modèle
+les rencontre avant de les subir. Il tient 92 % de précision.
 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="assets/pipeline-dark.svg">
   <img alt="Pipeline de segmentation : 8 000 images de récifs coralliens, détection YOLO, masques SAM 3, 92 % de précision, avec préparation automatisée du dataset et augmentations ciblées." src="assets/pipeline-light.svg" width="900">
 </picture>
 
-À côté, je termine un M2 Économétrie et Statistiques à l'Université de Lille. Je cherche
-un CDI à partir de septembre 2026, à Paris ou en remote, sur la partie modèle : data
-scientist, ML engineer, AI engineer.
+J'ai aussi automatisé la préparation des données avant chaque entraînement. Ça n'a rien de
+spectaculaire et ça fait gagner six heures par cycle, donc deux fois plus d'essais dans la
+semaine.
 
-## Une décision, écrite comme j'écris mes ADR
+## Mes projets
 
-Mes dépôts consignent leurs choix d'architecture dans des ADR datés, parce que dans six mois
-j'aurai oublié pourquoi j'ai écarté l'autre option. Autant appliquer le format à la décision
-qu'on me demande d'expliquer à chaque entretien.
+Quatre projets, avec à chaque fois la question de départ et ce que j'en ai tiré.
 
-> **ADR-0000 : quitter la finance pour la data science**
->
-> - Statut : accepté
-> - Date : septembre 2024
->
-> **Contexte.** Licence d'économie à Rouen, puis un M1 de finance et ingénierie financière à
-> l'IAE Saint-Étienne. Bonne formation au risque et à la modélisation, mais la partie du travail
-> que je voulais faire était l'estimation elle-même, pas la salle de marché.
->
-> **Décision.** Basculer sur le master Économétrie et Statistiques de Lille, et rattraper la
-> programmation par les projets plutôt que par les cours : un dépôt public à chaque nouvelle
-> famille de méthodes, mis en production jusqu'au bout.
->
-> **Conséquences.**
-> - Je code depuis moins longtemps qu'un profil sorti d'école d'ingénieur, et ça se voit sur les sujets d'infrastructure.
-> - En échange je lis un papier d'économétrie appliquée sans traducteur, je repère un biais de sélection avant de lancer le modèle, et je sais reconnaître un résultat qui ne vaut rien.
-> - Décision non révisée depuis. Le stage de vision par ordinateur chez Aubay a confirmé le point : ce qui m'intéresse est la construction du modèle.
+### causal-impact-lab
 
-## Quatre projets qui disent comment je travaille
+**Est-ce que remonter les taux d'intérêt détruit vraiment des emplois ?**
 
-**[causal-impact-lab](https://github.com/maxime2476/causal-impact-lab)** &nbsp;·&nbsp; l'effet
-causal d'un choc de politique monétaire restrictive sur l'emploi américain. La question, le
-signe attendu et les conditions de falsification ont été figés avant la première estimation.
-Quatre estimateurs plus tard (projection locale sur panel avec interaction, LP-DiD, double
-machine learning, LP hiérarchique bayésienne), sur un panel QCEW étendu à 1994-2020 et
-descendu au NAICS 3 chiffres, la réponse est un nul propre : le signe attendu sur les 25
-horizons, des leads d'event study sans pré-tendance, des magnitudes petites et non
-significatives. Le projet le dit comme ça, en
-première page. C'est le résultat dont je suis le plus fier, et c'est celui qui n'a pas
-« marché ».
-<br><sub>`statsmodels` · `double ML` · `inférence bayésienne` · `pytest` · `mypy --strict` · `Docker` · [démo](https://huggingface.co/spaces/maxime2476/causal-impact-lab)</sub>
+J'ai écrit la question, et ce qui me ferait répondre non, avant de lancer le moindre calcul.
+Ensuite j'ai mesuré, sur l'emploi américain, État par État et secteur par secteur, de 1994 à
+2020. L'effet va dans le sens attendu partout, mais il reste trop imprécis pour qu'on puisse
+affirmer qu'il existe.
+
+J'aurais pu ranger ce résultat dans un tiroir et montrer autre chose. Il est en première page du
+dépôt, avec sa raison : la période disponible est trop courte pour trancher.
 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="assets/irf-dark.svg">
-  <img alt="Fonction de réponse estimée : effet relatif d'un choc monétaire restrictif sur l'emploi, panel QCEW 1994-2020, intervalle de confiance à 95 % couvrant zéro à tous les horizons de décision." src="assets/irf-light.svg" width="900">
+  <img alt="Effet estimé d'un choc monétaire restrictif sur l'emploi relatif, avec son intervalle de confiance à 95 % qui contient zéro à tous les horizons de décision." src="assets/irf-light.svg" width="900">
 </picture>
 
-<sub>La figure est tracée depuis `app/assets/headline_irf.csv` du dépôt, sans retouche. C'est
-exactement ce que la bande de confiance doit montrer quand un résultat est nul : le signe est
-là, la précision ne suit pas.</sub>
+<sub>Comment la lire : la ligne orange est l'effet estimé, mois après mois, et la zone claire
+autour est la marge d'erreur. Tant que cette zone contient zéro, on ne peut pas affirmer que
+l'effet existe. C'est le cas ici, et c'est la conclusion.</sub>
 
-**[git-survival](https://github.com/maxime2476/git-survival)** &nbsp;·&nbsp; de l'analyse de
-survie appliquée aux historiques Git, pour estimer quand un contributeur décroche. Les mêmes
-outils qu'en épidémiologie, sauf que le « décès » est un dernier commit, et que la censure
-(le nouveau venu qui n'a simplement pas encore recommité) est traitée pour ce qu'elle est.
-Kaplan-Meier pour la courbe globale, Cox pour isoler les facteurs de risque (ratio de commits
-nocturnes, bus factor, sentiment des messages de commit, contagion des départs dans l'entourage
-direct), un modèle AFT qui choisit sa loi parmi plusieurs. Le rapport sort en HTML autonome.
-<br><sub>`lifelines` · `PyDriller` · `TextBlob` · `Plotly` · `Streamlit`</sub>
+<sub>`statsmodels` · `double machine learning` · `pytest` · `Docker` · [l'appli en ligne](https://huggingface.co/spaces/maxime2476/causal-impact-lab)</sub>
 
-**[bmw-sales-analytics](https://github.com/maxime2476/bmw-sales-analytics)** &nbsp;·&nbsp; 50 000
-transactions BMW sur quinze ans, enrichies par des API macro, carburant, CO₂ et change. Le
-pipeline atteint un R² validé croisé d'environ 0,85 sur de la donnée porteuse de signal, mais
-ce jeu-là est structurellement propre et vide : aucune variable n'explique le prix. Plutôt que
-de livrer un modèle décoratif, j'ai documenté l'absence de signal et réorienté le produit vers
-un simulateur de scénarios avec intervalles de crédibilité. Le reste est de la plomberie
-assumée : tests, couverture, images multi-étapes, CI, docs publiées.
-<br><sub>`XGBoost` · `SHAP` · `DuckDB` · `MLflow` · `Docker` · `GitHub Actions` · [démo](https://maxime2476-bmw-sales-analytics.hf.space)</sub>
+### git-survival
 
-<a href="https://maxime2476-bmw-sales-analytics.hf.space"><img alt="Aperçu animé du tableau de bord BMW Sales Analytics : vue exécutive, intégrité des données, économétrie, benchmark ML, explicabilité SHAP, simulateur de scénarios." src="assets/bmw-demo.gif" width="900"></a>
+**Quand est-ce qu'un développeur arrête de contribuer à un projet ?**
 
-<sub>Le tableau de bord en conditions réelles, de la vue exécutive au simulateur de scénarios.
-Cliquer ouvre la démo en ligne.</sub>
+J'ai repris les outils de l'analyse de survie, ceux qui servent en médecine à estimer le temps
+avant une rechute, et je les ai appliqués aux historiques Git. Le contributeur remplace le
+patient, l'abandon du projet remplace la rechute.
 
-**[heron](https://github.com/maxime2476/heron)** &nbsp;·&nbsp; « nommé d'après l'oiseau qui a une
-meilleure posture que toi ». Un moniteur de posture par webcam qui tourne en local, sans rien
-envoyer nulle part. Un Isolation Forest apprend ma posture de référence pendant un court
-calibrage puis signale les dérives, le Face Mesh de MediaPipe compte les clignements pour la
-fatigue oculaire, et la capture tourne dans un thread séparé de l'analyse pour que l'affichage
-ne lague pas. Écrit d'abord parce que j'en avais besoin.
-<br><sub>`MediaPipe` · `OpenCV` · `scikit-learn` · `SQLite` · `Streamlit`</sub>
+Toute la difficulté tient dans un détail : quelqu'un qui n'a rien poussé depuis trois semaines
+n'est pas forcément parti. Une moyenne ne sait pas quoi faire de ce cas, ces méthodes-là si.
+L'outil sort un rapport HTML avec les courbes et la liste des contributeurs les plus près de
+décrocher.
 
-Il y a aussi [sentiment-powell-nlp](https://github.com/maxime2476/sentiment-powell-nlp), un
-pipeline TF-IDF et K-Means sur 40 conférences de presse du FOMC, qui relie le ton hawkish ou
-dovish de la Fed aux rendements boursiers à trente jours. C'est plus ancien, mais c'est là que
-j'ai commencé à faire du NLP sérieusement.
+<sub>`lifelines` · `PyDriller` · `Plotly` · `Streamlit`</sub>
 
-## Trois façons de vérifier ce que je raconte
+### bmw-sales-analytics
 
-Plutôt que d'être cru sur parole, voici comment ouvrir le capot, selon le temps disponible.
+**50 000 ventes de voitures, un jeu de données impeccable, et rien à prédire.**
 
-`3 min` &nbsp; Les deux applications tournent en ligne, rien à installer :
-[le simulateur BMW](https://maxime2476-bmw-sales-analytics.hf.space) et
-[causal-impact-lab](https://huggingface.co/spaces/maxime2476/causal-impact-lab).
+Aucune valeur manquante, aucun doublon, quinze ans d'historique. Et aucune colonne n'explique
+quoi que ce soit. Le réflexe habituel serait de changer d'algorithme jusqu'à ce qu'un chiffre
+présentable finisse par sortir.
 
-`20 min` &nbsp; Lire deux fichiers. [Les résultats de causal-impact-lab](https://github.com/maxime2476/causal-impact-lab/blob/main/docs/results.md)
-annoncent le verdict, ses caveats et la limite de couverture des données, dans cet ordre.
-[Le rapport de capacité prédictive de BMW](https://github.com/maxime2476/bmw-sales-analytics/blob/main/reports/predictive_capability.md)
-explique pourquoi le modèle n'était pas déployable et ce que j'ai livré à la place.
+J'ai fait l'inverse : j'ai prouvé que le problème venait des données et pas de moi. Le même
+programme, lancé sur des données témoins où le signal existe, obtient un R² de 0,85 ; sur les
+vraies données, il tombe à zéro. À la place du modèle, j'ai livré un simulateur : on y manipule
+des hypothèses explicites au lieu de recevoir une prédiction sans fondement.
 
-`1 h` &nbsp; Cloner `causal-impact-lab`, puis `uv sync --all-extras`, `uv run pytest`,
-`uv run ruff check .` et `uv run mypy`. Ce sont exactement les portes de qualité qui tournent en
-CI à chaque push, elles doivent passer sur votre machine aussi.
+<sub>`XGBoost` · `SHAP` · `DuckDB` · `Docker` · [l'appli en ligne](https://maxime2476-bmw-sales-analytics.hf.space)</sub>
+
+<a href="https://maxime2476-bmw-sales-analytics.hf.space"><img alt="Aperçu animé du tableau de bord BMW Sales Analytics." src="assets/bmw-demo.gif" width="900"></a>
+
+### heron
+
+**Un moniteur de posture, écrit parce que je passais mes journées avachi devant l'écran.**
+
+La webcam regarde comment je me tiens. Un modèle apprend ma posture correcte pendant un court
+calibrage, puis me prévient quand je m'en éloigne. Il compte aussi mes clignements pour repérer
+la fatigue des yeux. Tout reste sur ma machine, rien ne part ailleurs.
+
+Le nom vient de l'oiseau, qui a une meilleure posture que moi.
+
+<sub>`MediaPipe` · `OpenCV` · `scikit-learn` · `SQLite`</sub>
+
+Il y a aussi [sentiment-powell-nlp](https://github.com/maxime2476/sentiment-powell-nlp), mon
+premier vrai projet de NLP : j'y analyse le ton des conférences de presse de la Fed et je le
+compare aux marchés un mois plus tard.
+
+## Pour vérifier par vous-même
+
+Je préfère qu'on ouvre le capot plutôt qu'on me croie sur parole.
+
+- **En 3 minutes**, les deux applications tournent en ligne, il n'y a rien à installer : [le simulateur BMW](https://maxime2476-bmw-sales-analytics.hf.space) et [causal-impact-lab](https://huggingface.co/spaces/maxime2476/causal-impact-lab).
+- **En 20 minutes**, [les résultats de causal-impact-lab](https://github.com/maxime2476/causal-impact-lab/blob/main/docs/results.md) donnent le verdict et ses limites, dans cet ordre.
+- **En 1 heure**, clonez le dépôt et lancez `uv sync --all-extras` puis `uv run pytest`. Ce sont les contrôles qui tournent tout seuls à chaque modification.
 
 ## Trois notes
 
-Un modèle se défend à l'écrit autant qu'au tableau blanc. Trois textes courts, tirés de choses
-que j'ai réellement eues à trancher.
+Un modèle se défend autant à l'écrit qu'au tableau. Trois textes courts, sur des choses que j'ai
+vraiment eu à trancher.
 
-- [Ce que la censure change quand on mesure un abandon](notes/01-censure-et-abandon.md) &nbsp;·&nbsp; pourquoi compter les inactifs récents comme des partants fabrique une épidémie d'abandons à la fin de chaque fenêtre d'observation, et ce que ça donne en code.
-- [Un dataset peut être impeccable et ne rien contenir](notes/02-un-dataset-propre-et-vide.md) &nbsp;·&nbsp; comment prouver l'absence de signal au lieu de la soupçonner : contrôle positif, test de permutation, uniformité, fuite de cible.
-- [Ce qui casse quand on segmente sous l'eau](notes/03-segmenter-sous-l-eau.md) &nbsp;·&nbsp; l'eau absorbe le rouge, la rotation et la symétrie ne protègent de rien, et le gain le plus rentable n'était pas dans le modèle.
+- [Ce que la censure change quand on mesure un abandon](notes/01-censure-et-abandon.md) : pourquoi compter tous les inactifs récents comme des partants fabrique une fausse épidémie de départs.
+- [Un dataset peut être impeccable et ne rien contenir](notes/02-un-dataset-propre-et-vide.md) : comment prouver l'absence de signal au lieu de la soupçonner.
+- [Ce qui casse quand on segmente sous l'eau](notes/03-segmenter-sous-l-eau.md) : l'eau absorbe le rouge, et faire pivoter les images ne protège de rien.
 
-## Ma façon de faire, en quatre lignes
+## Comment je travaille
 
-- J'écris la question et ce qui la ferait échouer avant de lancer la première régression, sinon on finit toujours par trouver ce qu'on cherchait.
-- Un résultat nul se publie comme un autre. Deux de mes projets se terminent sur un nul ou sur un dataset sans signal, et c'est écrit en haut du README, pas dans une note de bas de page.
-- Un modèle qui ne tourne que dans mon notebook ne compte pas. Docker, tests, CI et suivi d'expériences font partie du travail, pas de la finition.
-- Les choix d'architecture sont datés et justifiés dans des ADR, parce que dans six mois j'aurai oublié pourquoi j'ai écarté l'autre option.
+- J'écris la question et ce qui la ferait échouer avant de lancer le premier calcul, sinon on finit toujours par trouver ce qu'on cherchait.
+- Quand un résultat ne conclut pas, je le publie quand même. Deux de mes projets se terminent comme ça, et c'est écrit en haut de leur page.
+- Un modèle qui ne tourne que dans mon notebook ne compte pas : les tests, Docker et les vérifications automatiques font partie du travail.
+- Je note pourquoi j'ai écarté une option, parce que dans six mois je l'aurai oublié.
 
-## Les méthodes, rangées par ce que j'en ai vraiment fait
+## Ce que je sais faire, et ce que je ne sais pas encore
 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="assets/methods-dark.svg">
-  <img alt="Carte des méthodes en trois colonnes. Livré et en service : YOLO et SAM 3, Albumentations, XGBoost, SHAP, lifelines, statsmodels, projections locales, MediaPipe et OpenCV, DuckDB, Streamlit, Docker, GitHub Actions, pytest et mypy. Utilisé en projet : PyTorch, double machine learning, LP bayésienne, TF-IDF et K-Means, DEA et Simar-Wilson, bootstrap non gaussien, MLflow, R, SAS, SQL, Power BI. Lu, pas encore livré : déploiement managé AWS, monitoring en production, agents LLM en production." src="assets/methods-light.svg" width="900">
+  <img alt="Carte des méthodes en trois colonnes : livré et en service, utilisé en projet, lu mais pas encore livré." src="assets/methods-light.svg" width="900">
 </picture>
 
-Une barre de compétence à 90 % ne veut rien dire, alors voici les trois seuls niveaux que je sais
-défendre en entretien. La troisième colonne est courte et elle est exacte : ce sont les sujets où
-je peux tenir une conversation et pas encore une mise en production.
+Une barre de compétence à 90 % ne veut rien dire, alors j'ai rangé les choses en trois niveaux
+que je peux défendre en entretien. La troisième colonne est courte et elle est honnête : ce sont
+les sujets dont je sais parler mais que je n'ai pas encore mis en production. J'y travaille, en
+commençant par la certification AWS Machine Learning Engineer.
 
-## Ce que je ne sais pas encore
+## En dehors du code
 
-Je n'ai pas déployé sur une infra cloud de production : mes modèles vivent en Docker et sur
-Hugging Face Spaces. Je prépare la certification AWS Machine Learning Engineer Associate pour
-combler ça, en visant le déploiement et le monitoring plutôt que le trivia de service. Côté
-LLM et agents, je lis et je bricole, mais je n'ai pas encore mis un système à base d'agents
-en production. Autant le dire ici plutôt qu'en entretien.
-
-## Le reste
-
-Master 1 Finance et ingénierie financière à l'IAE Saint-Étienne avant Lille, licence d'économie
-à Rouen. Mémoire de M1 sur la correction de biais non gaussiens par bootstrap, panel de 15 pays
-sur 55 ans, DEA et régression de Simar-Wilson. Certification Data Analyst (DataCamp), Voltaire niveau
-professionnel. Anglais B2. En dehors : les marchés, les cryptos, et des parties d'échecs
-autour de 1200 ELO.
+Master 1 de finance à l'IAE Saint-Étienne avant Lille, licence d'économie à Rouen. Mémoire de M1
+sur la correction d'un biais statistique, appliqué à quinze pays sur cinquante-cinq ans.
+Certification Data Analyst chez DataCamp, Voltaire niveau professionnel, anglais B2. Le reste du
+temps : les marchés, un peu de crypto, et des parties d'échecs autour de 1200 ELO.
 
 ## Me joindre
 
@@ -175,13 +155,8 @@ autour de 1200 ELO.
 [maximeg2408@gmail.com](mailto:maximeg2408@gmail.com) ·
 [CV en PDF](https://github.com/maxime2476/cv/releases/latest/download/CV_Maxime_Gourguechon.pdf)
 
-<sub>Le CV est compilé par GitHub Actions depuis [son source LaTeX](https://github.com/maxime2476/cv)
-à chaque modification, donc ce lien pointe toujours vers la version courante.</sub>
-
-<sub>Les illustrations de cette page sont des SVG animés écrits pour ce profil, pas des badges
-générés : la courbe du haut est une vraie courbe de survie (bande de confiance, marques de
-censure, médiane), et la fonction de réponse plus haut est tracée depuis les résultats réels de
-<a href="https://github.com/maxime2476/causal-impact-lab">causal-impact-lab</a>, recopiés dans
-<code>data/headline_irf.csv</code>. Le GIF est un enregistrement du tableau de bord, pas une
-maquette. Tout se régénère avec <code>python tools/render_assets.py</code> : si un chiffre bouge,
-l'image bouge avec lui.</sub>
+<sub>Le CV est recompilé automatiquement depuis <a href="https://github.com/maxime2476/cv">son
+source LaTeX</a> à chaque modification, donc ce lien est toujours à jour. Les images de cette page
+sont des SVG faits pour ce profil : celle du haut est une vraie courbe de survie, celle de
+causal-impact-lab est tracée depuis les résultats du dépôt, et tout se régénère avec
+<code>python tools/render_assets.py</code>.</sub>
