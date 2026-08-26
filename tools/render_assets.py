@@ -11,7 +11,12 @@ Deux regles tenues partout :
 2. Toute animation est desactivee sous `prefers-reduced-motion: reduce`.
 """
 import csv
+import re
+import sys
 from pathlib import Path
+
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from icons import ICONS
 
 ROOT = Path(__file__).resolve().parents[1]
 OUT = ROOT / "assets"
@@ -260,26 +265,43 @@ COLUMNS = [
     ("LIVR&#201; ET EN SERVICE",
      "d&#233;ploy&#233; publiquement, ou tourn&#233; dans le",
      "pipeline du stage",
-     ["YOLO + SAM 3", "Albumentations", "XGBoost", "SHAP", "lifelines",
-      "statsmodels", "projections locales", "MediaPipe + OpenCV", "DuckDB",
-      "Streamlit", "Docker", "GitHub Actions", "pytest + mypy"]),
+     [("Python", "python"), ("scikit-learn", "scikitlearn"),
+      ("YOLO + SAM 3", "ultralytics"), ("OpenCV + MediaPipe", "opencv"),
+      ("XGBoost", None), ("SHAP", None), ("lifelines", None),
+      ("statsmodels", None), ("DuckDB", "duckdb"), ("Streamlit", "streamlit"),
+      ("Docker", "docker"), ("GitHub Actions", "githubactions"),
+      ("pytest", "pytest")]),
     ("UTILIS&#201; EN PROJET",
      "travail s&#233;rieux, m&#233;moire ou projet public,",
      "jamais mis en service",
-     ["PyTorch", "double machine learning", "LP bay&#233;sienne", "TF-IDF + K-Means",
-      "DEA &amp; Simar-Wilson", "bootstrap non gaussien", "MLflow", "R", "SAS",
-      "SQL", "Power BI"]),
+     [("PyTorch", "pytorch"), ("R", "r"), ("SQL", None), ("MLflow", "mlflow"),
+      ("double machine learning", None), ("LP bay&#233;sienne", None),
+      ("bootstrap, DEA, Simar-Wilson", None)]),
     ("LU, PAS ENCORE LIVR&#201;",
      "je sais de quoi il s&#8217;agit et ce que &#231;a co&#251;te,",
      "je ne l&#8217;ai pas encore fait tourner",
-     ["d&#233;ploiement manag&#233; AWS", "monitoring en production",
-      "agents LLM en production"]),
+     [("d&#233;ploiement AWS", "amazonwebservices"),
+      ("monitoring en production", None), ("agents LLM en production", None)]),
 ]
+
+ICON_PX = 13.5
+
+
+def glyph(name, x, y, color):
+    """Logo de l'outil, ou petite courbe quand la ligne designe une methode."""
+    if name:
+        k = ICON_PX / 24
+        return (f'<g transform="translate({x},{y}) scale({k:.4f})" fill="{color}" '
+                f'opacity="0.9"><path d="{ICONS[name]}"/></g>')
+    return (f'<path d="M{x},{y + 10.5} C{x + 3},{y + 10.5} {x + 4},{y + 3} '
+            f'{x + 7},{y + 3} C{x + 9.5},{y + 3} {x + 10.5},{y + 7} '
+            f'{x + 13.5},{y + 7}" fill="none" stroke="{color}" stroke-width="1.5" '
+            f'stroke-linecap="round" opacity="0.5"/>')
 
 
 def methods(p):
     xs = (44, 326, 608)
-    colw, top = 248, 46
+    top = 46
     body, i = [], 0
     rows_max = max(len(c[3]) for c in COLUMNS)
     for ci, (title, crit1, crit2, items) in enumerate(COLUMNS):
@@ -292,30 +314,32 @@ def methods(p):
             f'fill="{p["muted"]}">{crit1}</text>'
             f'<text x="{x}" y="{top + 31}" font-family="{SANS}" font-size="10.5" '
             f'fill="{p["muted"]}">{crit2}</text>'
-            f'<line x1="{x}" y1="{top + 46}" x2="{x + colw}" y2="{top + 46}" '
+            f'<line x1="{x}" y1="{top + 46}" x2="{x + 248}" y2="{top + 46}" '
             f'stroke="{p["border"]}" stroke-width="1"/>')
         y = top + 64
-        for it in items:
-            plain = (it.replace("&#201;", "E").replace("&#233;", "e")
-                       .replace("&amp;", "&").replace("&#232;", "e")
-                       .replace("&#231;", "c").replace("&#251;", "u")
-                       .replace("&#8217;", "'"))
-            w = round(6.65 * len(plain)) + 22
+        for label, icon in items:
+            plain = re.sub(r"&#?\w+;", "x", label)
+            w = round(6.65 * len(plain)) + 46
             fill = p["chip"] if ci < 2 else p["bg"]
             dash = ' stroke-dasharray="4 3"' if ci == 2 else ""
+            ink = p["ink"] if ci < 2 else p["muted"]
             body.append(
                 f'<g class="rise"{delay(0.15 + i * 0.035)}>'
                 f'<rect x="{x}" y="{y}" width="{w}" height="26" rx="7" fill="{fill}" '
                 f'stroke="{p["border"]}"{dash}/>'
-                f'<text x="{x + 11}" y="{y + 17.5}" font-family="{MONO}" font-size="11" '
-                f'fill="{p["ink"] if ci < 2 else p["muted"]}">{it}</text></g>')
-            y += 32
+                f'{glyph(icon, x + 11, y + 6, ink)}'
+                f'<text x="{x + 32}" y="{y + 17.5}" font-family="{MONO}" font-size="11" '
+                f'fill="{ink}">{label}</text></g>')
+            y += 30
             i += 1
-    h = top + 64 + rows_max * 32 + 42
+    h = top + 64 + rows_max * 30 + 44
     body.append(
         f'<text x="44" y="{h - 18}" font-family="{MONO}" font-size="9.5" '
         f'fill="{p["muted"]}">classement fait sur pi&#232;ces : d&#233;p&#244;ts publics, '
-        f'applications en ligne, pipeline du stage</text>')
+        f'applications en ligne, pipeline du stage</text>'
+        f'<text x="856" y="{h - 18}" font-family="{MONO}" font-size="9" '
+        f'fill="{p["muted"]}" text-anchor="end" opacity="0.75">logos : Simple Icons '
+        f'(CC0)</text>')
     seps = "".join(
         f'<line x1="{x}" y1="{top - 16}" x2="{x}" y2="{h - 20}" stroke="{p["border"]}" '
         f'stroke-width="1" opacity="0.6"/>' for x in (302, 584))
