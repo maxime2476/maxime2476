@@ -175,7 +175,7 @@ vraiment eu à trancher.
 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="assets/methods-dark.svg">
-  <img alt="Carte des méthodes en trois colonnes. Livré et en service : Python, PyTorch, scikit-learn, YOLO et SAM 3, OpenCV et MediaPipe, XGBoost, SHAP, lifelines, statsmodels, DuckDB, Streamlit, Docker, GitHub Actions, pytest. Utilisé en projet : R, SQL, MLflow, double machine learning, LP bayésienne, bootstrap, DEA et Simar-Wilson. Lu mais pas encore livré : déploiement AWS, monitoring en production, agents LLM en production." src="assets/methods-light.svg" width="900">
+  <img alt="Carte des méthodes en trois colonnes. Livré et en service : Python, PyTorch, scikit-learn, YOLO et SAM 3, OpenCV et MediaPipe, XGBoost, SHAP, lifelines, statsmodels, Streamlit, Docker, GitHub Actions. Utilisé en projet : R, MLflow, double machine learning, LP bayésienne, bootstrap, DEA et Simar-Wilson. Lu mais pas encore livré : déploiement AWS, monitoring en production, agents LLM en production." src="assets/methods-light.svg" width="900">
 </picture>
 
 Une barre de compétence à 90 % ne veut rien dire, alors j'ai rangé les choses en trois niveaux
