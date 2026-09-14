@@ -5,6 +5,9 @@
 
 **Data scientist and AI engineer. Available for a permanent role from September 2026, in Paris or remote.**
 
+I'm looking for a team that puts models into production, not only dashboards. Write to me and
+I'll answer within 24 hours.
+
 [CV in PDF](https://github.com/maxime2476/cv/releases/latest/download/CV_Maxime_Gourguechon.pdf) · [LinkedIn](https://www.linkedin.com/in/maximegourguechon/) · [maximeg2408@gmail.com](mailto:maximeg2408@gmail.com) · [Version française](README.md)
 
 Hi, I'm Maxime. I'm finishing a master's in econometrics in Lille and I'm a final-year intern at
@@ -43,11 +46,10 @@ claimed to exist. That is the case here, and that is the conclusion.</sub>
 ## The others
 
 - **[git-survival](https://github.com/maxime2476/git-survival)**: when does a developer stop contributing to a project? I apply the survival methods used in medicine to Git histories, because someone who has been quiet for three weeks has not necessarily left.
-- **[bmw-sales-analytics](https://github.com/maxime2476/bmw-sales-analytics)**: 50,000 car sales, a spotless dataset, and nothing to predict. I proved the absence of signal instead of forcing a model, then shipped a scenario simulator in its place.
+- **[bmw-sales-analytics](https://github.com/maxime2476/bmw-sales-analytics)**: 50,000 car sales, a spotless dataset, and nothing to predict. I proved the absence of signal instead of forcing a model, then shipped a [scenario simulator](https://maxime2476-bmw-sales-analytics.hf.space) you can try
+online instead.
 - **[heron](https://github.com/maxime2476/heron)**: a webcam posture monitor that runs entirely on your machine. Written because I spent my days slouching at my desk.
 - And [sentiment-powell-nlp](https://github.com/maxime2476/sentiment-powell-nlp), my first real NLP project, on the tone of Federal Reserve press conferences.
-
-<a href="https://maxime2476-bmw-sales-analytics.hf.space"><img alt="Animated preview of the BMW Sales Analytics dashboard." src="assets/bmw-demo.gif" width="900"></a>
 
 ## Check for yourself
 
@@ -62,13 +64,6 @@ The three write-ups below are in French: [survival censoring](notes/01-censure-e
 [domain shift underwater](notes/03-segmenter-sous-l-eau.md). Happy to walk through any of them in
 English.
 
-## How I work
-
-I write down the question and what would falsify it before running the first estimation,
-otherwise you always end up finding what you were looking for. When a result does not conclude, I
-publish it anyway. And a model that only runs in my notebook does not count: tests, Docker and
-automated checks are part of the job, not the polish.
-
 ## What I can do
 
 Shipped and running, meaning deployed publicly or used in the internship pipeline: Python,
@@ -80,12 +75,6 @@ learning, Bayesian local projections, non-Gaussian bootstrap, DEA and Simar-Wils
 
 Read about, not yet shipped: managed AWS deployment, production model monitoring, LLM agents in
 production. I'm working on it, starting with the AWS Machine Learning Engineer certification.
-
-## Get in touch
-
-[LinkedIn](https://www.linkedin.com/in/maximegourguechon/) ·
-[maximeg2408@gmail.com](mailto:maximeg2408@gmail.com) ·
-[CV in PDF](https://github.com/maxime2476/cv/releases/latest/download/CV_Maxime_Gourguechon.pdf)
 
 <sub>A master's in finance at IAE Saint-Étienne before Lille, an economics degree in Rouen,
 DataCamp and Voltaire certifications, English at B2: the detail is in the CV, which is recompiled

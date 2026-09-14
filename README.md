@@ -5,6 +5,9 @@
 
 **Data scientist et ingénieur IA. Disponible en CDI à partir de septembre 2026, à Paris ou en remote.**
 
+Je cherche une équipe qui met des modèles en production, pas seulement des tableaux de bord.
+Écrivez-moi, je réponds sous 24 heures.
+
 [CV en PDF](https://github.com/maxime2476/cv/releases/latest/download/CV_Maxime_Gourguechon.pdf) · [LinkedIn](https://www.linkedin.com/in/maximegourguechon/) · [maximeg2408@gmail.com](mailto:maximeg2408@gmail.com) · [English version](README.en.md)
 
 Salut, moi c'est Maxime. Je termine un master d'économétrie à Lille et je suis en stage de fin
@@ -43,11 +46,9 @@ existe. C'est le cas ici, et c'est la conclusion.</sub>
 ## Les autres
 
 - **[git-survival](https://github.com/maxime2476/git-survival)** : quand un développeur arrête-t-il de contribuer à un projet ? J'applique aux historiques Git les méthodes de survie utilisées en médecine, parce que quelqu'un d'inactif depuis trois semaines n'est pas forcément parti.
-- **[bmw-sales-analytics](https://github.com/maxime2476/bmw-sales-analytics)** : 50 000 ventes de voitures, un jeu de données impeccable, et rien à prédire. J'ai prouvé l'absence de signal au lieu de forcer un modèle, puis livré un simulateur de scénarios à la place.
+- **[bmw-sales-analytics](https://github.com/maxime2476/bmw-sales-analytics)** : 50 000 ventes de voitures, un jeu de données impeccable, et rien à prédire. J'ai prouvé l'absence de signal au lieu de forcer un modèle, puis livré à la place un [simulateur de scénarios](https://maxime2476-bmw-sales-analytics.hf.space) que vous pouvez manipuler en ligne.
 - **[heron](https://github.com/maxime2476/heron)** : un moniteur de posture par webcam qui tourne entièrement en local. Écrit parce que je passais mes journées avachi devant l'écran.
 - Et [sentiment-powell-nlp](https://github.com/maxime2476/sentiment-powell-nlp), mon premier vrai projet de NLP, sur le ton des conférences de presse de la Fed.
-
-<a href="https://maxime2476-bmw-sales-analytics.hf.space"><img alt="Aperçu animé du tableau de bord BMW Sales Analytics." src="assets/bmw-demo.gif" width="900"></a>
 
 ## Pour vérifier par vous-même
 
@@ -61,13 +62,6 @@ existe. C'est le cas ici, et c'est la conclusion.</sub>
 - [Un dataset peut être impeccable et ne rien contenir](notes/02-un-dataset-propre-et-vide.md)
 - [Ce qui casse quand on segmente sous l'eau](notes/03-segmenter-sous-l-eau.md)
 
-## Comment je travaille
-
-J'écris la question et ce qui la ferait échouer avant de lancer le premier calcul, sinon on finit
-toujours par trouver ce qu'on cherchait. Quand un résultat ne conclut pas, je le publie quand
-même. Et un modèle qui ne tourne que dans mon notebook ne compte pas : les tests, Docker et les
-vérifications automatiques font partie du travail.
-
 ## Ce que je sais faire
 
 Livré et en service, c'est-à-dire déployé publiquement ou tourné dans le pipeline du stage :
@@ -80,12 +74,6 @@ Simar-Wilson.
 
 Lu, pas encore livré : déploiement managé AWS, monitoring de modèles en production, agents LLM en
 production. J'y travaille, en commençant par la certification AWS Machine Learning Engineer.
-
-## Me joindre
-
-[LinkedIn](https://www.linkedin.com/in/maximegourguechon/) ·
-[maximeg2408@gmail.com](mailto:maximeg2408@gmail.com) ·
-[CV en PDF](https://github.com/maxime2476/cv/releases/latest/download/CV_Maxime_Gourguechon.pdf)
 
 <sub>Master 1 de finance à l'IAE Saint-Étienne avant Lille, licence d'économie à Rouen,
 certifications DataCamp et Voltaire, anglais B2 : le détail est dans le CV, recompilé
