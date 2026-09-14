@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="640" viewBox="0 0 1280 640" role="img" aria-label="git-survival">
+  <rect width="1280" height="640" fill="#0E1116"/>
+  <rect x="40" y="40" width="1200" height="560" rx="20" fill="none" stroke="#222A33" stroke-width="2"/>
+  <text x="90" y="150" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="22" letter-spacing="4" fill="#F97316">GIT-SURVIVAL</text>
+  <text x="90" y="270" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Inter,Helvetica,Arial,sans-serif" font-size="54" font-weight="700" fill="#E9EDF2">Quand un contributeur</text><text x="90" y="336" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Inter,Helvetica,Arial,sans-serif" font-size="54" font-weight="700" fill="#E9EDF2">décroche-t-il ?</text><text x="90" y="430" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Inter,Helvetica,Arial,sans-serif" font-size="24" fill="#8B949E">L'analyse de survie de la médecine,</text><text x="90" y="464" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Inter,Helvetica,Arial,sans-serif" font-size="24" fill="#8B949E">appliquée aux historiques Git.</text>
+  <line x1="90" y1="520" x2="1190" y2="520" stroke="#222A33" stroke-width="2"/>
+  <text x="90" y="560" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="20" fill="#8B949E">github.com/maxime2476</text>
+  <text x="1190" y="560" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="20" fill="#8B949E" text-anchor="end">Maxime Gourguechon</text>
+  <g transform="translate(0,52)"><path d="M700,214 H760 V250 H840 V286 H920 V320 H1010 V350 H1080 V380 H1190" fill="none" stroke="#F97316" stroke-width="4" stroke-linejoin="round"/><line x1="790" y1="238" x2="790" y2="262" stroke="#F97316" stroke-width="3"/><line x1="940" y1="308" x2="940" y2="332" stroke="#F97316" stroke-width="3"/><line x1="1090" y1="368" x2="1090" y2="392" stroke="#F97316" stroke-width="3"/></g>
+</svg>

@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="640" viewBox="0 0 1280 640" role="img" aria-label="heron">
+  <rect width="1280" height="640" fill="#0E1116"/>
+  <rect x="40" y="40" width="1200" height="560" rx="20" fill="none" stroke="#222A33" stroke-width="2"/>
+  <text x="90" y="150" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="22" letter-spacing="4" fill="#F97316">HERON</text>
+  <text x="90" y="270" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Inter,Helvetica,Arial,sans-serif" font-size="54" font-weight="700" fill="#E9EDF2">Une meilleure posture</text><text x="90" y="336" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Inter,Helvetica,Arial,sans-serif" font-size="54" font-weight="700" fill="#E9EDF2">que la tienne.</text><text x="90" y="430" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Inter,Helvetica,Arial,sans-serif" font-size="24" fill="#8B949E">Moniteur de posture par webcam.</text><text x="90" y="464" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Inter,Helvetica,Arial,sans-serif" font-size="24" fill="#8B949E">Tout reste sur votre machine.</text>
+  <line x1="90" y1="520" x2="1190" y2="520" stroke="#222A33" stroke-width="2"/>
+  <text x="90" y="560" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="20" fill="#8B949E">github.com/maxime2476</text>
+  <text x="1190" y="560" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="20" fill="#8B949E" text-anchor="end">Maxime Gourguechon</text>
+  <g transform="translate(0,52)"><line x1="700" y1="380" x2="1190" y2="380" stroke="#8B949E" stroke-width="2" stroke-dasharray="8 10" opacity="0.7"/><path d="M700,262 L790,252 L880,276 L970,258 L1060,420 L1130,404 L1190,272" fill="none" stroke="#F97316" stroke-width="4" stroke-linejoin="round"/><circle cx="1060" cy="420" r="9" fill="#F97316"/></g>
+</svg>
