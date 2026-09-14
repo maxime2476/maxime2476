@@ -252,8 +252,10 @@ def irf(p, lang="fr"):
         for h in (-6, 0, 6, 12, 18, 24))
 
     def fr(v):
-        return f"{v:.3f}".replace(".", ",")
+        """Virgule decimale en francais, point en anglais."""
+        return f"{v:.3f}".replace(".", ",") if lang == "fr" else f"{v:.3f}"
 
+    sep = " : " if lang == "fr" else ": "
     b12 = next(r for r in rows if r[0] == 12)
     ax, ay = X(12), Y(b12[1])
     return f'''<svg xmlns="http://www.w3.org/2000/svg" width="900" height="340" viewBox="0 0 900 340" role="img" aria-label="Effet estime d'une hausse des taux sur l'emploi, avec une marge d'erreur qui contient zero">
@@ -275,8 +277,8 @@ def irf(p, lang="fr"):
   <g class="rise" style="animation-delay:1.35s">
     {marker(ax, ay, p['accent'])}
     <line x1="{ax}" y1="{ay - 8}" x2="{ax}" y2="{ay - 38}" stroke="{p['muted']}" stroke-width="1"/>
-    <text x="{ax - 6}" y="{ay - 44}" font-family="{MONO}" font-size="10.5" fill="{p['ink']}" text-anchor="middle">{h_lab} : {fr(b12[1])}</text>
-    <text x="{ax - 6}" y="{ay - 31}" font-family="{MONO}" font-size="9.5" fill="{p['muted']}" text-anchor="middle">{band_lab} : {fr(b12[2])} / {fr(b12[3])}</text>
+    <text x="{ax - 6}" y="{ay - 44}" font-family="{MONO}" font-size="10.5" fill="{p['ink']}" text-anchor="middle">{h_lab}{sep}{fr(b12[1])}</text>
+    <text x="{ax - 6}" y="{ay - 31}" font-family="{MONO}" font-size="9.5" fill="{p['muted']}" text-anchor="middle">{band_lab}{sep}{fr(b12[2])} / {fr(b12[3])}</text>
   </g>
   {xticks}
   <text x="{(x0 + x1) // 2}" y="{ybot + 38}" font-family="{MONO}" font-size="10" fill="{p['muted']}" text-anchor="middle">{xlab}</text>
