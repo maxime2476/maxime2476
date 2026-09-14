@@ -9,6 +9,10 @@ Deux regles tenues partout :
    animations CSS qui partent d'un etat transitoire ; un rendu qui les ignore
    affiche donc la figure terminee, jamais une page vide.
 2. Toute animation est desactivee sous `prefers-reduced-motion: reduce`.
+
+Les fonctions `pipeline()` et `methods()` ne sont plus ecrites sur disque : le README
+court ne les utilise pas. Reactiver une ligne dans la boucle du bas suffit a les
+regenerer, par exemple pour le README d'un autre depot.
 """
 import csv
 import re
@@ -71,22 +75,38 @@ BAND = ("M560,53 H596 V65 H620 V74 H652 V86 H682 V95 H714 V109 H752 V118 H790 V1
 TICKS = [(636, 83), (698, 104), (770, 127), (840, 148)]
 
 
-def header(p):
+HEADER_TEXT = {
+    "fr": ("DATA SCIENTIST / ING&#201;NIEUR IA",
+           "Vision par ordinateur, NLP, inf&#233;rence causale.",
+           "M2 &#201;conom&#233;trie &amp; Statistiques (Lille) &#183; stage data science chez Aubay",
+           "CDI &#224; partir de septembre 2026, Paris ou remote",
+           "temps depuis le 1er commit",
+           "part des contributeurs encore actifs, au fil du temps",
+           "m&#233;diane"),
+    "en": ("DATA SCIENTIST / AI ENGINEER",
+           "Computer vision, NLP, causal inference.",
+           "MSc Econometrics &amp; Statistics (Lille) &#183; data science intern at Aubay",
+           "Available from September 2026, Paris or remote",
+           "time since first commit",
+           "share of contributors still active, over time",
+           "median"),
+}
+
+
+def header(p, lang="fr"):
+    kicker, subtitle, school, avail, xlab, caption, med = HEADER_TEXT[lang]
     ticks = "".join(
         f'<line x1="{x}" y1="{y - 5}" x2="{x}" y2="{y + 5}" stroke="{p["accent"]}" '
         f'stroke-width="1.4" stroke-linecap="round"/>' for x, y in TICKS)
     lines = [
         (f'<text x="44" y="70" font-family="{MONO}" font-size="11.5" letter-spacing="2.4" '
-         f'fill="{p["accent"]}">DATA SCIENTIST / ING&#201;NIEUR IA</text>', 0.05),
+         f'fill="{p["accent"]}">{kicker}</text>', 0.05),
         (f'<text x="44" y="119" font-size="38" font-weight="700" fill="{p["ink"]}">'
          f'Maxime Gourguechon</text>', 0.14),
-        (f'<text x="44" y="149" font-size="15" fill="{p["muted"]}">Vision par ordinateur, '
-         f'NLP, inf&#233;rence causale.</text>', 0.24),
-        (f'<text x="44" y="180" font-size="13.5" fill="{p["muted"]}">M2 &#201;conom&#233;trie '
-         f'&amp; Statistiques (Lille) &#183; stage data science chez Aubay</text>', 0.32),
+        (f'<text x="44" y="149" font-size="15" fill="{p["muted"]}">{subtitle}</text>', 0.24),
+        (f'<text x="44" y="180" font-size="13.5" fill="{p["muted"]}">{school}</text>', 0.32),
         (f'<circle cx="48" cy="205" r="3.5" fill="{p["accent"]}"/>'
-         f'<text x="60" y="209" font-size="13.5" fill="{p["muted"]}">CDI &#224; partir de '
-         f'septembre 2026, Paris ou remote</text>', 0.4),
+         f'<text x="60" y="209" font-size="13.5" fill="{p["muted"]}">{avail}</text>', 0.4),
     ]
     txt = "".join(f'<g class="rise"{delay(d)}>{el}</g>' for el, d in lines)
     return f'''<svg xmlns="http://www.w3.org/2000/svg" width="900" height="250" viewBox="0 0 900 250" role="img" aria-label="Maxime Gourguechon, data scientist, vision par ordinateur, NLP, inference causale">
@@ -109,9 +129,9 @@ def header(p):
       <text x="551" y="128">0.5</text>
       <text x="551" y="190">0</text>
     </g>
-    <text x="744" y="181" font-family="{MONO}" font-size="10" fill="{p['muted']}" text-anchor="end">m&#233;diane</text>
-    <text x="860" y="204" font-family="{MONO}" font-size="10" fill="{p['muted']}" text-anchor="end">temps depuis le 1er commit</text>
-    <text x="560" y="228" font-family="{MONO}" font-size="10.5" fill="{p['muted']}">part des contributeurs encore actifs, au fil du temps</text>
+    <text x="744" y="181" font-family="{MONO}" font-size="10" fill="{p['muted']}" text-anchor="end">{med}</text>
+    <text x="860" y="204" font-family="{MONO}" font-size="10" fill="{p['muted']}" text-anchor="end">{xlab}</text>
+    <text x="560" y="228" font-family="{MONO}" font-size="10.5" fill="{p['muted']}">{caption}</text>
   </g>
 </svg>
 '''
@@ -183,7 +203,22 @@ def load_irf():
     return sorted(rows)
 
 
-def irf(p):
+IRF_TEXT = {
+    "fr": ("Effet d&#8217;une hausse des taux d&#8217;int&#233;r&#234;t sur l&#8217;emploi",
+           "Emploi am&#233;ricain, 1994-2020. L&#8217;effet va dans le sens attendu, mais la marge d&#8217;erreur contient toujours z&#233;ro.",
+           "hausse des taux", "mois apr&#232;s la hausse des taux", "effet estim&#233;",
+           "marge d&#8217;erreur (95 %)", "avant la hausse", "source : causal-impact-lab",
+           "12 mois", "marge d&#8217;erreur"),
+    "en": ("Effect of an interest-rate rise on employment",
+           "US employment, 1994-2020. The effect has the expected sign, but the error band always contains zero.",
+           "rate rise", "months after the rate rise", "estimated effect",
+           "error band (95 %)", "before the rise", "source: causal-impact-lab",
+           "12 months", "error band"),
+}
+
+
+def irf(p, lang="fr"):
+    (ti, sub, shock_lab, xlab, leg1, leg2, leg3, src, h_lab, band_lab) = IRF_TEXT[lang]
     rows = load_irf()
     x0, x1, ytop, ybot = 92, 858, 76, 252
     vmin, vmax = -0.19, 0.125
@@ -224,13 +259,13 @@ def irf(p):
     return f'''<svg xmlns="http://www.w3.org/2000/svg" width="900" height="340" viewBox="0 0 900 340" role="img" aria-label="Effet estime d'une hausse des taux sur l'emploi, avec une marge d'erreur qui contient zero">
   {STYLE}
   <rect x="0.5" y="0.5" width="899" height="339" rx="14" fill="{p['bg']}" stroke="{p['border']}"/>
-  <text x="44" y="34" font-family="{SANS}" font-size="15" font-weight="600" fill="{p['ink']}">Effet d&#8217;une hausse des taux d&#8217;int&#233;r&#234;t sur l&#8217;emploi</text>
-  <text x="44" y="52" font-family="{SANS}" font-size="12" fill="{p['muted']}">Emploi am&#233;ricain, 1994-2020. L&#8217;effet va dans le sens attendu, mais la marge d&#8217;erreur contient toujours z&#233;ro.</text>
+  <text x="44" y="34" font-family="{SANS}" font-size="15" font-weight="600" fill="{p['ink']}">{ti}</text>
+  <text x="44" y="52" font-family="{SANS}" font-size="12" fill="{p['muted']}">{sub}</text>
   {grid}
   <line x1="{x0}" y1="{Y(0)}" x2="{x1}" y2="{Y(0)}" stroke="{p['muted']}" stroke-width="1.2" opacity="0.55"/>
   <text x="{x0 - 10}" y="{Y(0) + 3.5}" font-family="{MONO}" font-size="10" fill="{p['muted']}" text-anchor="end">0</text>
   <line x1="{X(0)}" y1="{ytop - 6}" x2="{X(0)}" y2="{ybot + 4}" stroke="{p['muted']}" stroke-width="1" stroke-dasharray="3 4" opacity="0.7"/>
-  <text x="{X(0) + 6}" y="{ytop + 2}" font-family="{MONO}" font-size="10" fill="{p['muted']}">hausse des taux</text>
+  <text x="{X(0) + 6}" y="{ytop + 2}" font-family="{MONO}" font-size="10" fill="{p['muted']}">{shock_lab}</text>
   <g class="wipe" style="animation-delay:.2s">
     <path d="{band(pre)}" fill="{p['ghost']}" fill-opacity="0.20"/>
     <path d="{line(pre)}" fill="none" stroke="{p['ghost']}" stroke-width="1.8" stroke-dasharray="4 3"/>
@@ -240,19 +275,19 @@ def irf(p):
   <g class="rise" style="animation-delay:1.35s">
     {marker(ax, ay, p['accent'])}
     <line x1="{ax}" y1="{ay - 8}" x2="{ax}" y2="{ay - 38}" stroke="{p['muted']}" stroke-width="1"/>
-    <text x="{ax - 6}" y="{ay - 44}" font-family="{MONO}" font-size="10.5" fill="{p['ink']}" text-anchor="middle">12 mois : {fr(b12[1])}</text>
-    <text x="{ax - 6}" y="{ay - 31}" font-family="{MONO}" font-size="9.5" fill="{p['muted']}" text-anchor="middle">marge d&#8217;erreur : {fr(b12[2])} &#224; {fr(b12[3])}</text>
+    <text x="{ax - 6}" y="{ay - 44}" font-family="{MONO}" font-size="10.5" fill="{p['ink']}" text-anchor="middle">{h_lab} : {fr(b12[1])}</text>
+    <text x="{ax - 6}" y="{ay - 31}" font-family="{MONO}" font-size="9.5" fill="{p['muted']}" text-anchor="middle">{band_lab} : {fr(b12[2])} / {fr(b12[3])}</text>
   </g>
   {xticks}
-  <text x="{(x0 + x1) // 2}" y="{ybot + 38}" font-family="{MONO}" font-size="10" fill="{p['muted']}" text-anchor="middle">mois apr&#232;s la hausse des taux</text>
+  <text x="{(x0 + x1) // 2}" y="{ybot + 38}" font-family="{MONO}" font-size="10" fill="{p['muted']}" text-anchor="middle">{xlab}</text>
   <g font-family="{MONO}" font-size="10" fill="{p['muted']}">
     <line x1="44" y1="{ybot + 62}" x2="70" y2="{ybot + 62}" stroke="{p['accent']}" stroke-width="2.4"/>
-    <text x="76" y="{ybot + 65.5}">effet estim&#233;</text>
+    <text x="76" y="{ybot + 65.5}">{leg1}</text>
     <rect x="216" y="{ybot + 57}" width="26" height="10" fill="{p['accent']}" fill-opacity="{p['band2']}"/>
-    <text x="248" y="{ybot + 65.5}">marge d&#8217;erreur (95 %)</text>
+    <text x="248" y="{ybot + 65.5}">{leg2}</text>
     <line x1="470" y1="{ybot + 62}" x2="496" y2="{ybot + 62}" stroke="{p['ghost']}" stroke-width="1.8" stroke-dasharray="4 3"/>
-    <text x="502" y="{ybot + 65.5}">avant la hausse</text>
-    <text x="{x1}" y="{ybot + 65.5}" text-anchor="end">source : causal-impact-lab</text>
+    <text x="502" y="{ybot + 65.5}">{leg3}</text>
+    <text x="{x1}" y="{ybot + 65.5}" text-anchor="end">{src}</text>
   </g>
 </svg>
 '''
@@ -351,9 +386,9 @@ def methods(p):
 
 
 for mode, pal in PALETTES.items():
-    (OUT / f"header-{mode}.svg").write_text(header(pal), encoding="utf-8")
-    (OUT / f"pipeline-{mode}.svg").write_text(pipeline(pal), encoding="utf-8")
-    (OUT / f"irf-{mode}.svg").write_text(irf(pal), encoding="utf-8")
-    (OUT / f"methods-{mode}.svg").write_text(methods(pal), encoding="utf-8")
+    for lang in ("fr", "en"):
+        suffix = "" if lang == "fr" else "-en"
+        (OUT / f"header{suffix}-{mode}.svg").write_text(header(pal, lang), encoding="utf-8")
+        (OUT / f"irf{suffix}-{mode}.svg").write_text(irf(pal, lang), encoding="utf-8")
 
 print("ok", len(sorted(OUT.iterdir())), "fichiers dans assets/")
